@@ -66,13 +66,8 @@ function request_gdoc_show(response_obj,params)
 		}
 	}
 	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
+
+	put_target.innerHTML="";
 	put_target.insertAdjacentHTML("beforeend",put_data);
 	put_target.classList.add("gdoc_contents");
-}
-
-// scripts web app
- window.addEventListener("message", message_operate);
-function message_operate(message)
-{
-	window[message.data.function_name](message.data.function_parameters);
 }
