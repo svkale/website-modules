@@ -18,28 +18,28 @@ function request(path,func)
 	return;
 }
 
-function request_log(request_obj)
+function request_log(response_obj)
 {
-	console.log(request_obj);
+	console.log(response_obj);
 }
 
 // google integrations
 
 // spreadsheets
-function request_gsheet(request_obj)
+function request_gsheet(response_obj)
 {
-	return JSON.parse(request_obj.responseText.substring(28,request_obj.responseText.length-2)).feed.entry;
+	return JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry;
 }
 
 // docs
-function request_gdoc(request_obj)
+function request_gdoc(response_obj)
 {
-	return request_obj.responseText;
+	return response_obj.responseText;
 }
-function request_gdoc_show(request_obj,params)
+function request_gdoc_show(response_obj,params)
 {
 	var put_target=params[0];
-	var response_doc=new DOMParser().parseFromString(request_gdoc(request_obj),"text/html");
+	var response_doc=new DOMParser().parseFromString(request_gdoc(response_obj),"text/html");
 	var response_doc_headtags=response_doc.getElementsByTagName('head')[0].children;
 	var put_data="";
 	for(var i=0;i<response_doc_headtags.length;i++)
