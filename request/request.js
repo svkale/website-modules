@@ -1,16 +1,16 @@
 function request(path,func)
 {
-	var param=[];
+	var params=[];
 	for(var i=2;i<arguments.length;i++)
 	{
-		param[i-2]=arguments[i];
+		params[i-2]=arguments[i];
 	}
 	var xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
 		if (this.readyState==4 && this.status==200)
 		{
-			window[func](this,param);
+			window[func](this,params);
 		}
 	};
 	xmlhttp.open('GET',path,true); 
@@ -32,14 +32,9 @@ function request_gsheet(response_obj)
 }
 
 // docs
-function request_gdoc(response_obj)
+function request_gdoc_published_inline_contents(response_obj)
 {
-	return response_obj.responseText;
-}
-function request_gdoc_show(response_obj,params)
-{
-	var put_target=params[0];
-	var response_doc=new DOMParser().parseFromString(request_gdoc(response_obj),"text/html");
+	var response_doc=new DOMParser().parseFromString(response_obj.responseText,"text/html");
 	var response_doc_headtags=response_doc.getElementsByTagName('head')[0].children;
 	var put_data="";
 	for(var i=0;i<response_doc_headtags.length;i++)
@@ -51,23 +46,20 @@ function request_gdoc_show(response_obj,params)
 			style_output="";
 			for(var i=0;i<style_part_arr.length-1;i++)
 			{
-				style_output+=style_part_arr[i]+",.gdoc_contents ";
+				style_output+=style_part_arr[i]+",.gdoc_published_contents ";
 			}
 			style_output+=style_part_arr[style_part_arr.length-1];
 			style_part_arr=style_output.split("}");
 			style_output="";
 			for(var i=0;i<style_part_arr.length-1;i++)
 			{
-				style_output+=style_part_arr[i]+"}.gdoc_contents ";
+				style_output+=style_part_arr[i]+"}.gdoc_published_contents ";
 			}
 			style_output+=style_part_arr[style_part_arr.length-1];
-			style_output="<style type='text/css'>.gdoc_contents "+style_output+"</style>";
+			style_output="<style type='text/css'>.gdoc_published_contents "+style_output+"</style>";
 			put_data+=style_output;
 		}
 	}
 	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
-
-	put_target.innerHTML="";
-	put_target.insertAdjacentHTML("beforeend",put_data);
-	put_target.classList.add("gdoc_contents");
+	return put_data;
 }
