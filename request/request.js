@@ -46,11 +46,26 @@ function request_gdoc_show(request_obj,params)
 	{
 		if(response_doc_headtags[i].tagName=="STYLE")
 		{
-			put_data+=response_doc_headtags[i].outerHTML;
-			console.log(response_doc_headtags[i]);
+			var style_output=response_doc_headtags[i].innerHTML;
+			var style_part_arr=style_output.split(",");
+			style_output="";
+			for(var i=0;i<style_part_arr.length-1;i++)
+			{
+				style_output+=style_part_arr[i]+",.gdoc_contents ";
+			}
+			style_output+=style_part_arr[style_part_arr.length-1];
+			style_part_arr=style_output.split("}");
+			style_output="";
+			for(var i=0;i<style_part_arr.length-1;i++)
+			{
+				style_output+=style_part_arr[i]+"}.gdoc_contents ";
+			}
+			style_output+=style_part_arr[style_part_arr.length-1];
+			style_output="<style type='text/css'>.gdoc_contents "+style_output+"</style>";
+			put_data+=style_output;
 		}
 	}
-	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/,"div");
+	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
 	put_target.insertAdjacentHTML("beforeend",put_data);
 	put_target.classList.add("gdoc_contents");
 }
