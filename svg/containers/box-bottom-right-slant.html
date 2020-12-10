@@ -1,0 +1,7 @@
+<script type="text/javascript">
+	function svg_box_bottom_right_slant(svg_params)
+	{
+		var h=1,b=svg_params["content-wbyh"],w=(svg_params["border-wbyh"])/2;
+		return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="'+(-1*w)+" "+(-1*w)+" "+(parseFloat(b)+parseFloat(h/3)+parseFloat(w*4))+" "+(parseFloat(h)+parseFloat(w*4))+'" fill="'+svg_params["fill-color"]+'" style="height: '+(parseFloat(svg_params["content-height"])+parseFloat(400*w))+'px;"><polygon points="0,0 '+(parseFloat(b)+parseFloat(2*w)+parseFloat(h/3))+',0 '+(parseFloat(b)+parseFloat(2*w)+parseFloat(h/3))+','+(parseFloat(w)*(1+Math.tan(22.5))+parseFloat((2*h)/3))+' '+(parseFloat(b)+parseFloat(w))+','+(parseFloat(2*w)+parseFloat(h))+' 0,'+(parseFloat(2*w)+parseFloat(h))+'" stroke="'+svg_params["border-color"].replace("hash",'#')+'" stroke-width="'+svg_params["border-wbyh"]+'"/></svg>';
+	}
+</script>

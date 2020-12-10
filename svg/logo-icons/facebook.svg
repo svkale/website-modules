@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122 122">
+	<circle cx="61" cy="61" r="61"></circle>
+	<path fill="white" stroke-width="0.1" stroke="white" d="M52 123.4 v-42 h-16 v-17 h16 v-18 q0,-10 6,-15 q10,-7 30,-3 v15 h-10 q-8,0 -8,8 v12 h16 l-2,18 h-14 v40 a61,61 0 0 1 -18,0z"></path>
+	<script type="text/javascript">
+		//<![CDATA[
+			var url_parameters=new URL(window.location.toString()).searchParams;
+			if(url_parameters.get('v')==1)
+			{
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("fill","#1977f3");
+			}
+			else if(url_parameters.get('v')==2)
+			{
+				document.getElementsByTagName("svg")[0].appendChild(document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0]);
+				document.getElementsByTagName("svg")[0].setAttribute("viewBox","-1 -1 124 124");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("stroke","#000");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("stroke-width","1");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("fill","none");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[0].setAttribute("fill","#000");
+			}
+			else if(url_parameters.get('v')==3)
+			{
+				document.getElementsByTagName("svg")[0].appendChild(document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0]);
+				document.getElementsByTagName("svg")[0].setAttribute("viewBox","-1 -1 124 124");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("stroke","#1977f3");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("stroke-width","1");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0].setAttribute("fill","none");
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[0].setAttribute("fill","#1977f3");
+			}
+		//]]>
+	</script>
+</svg>

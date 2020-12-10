@@ -1,17 +1,24 @@
-
-
-var nav_elements=document.getElementsByTagName('main')[0].getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
-for(var i=0;i<nav_elements.length;i++)
+var iframeins=document.getElementsByClassName("iframeins");
+for(let i=0;i<iframeins.length;i++)
 {
-	if(nav_elements[i].getAttribute("data-iframe-url"))
+	let iframeins_function_to_proceed=iframeins[i].getAttribute("data-function-to-proceed"),iframeins_target_element_id=iframeins[i].getAttribute("data-target-ele-id"),iframein_elements=iframeins[i].querySelectorAll("[data-iframe-url]");
+	for(let j=0;j<iframein_elements.length;j++)
 	{
-		nav_elements[i].addEventListener("click",function()
+		if(iframein_elements[j].classList.contains("iframein_active_page"))
 		{
-			this.parentNode.querySelector(".active").classList.remove("active");
-			this.classList.add("active");
-			history.pushState('','/'+this.getAttribute("data-iframe-url"),'/'+this.getAttribute("data-iframe-url"));
-			document.getElementById('iframe_page').src=window.location+"_f.html";
-			iframe_start();
+			var iframe_to_show=document.createElement("iframe");
+			iframe_to_show.src=iframein_elements[j].getAttribute("data-iframe-url");
+			document.getElementById(iframeins_target_element_id).innerHTML="";
+			document.getElementById(iframeins_target_element_id).appendChild(iframe_to_show);
+		}
+		iframein_elements[j].addEventListener("click",function()
+		{
+			var iframe_to_show=document.createElement("iframe");
+			iframe_to_show.src=this.getAttribute("data-iframe-url");
+			document.getElementById(iframeins_target_element_id).innerHTML="";
+			document.getElementById(iframeins_target_element_id).appendChild(iframe_to_show);
+			this.parentElement.getElementsByClassName("iframein_active_page")[0].classList.remove("iframein_active_page");
+			this.classList.add("iframein_active_page");
 		});
 	}
 }
