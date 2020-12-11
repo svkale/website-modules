@@ -6,7 +6,7 @@ for(let i=0;i<svgs_required.length;i++)
 		let svg_script=document.createElement("script");
 		svg_script.id=svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_");
 		svg_script.type="text/javascript";
-		svg_script.src="http://192.168.1.3:81/svg/containers/"+svgs_required[i].getAttribute("data-svg-file")+".js";
+		svg_script.src="https://sites-admin.github.io/website-modules/svg/containers/"+svgs_required[i].getAttribute("data-svg-file")+".js";
 		document.getElementsByTagName('html')[0].appendChild(svg_script);
 	}
 }
