@@ -14,7 +14,7 @@ nav.nav_side_bar>ul>li>div
 	background: transparent;
 	color: var(--main-color);
 	padding: 6px;
-	width: 92%;
+	width: 85%;
 }
 nav.nav_side_bar>ul>li.nav_active>div
 {
