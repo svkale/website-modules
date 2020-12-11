@@ -1,13 +1,10 @@
-.box
-{
-	width: 100%;
-}
 .cont
 {
 	float: left;
 	width: 100%;
+	margin: 0;
 }
-[class*="u"],[class*="sm"],[class*="md"],[class*="xl"]
+[class^="u"],[class^="sm"],[class^="md"],[class^="xl"]
 {
 	float: left;
 	margin-top: 1%;
@@ -149,17 +146,4 @@
 	{
 		display: revert;
 	}
-}
-
-.l_float
-{
-	float: left;
-	margin-right: 1ch;
-	margin-bottom: 1%;
-}
-.r_float
-{
-	float: right;
-	margin-left: 1ch;
-	margin-bottom: 1%;
 }

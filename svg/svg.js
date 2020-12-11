@@ -1,45 +1,49 @@
 var svgs_required=document.querySelectorAll("[data-svg-file]");
 for(let i=0;i<svgs_required.length;i++)
 {
-	request("../svg/containers/"+svgs_required[i].getAttribute("data-svg-file")+".html","svg_request",svgs_required[i]);
-}
-
-function svg_request(response_obj,params)
-{
-	request_get_styles_and_scripts(response_obj).then(svg_show(params[0]));
-}
-function svg_show(svg_target)
-{
-	if(svg_target.getAttribute("data-svg-struct")=="multiple")
+	if(!document.getElementById(svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_")))
 	{
-		svg_mass_put("svg_"+svg_target.getAttribute("data-svg-file").replace(/-/g,'_'),svg_target.getAttribute("data-svg-file"));
+		let svg_script=document.createElement("script");
+		svg_script.id=svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_");
+		svg_script.type="text/javascript";
+		svg_script.src="http://192.168.1.3:81/svg/containers/"+svgs_required[i].getAttribute("data-svg-file")+".js";
+		document.getElementsByTagName('html')[0].appendChild(svg_script);
 	}
 }
-
-var svg_mass=document.querySelectorAll("[data-svg-struct='multiple']");
-// svg_mass
-function svg_mass_put(svg_function,svg_file_name)
+function svg_put(svg_target,svg_function,svg_params)
 {
-	var svg_targets=document.querySelectorAll("[data-svg-file='"+svg_file_name+"']");
-	for(let i=0;i<svg_targets.length;i++)
-	{
-		var svg_params={'content-height': 0, 'content-wbyh': 0, 'border-wbyh': svg_targets[i].getAttribute("data-svg-border-wbyh"), 'fill-color': svg_targets[i].getAttribute("data-svg-fill-color"), 'border-color': svg_targets[i].getAttribute("data-svg-border-color")};
-		for(let j=0;j<svg_targets[i].children.length;j++)
-		{
-			let svg_target=svg_targets[i].children[j];
-			svg_params['content-height']=parseFloat(svg_target.children[0].scrollHeight);
-			svg_params['content-wbyh']=((parseFloat(svg_target.children[0].scrollWidth))/(parseFloat(svg_target.children[0].scrollHeight)));
-			let svg_HTML=window[svg_function](svg_params);
-			svg_target.insertAdjacentHTML("afterbegin",svg_HTML);
-			svg_target.style.position="relative";
-			svg_target.style.width=svg_target.getElementsByTagName("svg")[0].scrollWidth+"px";
-			svg_target.style.height=svg_target.getElementsByTagName("svg")[0].scrollHeight+"px";
-		}
-		var svg_absolutes=document.querySelectorAll("[data-svg-file='"+svg_file_name+"']>*>*");
-		for(let j=0;j<svg_absolutes.length;j++)
-		{
-			svg_absolutes[j].style.position="absolute";
-		}
-	}
+	svg_params["content-height"]=parseFloat(svg_target.children[0].scrollHeight);
+	svg_params["content-wbyh"]=parseFloat(svg_target.children[0].scrollWidth)/parseFloat(svg_target.children[0].scrollHeight);
+	svg_target.style.position="relative";
+	svg_target.children[0].style.position="absolute";
+	svg_target.insertAdjacentHTML("afterbegin",window[svg_function](svg_params));
+	console.log(svg_params);
+	svg_target.getElementsByTagName('svg')[0].style.position="absolute";
+	svg_target.getElementsByTagName('svg')[0].style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
+	svg_target.style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	return;
 }
+
+var svg_last_script=document.createElement('script');
+svg_last_script.type="text/javascript";
+svg_last_script.innerHTML=`
+window.addEventListener("load",function()
+{
+	for(let i=0;i<svgs_required.length;i++)
+	{
+		if(svgs_required[i].getAttribute("data-svg-struct")=="multiple")
+		{
+			var svg_params={"content-height": 0, "content-wbyh": 0, "border-wbyh": 0.05, "fill-color": "var(--main-color-2)", "border-color": "var(--main-color-2)"};
+			for(let j=0;j<svgs_required[i].children.length;j++)
+			{
+				svg_put(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+			}
+		}
+		else
+		{
+			svg_put2(svgs_required[i]);
+		}
+	}
+}
+);`;
+document.getElementsByTagName('html')[0].appendChild(svg_last_script);

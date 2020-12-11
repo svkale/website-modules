@@ -25,21 +25,10 @@ header,footer,header *,footer *
 {
 	background-color: var(--main-color-2);
 	color: var(--main-color);
-	z-index: 1;
 }
 header h1,header h2,header h4
 {
-	margin-top: 0.4%;
-	margin-bottom: 0.4%;
-	text-shadow: var(--header-shadow);
-}
-h1
-{
-	font-size: var(--h1-size);
-}
-h2
-{
-	font-size: var(--h2-size);
+	/*text-shadow: var(--header-shadow);*/
 }
 footer
 {
@@ -60,32 +49,143 @@ article>p
 {
 	h1
 	{
-		font-size: 2.5em;
+		font-size: 1.8em;
+		font-weight: bolder;
+		margin: 4px 4px;
+	}
+	h2
+	{
+		font-size: 1.4em;
+		margin: 3px 4px;
+	}
+	h3
+	{
+		font-size: 1.2em;
+		margin: 2px 2px;
+	}
+	h4
+	{
+		font-size: 1em;
+		margin: 1px 2px;
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
 	h1
 	{
-		font-size: 2.5em;
+		font-size: 2.2em;
+		font-weight: 700;
+		margin: 3px 6px;
+	}
+	h2
+	{
+		font-size: 1.8em;
+		margin: 4px 4px;
+	}
+	h3
+	{
+		font-size: 1.4em;
+		margin: 3px 3px;
+	}
+	h4
+	{
+		font-size: 1.2em;
+		margin: 2px 3px;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
-	
+	h1
+	{
+		font-size: 280%;
+		font-weight: 700;
+		margin: 2% 2%;
+	}
+	h2
+	{
+		font-size: 200%;
+		margin: 1.6% 1.6%;
+	}
+	h3
+	{
+		font-size: 160%;
+		margin: 1.2% 1.2%;
+	}
+	h4
+	{
+		font-size: 120%;
+		margin: 1% 1%;
+	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
-	
+	h1
+	{
+		font-size: 54px;
+		font-weight: 700;
+		margin: 2.5% 2.5%;
+	}
+	h2
+	{
+		font-size: 44px;
+		margin: 2% 2%;
+	}
+	h3
+	{
+		font-size: 38px;
+		margin: 1.6% 1.6%;
+	}
+	h4
+	{
+		font-size: 32px;
+		margin: 1.2% 1.2%;
+	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
-	
+	h1
+	{
+		font-size: 6vw;
+		font-weight: 700;
+		margin: 3% 3%;
+	}
+	h2
+	{
+		font-size: 4.8vw;
+		margin: 2.4% 2.4%;
+	}
+	h3
+	{
+		font-size: 3.8vw;
+		margin: 1.8% 1.8%;
+	}
+	h4
+	{
+		font-size: 3.2vw;
+		margin: 1.5% 1.5%;
+	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
 	h1
 	{
-		font-size: 4vw;
+		font-size: 5.6vw;
+		font-weight: 700;
+		margin: 2.8% 2.8%;
+	}
+	h2
+	{
+		font-size: 4.8vw;
+		margin: 2.2% 2.2%;
+	}
+	h3
+	{
+		font-size: 3.6vw;
+		margin: 1.8% 1.8%;
+	}
+	h4
+	{
+		font-size: 3vw;
+		margin: 1.4% 1.4%;
 	}
 }

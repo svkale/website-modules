@@ -5,11 +5,6 @@ table
 	table-layout: auto;
     word-break: break-word;
 }
-td,th
-{
-	border: var(--table-border-color) var(--table-border-width);
-	padding: var(--table-data-padding);
-}
 table>thead>tr:nth-child(1)>th:nth-child(1)
 {
 	width: var(--table-column-width-1);
@@ -46,6 +41,7 @@ table>thead>tr:nth-child(1)>th:nth-child(9)
 {
 	width: var(--table-column-width-9);
 }
+
 table.highlight_hovered_row>tbody>tr:hover
 {
 	box-shadow: 0px 0px 8px black;

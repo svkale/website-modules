@@ -1,0 +1,16 @@
+nav>ul>li
+{
+	float: left;
+	width: 100%;
+	position: relative;
+	list-style-type: none;
+	cursor: pointer;
+	margin: 0 0 1px 0;
+	background-color: var(--main-color);
+	color: var(--main-color-2);
+	font-weight: bold;
+}
+nav>ul>li>div
+{
+	background: transparent;
+}
