@@ -1,4 +1,4 @@
-window.onload=function()
+window.addEventListener("load",function()
 {
 	var navs=document.querySelectorAll("nav.nav_side_bar");
 	for(let i=0;i<navs.length;i++)
@@ -20,4 +20,4 @@ window.onload=function()
 		}
 
 	}
-}
+});
