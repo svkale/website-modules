@@ -17,11 +17,15 @@ function svg_put(svg_target,svg_function,svg_params)
 	svg_target.style.position="relative";
 	svg_target.children[0].style.position="absolute";
 	svg_target.insertAdjacentHTML("afterbegin",window[svg_function](svg_params));
-	console.log(svg_params);
 	svg_target.getElementsByTagName('svg')[0].style.position="absolute";
 	svg_target.getElementsByTagName('svg')[0].style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	svg_target.style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	return;
+}
+function svg_reset(svg_target,svg_function,svg_params)
+{
+	svg_target.children[0].outerHTML="";
+	return svg_put(svg_target,svg_function,svg_params);
 }
 
 var svg_last_script=document.createElement('script');
@@ -37,6 +41,10 @@ window.addEventListener("load",function()
 			for(let j=0;j<svgs_required[i].children.length;j++)
 			{
 				svg_put(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+				window.addEventListener("resize",function()
+				{
+					svg_reset(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+				});
 			}
 		}
 		else

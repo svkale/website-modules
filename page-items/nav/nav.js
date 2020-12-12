@@ -18,6 +18,15 @@ window.addEventListener("load",function()
 				});
 			}
 		}
-
 	}
+	window.addEventListener("resize",function()
+	{
+		for(let i=0;i<navs.length;i++)
+		{
+			if(navs[i].getElementsByTagName('ul')[0].getAttribute("data-svg-file"))
+			{
+				navs[i].getElementsByTagName('ul')[0].getElementsByClassName('nav_active')[0].getElementsByTagName('svg')[0].setAttribute('fill','var(--main-color)');
+			}
+		}
+	});
 });

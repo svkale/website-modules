@@ -32,34 +32,34 @@ nav.nav_side_bar>ul>li.nav_active>div
 {
 	nav.nav_side_bar>ul>li>div
 	{
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
 	nav.nav_side_bar>ul>li>div
 	{
-		font-size: 1.5em;
+		font-size: 1.2em;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
 	nav.nav_side_bar>ul>li>div
 	{
-		font-size: 1.6em;
+		font-size: 1.3em;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
 	nav.nav_side_bar>ul>li>div
 	{
-		font-size: 1.8em;
+		font-size: 1.4em;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
 	nav.nav_side_bar>ul>li>div
 	{
-		font-size: 2vw;
+		font-size: 1.8vw;
 	}
 }
