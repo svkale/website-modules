@@ -5,6 +5,7 @@
 	border: 0;
 	box-sizing: border-box;
 	overflow-wrap: break-word;
+	color: var(--main-color-2);
 	background-color: var(--main-color);
 	border-collapse: collapse;
 }
@@ -54,6 +55,10 @@ article>p
 
 @media(max-width: 319px)/*xs*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 1.8em;
@@ -86,6 +91,10 @@ article>p
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 2.2em;
@@ -118,6 +127,10 @@ article>p
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 280%;
@@ -150,6 +163,10 @@ article>p
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 54px;
@@ -182,6 +199,10 @@ article>p
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 6vw;
@@ -214,6 +235,10 @@ article>p
 }
 @media(min-width: 1200px)/*xxl*/
 {
+	span
+	{
+		font-size: 1em;
+	}
 	h1
 	{
 		font-size: 5.6vw;
