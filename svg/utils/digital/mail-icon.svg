@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+	<path fill="black" stroke-width="0" d="M1,0 h8 a1,1 0 0 1 1,1 v8 a1,1 0 0 1 -1,1 h-8 a1,1 0 0 1 -1,-1 v-8 a1,1 0 0 1 1,-1"></path>
+	<path fill="white" stroke-width="0" d="M2,3 h6 l-3,2z"></path>
+	<path fill="white" stroke-width="0" d="M2,4 l3,2 l3,-2 v3 h-6z"></path>
+	<script type="text/javascript">
+		//<![CDATA[
+			var url_parameters=new URL(window.location.toString()).searchParams;
+			if(url_parameters.get('background-fill'))
+			{
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[0].setAttribute("fill",url_parameters.get('background-fill').replace("hash","#"));
+			}
+			if(url_parameters.get('envelope-fill'))
+			{
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[1].setAttribute("fill",url_parameters.get('envelope-fill').replace("hash","#"));
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[2].setAttribute("fill",url_parameters.get('envelope-fill').replace("hash","#"));
+			}
+		//]]>
+	</script>
+</svg>

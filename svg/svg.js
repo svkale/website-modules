@@ -35,12 +35,13 @@ window.addEventListener("load",function()
 {
 	for(let i=0;i<svgs_required.length;i++)
 	{
+		var svg_params={"content-height": 0, "content-wbyh": 0, "border-wbyh": 0.05, "fill-color": "var(--main-color-2)", "border-color": "var(--main-color-2)"};
 		if(svgs_required[i].getAttribute("data-svg-struct")=="multiple")
 		{
-			var svg_params={"content-height": 0, "content-wbyh": 0, "border-wbyh": 0.05, "fill-color": "var(--main-color-2)", "border-color": "var(--main-color-2)"};
 			for(let j=0;j<svgs_required[i].children.length;j++)
 			{
 				svg_put(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+				setTimeout(svg_reset,2000,svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
 				window.addEventListener("resize",function()
 				{
 					svg_reset(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
@@ -49,7 +50,12 @@ window.addEventListener("load",function()
 		}
 		else
 		{
-			svg_put2(svgs_required[i]);
+			svg_put(svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+			setTimeout(svg_reset,2000,svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+			window.addEventListener("resize",function()
+			{
+				svg_reset(svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+			});
 		}
 	}
 }

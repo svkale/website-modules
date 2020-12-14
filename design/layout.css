@@ -1,8 +1,11 @@
-.cont
+[class^="cont"]
 {
 	float: left;
-	width: 100%;
 	margin: 0;
+}
+.cont
+{
+	width: 100%;
 }
 [class^="u"],[class^="sm"],[class^="md"],[class^="xl"]
 {

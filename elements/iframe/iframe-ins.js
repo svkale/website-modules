@@ -1,7 +1,7 @@
-var iframeins=document.getElementsByClassName("iframeins");
+var iframeins=document.querySelectorAll("iframe.iframeins");
 for(let i=0;i<iframeins.length;i++)
 {
-	let iframeins_target_element_id=iframeins[i].getAttribute("data-target-ele-id"),iframein_elements=iframeins[i].querySelectorAll("[data-iframe-url]");
+	let iframeins_target_element_id=iframeins[i].getAttribute("data-target-ele-id"),iframein_elements=iframeins[i].children;
 	for(let j=0;j<iframein_elements.length;j++)
 	{
 		if(iframein_elements[j].classList.contains("iframein_active_page"))

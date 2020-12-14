@@ -4,3 +4,7 @@
 	padding: revert;
 	border: revert;
 }
+.gdoc_published_contents>*
+{
+	max-width: none !important;
+}
