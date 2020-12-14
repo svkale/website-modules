@@ -7,6 +7,10 @@ for(let i=0;i<putins.length;i++)
 function putin_paste(response_obj,params)
 {
 	params[0].innerHTML=window[params[1]](response_obj);
+	if(params[0].getAttribute("data-proceed-script-custom"))
+	{
+		eval(params[0].getAttribute("data-proceed-script-custom"));
+	}
 	return;
 }
 

@@ -3,9 +3,13 @@
 	float: left;
 	margin: 0;
 }
-.cont
+.cont1
 {
 	width: 100%;
+}
+.cont
+{
+	width: var(--cont-width);
 }
 [class^="u"],[class^="sm"],[class^="md"],[class^="xl"]
 {
@@ -40,10 +44,17 @@
 
 @media(max-width: 319px)/*xs*/
 {
-	
+	.cont_xs1
+	{
+		width: 100%;
+	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
+	.cont_sm1
+	{
+		width: 100%;
+	}
 	.sm2
 	{
 		width: 48.5%;

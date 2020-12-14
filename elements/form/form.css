@@ -5,42 +5,42 @@ form ul
 
 @media(max-width: 319px)/*xs*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
-	input,select,button,textarea
+	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}

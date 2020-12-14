@@ -54,11 +54,6 @@ function request_gsheet(response_obj)
 {
 	return JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry;
 }
-function request_gsheet_log(response_obj)
-{
-	console.log(JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry);
-	return Promise.resolve(JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry);
-}
 function request_gsheet_published_br_seperated(response_obj)
 {
 	let response="";

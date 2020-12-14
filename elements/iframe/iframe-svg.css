@@ -2,6 +2,7 @@ div.iframe_inline_svg_holder
 {
 	display: inline-block;
 	position: relative;
+	margin-top: 1%;
 }
 iframe.iframe_inline_svg+a
 {
