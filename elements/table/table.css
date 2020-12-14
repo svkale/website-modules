@@ -58,25 +58,43 @@ table.highlight_hovered_row>tbody>tr:hover>td
 
 @media(max-width: 319px)/*xs*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
-	
+	table>tbody>tr>td
+	{
+		border: 1px solid black;
+	}
 }

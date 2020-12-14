@@ -38,5 +38,9 @@ function putin_select_paste(response_obj,params)
 	{
 		params[0].innerHTML=window[params[2]](response_obj);
 	}
+	if(params[1].getAttribute("data-proceed-script-custom"))
+	{
+		eval(params[1].getAttribute("data-proceed-script-custom"));
+	}
 	return;
 }
