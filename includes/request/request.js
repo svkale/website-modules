@@ -8,7 +8,7 @@ function request(path,func)
 	var xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
-		if (this.readyState==4 && this.status==200)
+		if(this.readyState==4 && this.status==200)
 		{
 			window[func](this,params);
 		}
@@ -17,11 +17,95 @@ function request(path,func)
 	xmlhttp.send();
 	return;
 }
+function request_post(path,func,pars,content_type)
+{
+	var params=[];
+	for(let i=4;i<arguments.length;i++)
+	{
+		params[i-4]=arguments[i];
+	}
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if(this.readyState==4 && this.status==200)
+		{
+			window[func](this,params);
+		}
+	};
+	xmlhttp.open('POST',path,true);
+	if(content_type==1)
+	{
+		xmlhttp.setRequestHeader("Content-type","text/plain");
+	}
+	else if(content_type==2)
+	{
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	}
+	else if(content_type==3)
+	{
+		xmlhttp.setRequestHeader("Content-type","multipart/form-data");
+	}
+	xmlhttp.send(pars);
+	return;
+}
+
+function request_promise(path)
+{
+	return new Promise((resolve,reject)=>
+	{
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if(this.readyState==4 && this.status==200)
+			{
+				return resolve(this);
+			}
+		};
+		xmlhttp.onerror=function()
+		{
+			return reject(this);
+		};
+		xmlhttp.open('GET',path,true); 
+		xmlhttp.send();
+	});
+}
+function request_post_promise(path,pars,content_type)
+{
+	return new Promise((resolve,reject)=>
+	{
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if(this.readyState==4 && this.status==200)
+			{
+				return resolve(this);
+			}
+		};
+		xmlhttp.onerror=function()
+		{
+			return reject(this);
+		};
+		xmlhttp.open('POST',path,true);
+		if(content_type==1)
+		{
+			xmlhttp.setRequestHeader("Content-type","text/plain");
+		}
+		else if(content_type==2)
+		{
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		}
+		else if(content_type==3)
+		{
+			xmlhttp.setRequestHeader("Content-type","multipart/form-data");
+		}
+		xmlhttp.send(pars);
+	});
+}
+
 
 function request_log(response_obj)
 {
 	console.log(response_obj);
-	return Promise.resolve(response_obj);
 }
 function request_response(response_obj)
 {
@@ -34,65 +118,20 @@ function request_get_styles_and_scripts(response_obj)
 	var response_html_scripts=response_html.getElementsByTagName('script');
 	for(let i=0;i<response_html_styles.length;i++)
 	{
-		document.getElementsByTagName('head')[0].insertAdjacentElement("beforeend",response_html_styles[i]);
+		document.getElementsByTagName('head')[0].appendChild(response_html_styles[i]);
 	}
-	var scripts=document.createElement("script");
-	scripts.setAttribute("type","text/javascript");
 	for(let i=0;i<response_html_scripts.length;i++)
 	{
-		scripts.insertAdjacentHTML("beforeend",response_html_scripts[i].innerHTML);
+		document.getElementsByTagName('html')[0].appendChild(response_html_scripts[i]);
 	}
-	document.getElementsByTagName('html')[0].appendChild(scripts);
 	return Promise.resolve("Styles and scripts added from "+response_obj.responseURL);
 }
-
-
-// google integrations
-
-// spreadsheets
-function request_gsheet(response_obj)
+function request_response_HTML(response_obj)
 {
-	return JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry;
-}
-function request_gsheet_published_br_seperated(response_obj)
-{
-	let response="";
-	for(let i=0;i<JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry.length;i++)
-	{
-		response+=JSON.parse(response_obj.responseText.substring(28,response_obj.responseText.length-2)).feed.entry[i].content.$t+"<br>";
-	}
-	return response;
-}
-
-// docs
-function request_gdoc_published_inline_contents(response_obj)
-{
-	var response_doc=new DOMParser().parseFromString(response_obj.responseText,"text/html");
-	var response_doc_headtags=response_doc.getElementsByTagName('head')[0].children;
-	var put_data="";
-	for(let i=0;i<response_doc_headtags.length;i++)
-	{
-		if(response_doc_headtags[i].tagName=="STYLE")
+	let response_html=new DOMParser().parseFromString(response_obj.responseText,"text/html").documentElement.getElementsByTagName('body')[0];
+	setTimeout(function(response_obj)
 		{
-			var style_output=response_doc_headtags[i].innerHTML;
-			var style_part_arr=style_output.split(",");
-			style_output="";
-			for(let i=0;i<style_part_arr.length-1;i++)
-			{
-				style_output+=style_part_arr[i]+",.gdoc_published_contents ";
-			}
-			style_output+=style_part_arr[style_part_arr.length-1];
-			style_part_arr=style_output.split("}");
-			style_output="";
-			for(let i=0;i<style_part_arr.length-1;i++)
-			{
-				style_output+=style_part_arr[i]+"}.gdoc_published_contents ";
-			}
-			style_output+=style_part_arr[style_part_arr.length-1];
-			style_output="<style type='text/css'>.gdoc_published_contents "+style_output+"</style>";
-			put_data+=style_output;
-		}
-	}
-	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
-	return put_data;
+			request_get_styles_and_scripts(response_obj);
+		},3000,response_obj);
+	return response_html.innerHTML;
 }

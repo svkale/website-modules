@@ -14,10 +14,9 @@ function svg_put(svg_target,svg_function,svg_params)
 {
 	svg_params["content-height"]=parseFloat(svg_target.children[0].scrollHeight);
 	svg_params["content-wbyh"]=parseFloat(svg_target.children[0].scrollWidth)/parseFloat(svg_target.children[0].scrollHeight);
-	svg_target.style.position="relative";
-	svg_target.children[0].style.position="absolute";
+	svg_target.classList.add('svg_container_parent');
 	svg_target.insertAdjacentHTML("afterbegin",window[svg_function](svg_params));
-	svg_target.getElementsByTagName('svg')[0].style.position="absolute";
+	svg_target.getElementsByTagName('svg')[0].classList.add('svg_container');
 	svg_target.getElementsByTagName('svg')[0].style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	svg_target.style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	return;
@@ -41,7 +40,7 @@ window.addEventListener("load",function()
 			for(let j=0;j<svgs_required[i].children.length;j++)
 			{
 				svg_put(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
-				setTimeout(svg_reset,2000,svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+				// setTimeout(svg_reset,2000,svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
 				window.addEventListener("resize",function()
 				{
 					svg_reset(svgs_required[i].children[j],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
@@ -51,13 +50,12 @@ window.addEventListener("load",function()
 		else
 		{
 			svg_put(svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
-			setTimeout(svg_reset,2000,svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
+			// setTimeout(svg_reset,2000,svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
 			window.addEventListener("resize",function()
 			{
 				svg_reset(svgs_required[i],"svg_"+svgs_required[i].getAttribute("data-svg-file").replace(/-/g,"_"),svg_params);
 			});
 		}
 	}
-}
-);`;
+});`;
 document.getElementsByTagName('html')[0].appendChild(svg_last_script);

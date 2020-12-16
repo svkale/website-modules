@@ -1,3 +1,7 @@
+nav.nav_side_bar>ul
+{
+	padding-left: 0;
+}
 nav.nav_side_bar>ul>li
 {
 	position: relative;

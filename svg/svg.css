@@ -1,0 +1,12 @@
+.svg_container_parent
+{
+	position: relative;
+}
+.svg_container_parent>div
+{
+	position: absolute;
+}
+.svg_container_parent>.svg_container
+{
+	position: absolute;
+}

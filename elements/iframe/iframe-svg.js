@@ -8,3 +8,8 @@ for(let i=0;i<iframes_inline_svg.length;i++)
 	iframes_inline_svg_anchor[i].style.height=iframes_inline_svg[i].style.height;
 	iframes_inline_svg_anchor[i].style.width=iframes_inline_svg[i].style.width;
 }
+for(let i=0;i<iframes_inline_svg_anchor.length;i++)
+{
+	iframes_inline_svg_anchor[i].style.height=iframes_inline_svg_anchor[i].previousElementSibling.style.height;
+	iframes_inline_svg_anchor[i].style.width=iframes_inline_svg_anchor[i].previousElementSibling.style.width;
+}

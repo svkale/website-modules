@@ -6,6 +6,7 @@ button
 }
 button>span
 {
+	font-weight: bold;
 	background-color: var(--main-color-2);
 	color: var(--main-color);
 }
@@ -31,7 +32,10 @@ button.button_visibility_control[data-button-status='visible']>span
 	button>span
 	{
 		font-size: 1.2em;
-		font-weight: bold;
+	}
+	button.button_visibility_control
+	{
+		margin-bottom: 4px;
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
@@ -45,34 +49,61 @@ button.button_visibility_control[data-button-status='visible']>span
 	button>span
 	{
 		font-size: 1.2em;
-		font-weight: bold;
+	}
+	button.button_visibility_control
+	{
+		margin-bottom: 6px;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
 	button
 	{
-		padding: 3px 0;
+		padding: 6px 0;
+		border-width: 1.5px;
+		border-radius: 6px;
+	}
+	button>span
+	{
+		font-size: 1.4em;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
 	button
 	{
-		padding: 3px 0;
+		padding: 8px 0;
+		border-width: 2px;
+		border-radius: 8px;
+	}
+	button>span
+	{
+		font-size: 1.5em;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
 	button
 	{
-		padding: 4px 0;
+		padding: 8px 0;
+		border-width: 2px;
+		border-radius: 8px;
+	}
+	button>span
+	{
+		font-size: 1.6em;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
 	button
 	{
-		padding: 1% 0;
+		padding: 0.5vw 0;
+		border-width: 0.3vw;
+		border-radius: 0.8vw;
+	}
+	button>span
+	{
+		font-size: 2vw;
 	}
 }

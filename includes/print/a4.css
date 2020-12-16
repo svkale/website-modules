@@ -1,0 +1,67 @@
+*
+{
+	font-size: 20px;
+}
+body
+{
+	margin: 0;
+}
+div.page
+{
+	width: 21.0cm;
+	height: 29.7cm;
+	padding: 16px;
+}
+header br
+{
+	clear: left;
+}
+img#logo
+{
+	float: left;
+	width: 160px;
+	margin-right: 10px;
+	margin-bottom: 16px;
+}
+h1
+{
+	font-size: 56px;
+	margin: 10px auto;
+}
+h3
+{
+	font-size: 32px;
+	margin: 8px auto;
+}
+h4
+{
+	font-size: 28px;
+	margin: 8px auto;
+}
+article
+{
+	margin: 10px auto;
+}
+article p
+{
+	font-size: 24px;
+	margin: 6px auto;
+}
+table
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+table td,table th
+{
+	border: 1px solid black;
+}
+table th
+{
+	font-size: 28px;
+}
+table td
+{
+	font-size: 24px;
+	height: var(--table-row-width);
+}

@@ -4,7 +4,7 @@ div.iframe_inline_svg_holder
 	position: relative;
 	margin-top: 1%;
 }
-iframe.iframe_inline_svg+a
+div.iframe_inline_svg_holder>iframe.iframe_inline_svg+a
 {
 	position: absolute;
 	left: 0;

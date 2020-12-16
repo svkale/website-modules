@@ -13,25 +13,48 @@ function putin_paste(response_obj,params)
 	}
 	return;
 }
-
-var putins_select=document.querySelectorAll(".putins_select");
-for(let i=0;i<putins_select.length;i++)
+function putins_select_load()
 {
-	let putins_select_function_to_proceed=putins_select[i].getAttribute("data-function-name"),putins_select_target_element_id=putins_select[i].getAttribute("data-target-ele-id"),putin_select_elements=putins_select[i].querySelectorAll("[data-target-url]");
-	for(let j=0;j<putin_select_elements.length;j++)
+	var putins_select;
+	if(arguments[0])
 	{
-		if(putin_select_elements[j].classList.contains("putins_select_active_page"))
-		{
-			request(putin_select_elements[j].getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),putin_select_elements[j],putins_select_function_to_proceed);
-			putin_select_elements[j].classList.remove("putin_select_active_page");
-		}
-		putin_select_elements[j].addEventListener("click",function()
-		{
-			request(this.getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),this,putins_select_function_to_proceed);
-		});
+		putins_select=document.querySelectorAll("#"+arguments[0]+" .putins_select");
 	}
+	else
+	{
+		putins_select=document.querySelectorAll(".putins_select");
+	}
+	for(let i=0;i<putins_select.length;i++)
+	{
+		let putins_select_function_to_proceed=putins_select[i].getAttribute("data-function-name"),putins_select_target_element_id=putins_select[i].getAttribute("data-target-ele-id"),putin_select_elements=putins_select[i].querySelectorAll("[data-target-url]");
+		for(let j=0;j<putin_select_elements.length;j++)
+		{
+			if(putin_select_elements[j].classList.contains("putins_select_active_page"))
+			{
+				request_promise(putin_select_elements[j].getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),putin_select_elements[j],putins_select_function_to_proceed);
+				request_promise(putin_select_elements[j].getAttribute("data-target-url"))
+					.then((html)=>
+					{
+						putin_select_paste(html,[document.getElementById(putins_select_target_element_id),putin_select_elements[j],putins_select_function_to_proceed]);
+						putins_select_load(putins_select_target_element_id);
+					});
+				putin_select_elements[j].classList.remove("putin_select_active_page");
+			}
+			putin_select_elements[j].addEventListener("click",function()
+			{
+				request(this.getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),this,putins_select_function_to_proceed);
+				request_promise(this.getAttribute("data-target-url"))
+					.then((html)=>
+					{
+						putin_select_paste(html,[document.getElementById(putins_select_target_element_id),this,putins_select_function_to_proceed]);
+						putins_select_load(putins_select_target_element_id);
+					});
+			});
+		}
+	}
+	return;
 }
-
+putins_select_load();
 function putin_select_paste(response_obj,params)
 {
 	if(params[1].getAttribute("data-function-name-custom"))
