@@ -1,34 +1,43 @@
 function form_JSON_send(form)
 {
 	let form_submit_url=form.getAttribute("data-form-submit-target");
+	console.log(form_submit_url,JSON.stringify(form_JSON_string_data(form)));
 	request_post_promise(form_submit_url,JSON.stringify(form_JSON_string_data(form)),2)
 		.then(
 			(res)=>
 			{
-				form_JSON_file_data(form)
-					.then(
-						(file)=>
-						{
-							var id=JSON.parse(res.response).id,info=JSON.parse(res.response).information_status;
-							request_post_promise(form_submit_url,JSON.stringify({...file,...{"id": id,"information_status": info}}),2)
-								.then(
-									(final_result)=>
-									{
-										form_finalize(JSON.parse(final_result.response));
-									},
-									(error)=>
-									{
-										alert(error);
-										console.error(error);
-									}
-								);
-						},
-						(error)=>
-						{
-							alert(error);
-							console.error(error);
-						}
-					);
+				if(form.getAttribute("data-custom-JSON-to-send-file"))
+				{
+					form_JSON_file_data(form)
+						.then(
+							(file)=>
+							{
+								var id=JSON.parse(res.response).id,info=JSON.parse(res.response).information_status;
+								request_post_promise(form_submit_url,JSON.stringify({...file,...{"id": id,"information_status": info}}),2)
+									.then(
+										(final_result)=>
+										{
+											form_finalize(JSON.parse(final_result.response));
+										},
+										(error)=>
+										{
+											alert(error);
+											console.error(error);
+										}
+									);
+							},
+							(error)=>
+							{
+								alert(error);
+								console.error(error);
+							}
+						);
+				}
+				else
+				{
+					var id=JSON.parse(res.response).id,info=JSON.parse(res.response).information_status;
+					form_finalize(JSON.parse(JSON.stringify({"id": id,"information_status": info})));
+				}
 			},
 			(error)=>
 			{
@@ -203,6 +212,10 @@ function form_finalize(response)
 {
 	var response_div=document.getElementById('form_response');
 	console.log(response);
-	response_div.innerHTML="The 'id' for your request is: <strong>"+response["id"]+"</strong>.<br>"+response["information_status"]+"<br>"+response["file_status"];
+	response_div.innerHTML="The 'id' for your request is: <strong>"+response["id"]+"</strong>.<br>"+response["information_status"];
+	if(response["file_status"])
+	{
+		response_div.insertAdjacentHTML("beforeend","<br>"+response["file_status"]);
+	}
 	return;
 }
