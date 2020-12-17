@@ -187,7 +187,9 @@ function form_remove_input(event,list)
 function form_wait(form)
 {
 	form.style.display="none";
-	var response_div=document.getElementById('form_response');
+	var response_div=document.createElement("div");
+	response_div.setAttribute("id","form_response");
+	form.parentNode.insertBefore(response_div,form.nextSibling);
 	var rotating=document.createElement("div");
 	rotating.style.width="50%";
 	var w=rotating.scrollWidth+"px";
@@ -198,7 +200,7 @@ function form_wait(form)
 		var w=rotating.scrollWidth+"px";
 		rotating.style.height=w;
 		rotating.style.width=w;
-	},200,rotating);
+	},100,rotating);
 	rotating.style.marginLeft="25%";
 	rotating.style.border="3vw solid";
 	rotating.style.borderRadius="50%";
