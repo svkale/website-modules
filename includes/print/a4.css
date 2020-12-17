@@ -1,16 +1,41 @@
 *
 {
-	font-size: 20px;
-}
-body
-{
+	padding: 0;
 	margin: 0;
+	border: 0;
+	box-sizing: border-box;
 }
-div.page
+body>div
 {
 	width: 21.0cm;
-	height: 29.7cm;
-	padding: 16px;
+	/*height: 29.7cm;*/
+	padding: 16px 20px;
+}
+body>div>table,body>div>table>thead>tr>td,body>div>table>tbody>tr>td,body>div>table>tfoot>tr>td
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+body>div.header_each_page>header,body>div.footer_each_page>footer
+{
+	position: absolute;
+}
+@media print
+{
+	body>div.header_each_page>header,body>div.footer_each_page>footer
+	{
+		position: fixed;
+	}
+}
+body>div.header_each_page>header,body>div.footer_each_page>footer
+{
+	top: 16px;
+	width: calc(21cm - 2*20px);
+}
+body>div.header_each_page>table>tbody>tr>td>main>*:nth-child(1),body>div.footer_each_page>table>tbody>tr>td>main>*:nth-child(1)
+{
+	margin-top: 0;
 }
 header br
 {
@@ -40,17 +65,18 @@ h4
 }
 article
 {
-	margin: 10px auto;
+	margin: 16px auto;
 }
 article p
 {
 	font-size: 24px;
-	margin: 6px auto;
+	margin: 10px auto;
 }
 table
 {
 	width: 100%;
 	border-collapse: collapse;
+	margin: 12px 0; 
 }
 table td,table th
 {
@@ -63,5 +89,15 @@ table th
 table td
 {
 	font-size: 24px;
-	height: var(--table-row-width);
+	line-height: var(--table-line-width);
+	padding: 6px 8px;
+}
+[class^='cont']
+{
+	float: left;
+	margin: 0;
+}
+.cont2
+{
+	width: 50%;
 }

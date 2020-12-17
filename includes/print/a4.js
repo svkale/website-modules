@@ -1,20 +1,8 @@
-var page=document.querySelectorAll('div.page')[0],header=document.querySelectorAll('header.header_each_page')[0];
-if(header)
+if(document.querySelectorAll('body>div.header_each_page')[0])
 {
-	if(split_to_pages(page))
-	{
-
-	}
+	document.querySelectorAll('body>div.header_each_page>table>thead>tr>td')[0].style.height=document.querySelectorAll('body>div.header_each_page>header')[0].offsetHeight+12+"px";
 }
-
-function split_to_pages(page)
+if(document.querySelectorAll('body>div.footer_each_page')[0])
 {
-	if(page.scrollHeight>page.offsetHeight)
-	{
-		
-	}
-	else
-	{
-		return false;
-	}
+	document.querySelectorAll('body>div.footer_each_page>table>tfoot>tr>td')[0].style.height=document.querySelectorAll('body>div.footer_each_page>footer')[0].offsetHeight+12+"px";
 }
