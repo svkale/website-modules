@@ -1,7 +1,10 @@
 var putins=document.querySelectorAll(".putins");
 for(let i=0;i<putins.length;i++)
 {
-	request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+	if(putins[i].getAttribute("data-target-url") && putins[i].getAttribute("data-target-url")!="")
+	{
+		request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+	}
 }
 
 function putin_paste(response_obj,params)

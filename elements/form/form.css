@@ -2,14 +2,21 @@ form ul
 {
 	list-style-type: none;
 }
-
+/*form input[type="button"],form input[type="submit"]
+{
+	border-style: solid;
+	font-weight: bold;
+	color: var(--main-color);
+	background-color: var(--main-color-2);
+	border-color: var(--main-color-2);
+}*/
 @media(max-width: 319px)/*xs*/
 {
 	form input,form select
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 4px 0;
 	}
@@ -20,7 +27,7 @@ form ul
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 4px 0;
 	}
@@ -31,7 +38,7 @@ form ul
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 6px 0;
 	}
@@ -42,7 +49,7 @@ form ul
 	{
 		border: 2px solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 8px 0;
 	}
@@ -53,7 +60,7 @@ form ul
 	{
 		border: 2px solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 8px 0;
 	}
@@ -64,7 +71,7 @@ form ul
 	{
 		border: 0.2vw solid var(--main-color-2);
 	}
-	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"]
+	form input[type='text'],form input[type='email'],form input[type='tel'],form input[type="button"],form input[type="submit"]
 	{
 		padding: 0.5vw 0;
 		font-size: 1.2vw;

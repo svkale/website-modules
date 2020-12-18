@@ -26,6 +26,7 @@ function request_gdoc_published_inline_contents(response_obj)
 	var response_doc=new DOMParser().parseFromString(response_obj.responseText,"text/html");
 	var response_doc_headtags=response_doc.getElementsByTagName('head')[0].children;
 	var put_data="";
+	response_doc.getElementsByTagName('body')[0].style.backgroundColor="var(--main-color)";
 	for(let i=0;i<response_doc_headtags.length;i++)
 	{
 		if(response_doc_headtags[i].tagName=="STYLE")

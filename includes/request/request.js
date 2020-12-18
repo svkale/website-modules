@@ -132,6 +132,6 @@ function request_response_HTML(response_obj)
 	setTimeout(function(response_obj)
 		{
 			request_get_styles_and_scripts(response_obj);
-		},3000,response_obj);
+		},200,response_obj);
 	return response_html.innerHTML;
 }

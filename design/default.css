@@ -14,20 +14,6 @@ html,iframe
 	overflow-x: hidden;
 }
 
-html[lang="en"]
-{
-	font-size: 1.2em;
-}
-html[lang="mr"] *
-{
-	line-height: 1.6em;
-}
-html[lang="mr"] article>p,article[lang="mr"]>p,article>p[lang="mr"]
-{
-	font-size: 1.2em;
-	line-height: 1.8em;
-}
-
 header,footer,header *,footer *
 {
 	background-color: var(--main-color-2);
@@ -35,6 +21,7 @@ header,footer,header *,footer *
 }
 header h1,header h2,header h3,header h4
 {
+	text-align: center;
 	text-shadow: black 1vw 1vw 2.5vw;
 }
 footer
@@ -58,70 +45,67 @@ ol,ul
 	padding-left: 40px;
 }
 
+big
+{
+	font-size: 1.25em;
+}
+
 @media(max-width: 319px)/*xs*/
 {
-	span
-	{
-		font-size: 1em;
-	}
 	h1
 	{
-		font-size: 1.8em;
+		font-size: 28px;
 		font-weight: bolder;
-		margin: 4px 4px;
+		padding: 8px 6px;
 	}
 	h2
 	{
-		font-size: 1.4em;
-		margin: 3px 4px;
+		font-size: 24px;
+		padding: 6px 4px;
 	}
 	h3
 	{
-		font-size: 1.2em;
-		margin: 2px 2px;
+		font-size: 22px;
+		padding: 4px 4px;
 	}
 	h4
 	{
-		font-size: 1em;
-		margin: 1px 2px;
+		font-size: 20px;
+		padding: 4px 3px;
 	}
-	footer *
+	*
 	{
-		font-size: 16px;
+		font-size: 14px;
 	}
 	footer big
 	{
-		font-size: 22px;
+		font-size: 18px;
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
-	span
-	{
-		font-size: 1em;
-	}
 	h1
 	{
-		font-size: 2.2em;
+		font-size: 32px;
 		font-weight: 700;
-		margin: 3px 6px;
+		padding: 6px 6px;
 	}
 	h2
 	{
-		font-size: 1.8em;
-		margin: 4px 4px;
+		font-size: 28px;
+		padding: 4px 4px;
 	}
 	h3
 	{
-		font-size: 1.4em;
-		margin: 3px 3px;
+		font-size: 24px;
+		padding: 4px 6px;
 	}
 	h4
 	{
-		font-size: 1.2em;
-		margin: 2px 3px;
+		font-size: 22px;
+		padding: 4px 4px;
 	}
-	footer *
+	*
 	{
 		font-size: 16px;
 	}
@@ -132,106 +116,94 @@ ol,ul
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
-	span
-	{
-		font-size: 1em;
-	}
 	h1
 	{
-		font-size: 280%;
+		font-size: 42px;
 		font-weight: 700;
-		margin: 2% 2%;
+		padding: 2% 2%;
 	}
 	h2
 	{
-		font-size: 200%;
-		margin: 1.6% 1.6%;
+		font-size: 36px;
+		padding: 1.6% 1.6%;
 	}
 	h3
 	{
-		font-size: 160%;
-		margin: 1.2% 1.2%;
+		font-size: 30px;
+		padding: 1.2% 1.2%;
 	}
 	h4
 	{
-		font-size: 120%;
-		margin: 1% 1%;
+		font-size: 26px;
+		padding: 1% 1%;
 	}
-	footer *
-	{
-		font-size: 17px;
-	}
-	footer big
-	{
-		font-size: 24px;
-	}
-}
-@media(min-width: 768px) and (max-width: 991px)/*lg*/
-{
-	span
-	{
-		font-size: 1em;
-	}
-	h1
-	{
-		font-size: 54px;
-		font-weight: 700;
-		margin: 2.5% 2.5%;
-	}
-	h2
-	{
-		font-size: 44px;
-		margin: 2% 2%;
-	}
-	h3
-	{
-		font-size: 38px;
-		margin: 1.6% 1.6%;
-	}
-	h4
-	{
-		font-size: 32px;
-		margin: 1.2% 1.2%;
-	}
-	footer *
+	*
 	{
 		font-size: 18px;
 	}
 	footer big
 	{
-		font-size: 25px;
+		font-size: 26px;
+	}
+}
+@media(min-width: 768px) and (max-width: 991px)/*lg*/
+{
+	h1
+	{
+		font-size: 46px;
+		font-weight: 700;
+		padding: 2.5% 2.5%;
+	}
+	h2
+	{
+		font-size: 42px;
+		padding: 2% 2%;
+	}
+	h3
+	{
+		font-size: 36px;
+		padding: 1.6% 1.6%;
+	}
+	h4
+	{
+		font-size: 30px;
+		padding: 1.2% 1.2%;
+	}
+	*
+	{
+		font-size: 20px;
+	}
+	footer big
+	{
+		font-size: 28px;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
-	span
-	{
-		font-size: 1em;
-	}
 	h1
 	{
-		font-size: 6vw;
+		font-size: 5.2vw;
 		font-weight: 700;
-		margin: 3% 3%;
+		padding: 3% 3%;
 	}
 	h2
 	{
-		font-size: 4.8vw;
-		margin: 2.4% 2.4%;
+		font-size: 4.6vw;
+		padding: 2.4% 2.4%;
 	}
 	h3
 	{
 		font-size: 3.8vw;
-		margin: 1.8% 1.8%;
+		padding: 1.8% 1.8%;
 	}
 	h4
 	{
 		font-size: 2.8vw;
-		margin: 1.5% 1.5%;
+		padding: 1.5% 1.5%;
 	}
-	footer *
+	*
 	{
-		font-size: 20px;
+		font-size: 24px;
 	}
 	footer big
 	{
@@ -240,30 +212,26 @@ ol,ul
 }
 @media(min-width: 1200px)/*xxl*/
 {
-	span
-	{
-		font-size: 1em;
-	}
 	h1
 	{
-		font-size: 5.6vw;
+		font-size: 5vw;
 		font-weight: 700;
-		margin: 2.8% 2.8%;
+		padding: 2.8% 2.8%;
 	}
 	h2
 	{
-		font-size: 4.8vw;
-		margin: 2.2% 2.2%;
+		font-size: 4.4vw;
+		padding: 2.2% 2.2%;
 	}
 	h3
 	{
 		font-size: 3.6vw;
-		margin: 1.8% 1.8%;
+		padding: 1.8% 1.8%;
 	}
 	h4
 	{
 		font-size: 2.4vw;
-		margin: 1.4% 1.4%;
+		padding: 1.4% 1.4%;
 	}
 	footer *
 	{
