@@ -1,11 +1,16 @@
 function form_JSON_send(form)
 {
-	let form_submit_url=form.getAttribute("data-form-submit-target");
-	console.log(form_submit_url,JSON.stringify(form_JSON_string_data(form)));
-	request_post_promise(form_submit_url,JSON.stringify(form_JSON_string_data(form)),2)
+	let form_submit_url=form.getAttribute("data-form-submit-target"),form_params_obj=form_JSON_string_data(form);
+	if(form.getAttribute("data-send-creds")=="yes")
+	{
+		form_params_obj={...form_params_obj,...form_get_creds()};
+	}
+	console.log(form_params_obj);
+	request_post_promise(form_submit_url,JSON.stringify(form_params_obj),2)
 		.then(
 			(res)=>
 			{
+				console.log(res);
 				if(form.getAttribute("data-custom-JSON-to-send-file"))
 				{
 					form_JSON_file_data(form)
@@ -13,6 +18,7 @@ function form_JSON_send(form)
 							(file)=>
 							{
 								var id=JSON.parse(res.response).id,info=JSON.parse(res.response).information_status;
+								console.log(form_submit_url,JSON.stringify({...file,...{"id": id,"information_status": info}}));
 								request_post_promise(form_submit_url,JSON.stringify({...file,...{"id": id,"information_status": info}}),2)
 									.then(
 										(final_result)=>
@@ -36,7 +42,7 @@ function form_JSON_send(form)
 				else
 				{
 					var id=JSON.parse(res.response).id,info=JSON.parse(res.response).information_status;
-					form_finalize(JSON.parse(JSON.stringify({"id": id,"information_status": info})));
+					form_finalize(JSON.parse(JSON.stringify({"id": id,"information_status": info, "res": JSON.parse(res.response)})));
 				}
 			},
 			(error)=>
@@ -56,6 +62,7 @@ function form_JSON_string_data(form)
 	form_str_JSON["div"]={};
 	form_str_JSON["input"]={};
 	form_str_JSON["input"]["text"]={};
+	form_str_JSON["input"]["password"]={};
 	form_str_JSON["input"]["email"]={};
 	form_str_JSON["input"]["tel"]={};
 	form_str_JSON["input"]["radio"]={};
@@ -100,6 +107,10 @@ function form_JSON_string_data(form)
 				{
 					form_str_JSON["input"]["checkbox"]["unchecked"].push(form_element.name);
 				}
+			}
+			else if(form_element.type=="password")
+			{
+				form_str_JSON["input"]["password"][form_element.name]=form_element.value;
 			}
 		}
 	}
@@ -184,11 +195,49 @@ function form_remove_input(event,list)
 	return;
 }
 
+function form_store_creds(obj)
+{
+	if(sessionStorage)
+	{
+		sessionStorage.setItem("rolekey",obj["rolekey"]);
+		sessionStorage.setItem("role",obj["role"]);
+		sessionStorage.setItem("username",obj["username"]);
+	}
+	else
+	{
+		form_creds_sec=document.createElement("section");
+		form_creds_sec.style.display="none";
+		document.getElementById("form_creds").innerHTML=JSON.stringify({"username": obj["username"], "role": obj["role"], "rolekey": obj["rolekey"]});
+		document.getElementsByTagName("body")[0].appendChild(form_creds_sec);
+	}
+	return;
+}
+function form_get_creds()
+{
+	if(sessionStorage)
+	{
+		let form_creds_obj={"role": sessionStorage.getItem("role"), "rolekey": sessionStorage.getItem("rolekey"), "username": sessionStorage.getItem("username")};
+		return form_creds_obj;
+	}
+	else
+	{
+		return JSON.parse(document.getElementById("form_creds").innerHTML);
+	}
+}
+
 function form_wait(form)
 {
 	form.style.display="none";
 	var response_div=document.createElement("div");
+	while(document.getElementById("form_response"))
+	{
+		document.getElementById("form_response").remove();
+	}
 	response_div.setAttribute("id","form_response");
+	if(form.getAttribute("data-show-id")=="no")
+	{
+		response_div.setAttribute("data-show-id","no");
+	}
 	form.parentNode.insertBefore(response_div,form.nextSibling);
 	var rotating=document.createElement("div");
 	rotating.style.width="50%";
@@ -214,10 +263,29 @@ function form_finalize(response)
 {
 	var response_div=document.getElementById('form_response');
 	console.log(response);
-	response_div.innerHTML="The 'id' for your request is: <strong>"+response["id"]+"</strong>.<br>"+response["information_status"];
+	response_div.innerHTML="";
+	if(response_div.getAttribute("data-show-id")==undefined || response_div.getAttribute("data-show-id")!="no")
+	{
+		response_div.insertAdjacentHTML("beforeend","The 'id' for your request is: <strong>"+response["id"]+"</strong>.<br>");
+	}
+	if(response["information_status"])
+	{
+		response_div.insertAdjacentHTML("beforeend",response["information_status"]+"<br>");
+	}
+	if(response["res"])
+	{
+		if(response["res"]["username"] && response["res"]["role"] && response["res"]["rolekey"])
+		{
+			form_store_creds(response["res"]);
+		}
+		if(response["res"]["user_callback_function"])
+		{
+			window[response["res"]["user_callback_function"]](response["res"]);
+		}
+	}
 	if(response["file_status"])
 	{
-		response_div.insertAdjacentHTML("beforeend","<br>"+response["file_status"]);
+		response_div.insertAdjacentHTML("beforeend",response["file_status"]+"<br>");
 	}
 	return;
 }

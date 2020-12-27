@@ -27,7 +27,7 @@ header h1,header h2,header h3,header h4
 footer
 {
 	padding-bottom: 1%;
-	margin-top: 1%;
+	margin-top: 1% !important;
 }
 footer *
 {
@@ -48,6 +48,12 @@ ol,ul
 big
 {
 	font-size: 1.25em;
+}
+
+hr
+{
+	border: 0.005vw solid;
+	width: 100%;
 }
 
 @media(max-width: 319px)/*xs*/
@@ -161,21 +167,21 @@ big
 	}
 	h3
 	{
-		font-size: 36px;
+		font-size: 30px;
 		padding: 1.6% 1.6%;
 	}
 	h4
 	{
-		font-size: 30px;
+		font-size: 24px;
 		padding: 1.2% 1.2%;
 	}
 	*
 	{
-		font-size: 20px;
+		font-size: 18px;
 	}
 	footer big
 	{
-		font-size: 28px;
+		font-size: 24px;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
@@ -198,16 +204,16 @@ big
 	}
 	h4
 	{
-		font-size: 2.8vw;
+		font-size: 2.4vw;
 		padding: 1.5% 1.5%;
 	}
 	*
 	{
-		font-size: 24px;
+		font-size: 18px;
 	}
 	footer big
 	{
-		font-size: 30px;
+		font-size: 24px;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
@@ -221,24 +227,24 @@ big
 	h2
 	{
 		font-size: 4.4vw;
-		padding: 2.2% 2.2%;
+		padding: 2.6%;
 	}
 	h3
 	{
-		font-size: 3.6vw;
-		padding: 1.8% 1.8%;
+		font-size: 3.4vw;
+		padding: 2.4%;
 	}
 	h4
 	{
-		font-size: 2.4vw;
-		padding: 1.4% 1.4%;
+		font-size: 2vw;
+		padding: 2.2%;
 	}
-	footer *
+	*
 	{
-		font-size: 1.8vw;
+		font-size: 1.4vw;
 	}
 	footer big
 	{
-		font-size: 2.4vw;
+		font-size: 1.8vw;
 	}
 }

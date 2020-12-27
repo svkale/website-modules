@@ -12,18 +12,18 @@ for(let i=0;i<svgs_required.length;i++)
 }
 function svg_put(svg_target,svg_function,svg_params)
 {
-	svg_params["content-height"]=parseFloat(svg_target.children[0].scrollHeight);
-	svg_params["content-wbyh"]=parseFloat(svg_target.children[0].scrollWidth)/parseFloat(svg_target.children[0].scrollHeight);
+	svg_params["content-height"]=parseFloat(svg_target.getElementsByTagName('div')[0].offsetHeight);
+	svg_params["content-wbyh"]=parseFloat(svg_target.getElementsByTagName('div')[0].offsetWidth)/parseFloat(svg_target.getElementsByTagName('div')[0].offsetHeight);
 	svg_target.classList.add('svg_container_parent');
 	svg_target.insertAdjacentHTML("afterbegin",window[svg_function](svg_params));
 	svg_target.getElementsByTagName('svg')[0].classList.add('svg_container');
-	svg_target.getElementsByTagName('svg')[0].style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
-	svg_target.style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].scrollHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
+	svg_target.getElementsByTagName('svg')[0].style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].offsetHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
+	svg_target.style.height=(parseFloat(svg_target.getElementsByTagName('div')[0].offsetHeight)*(1+parseFloat(svg_params["border-wbyh"])))+"px";
 	return;
 }
 function svg_reset(svg_target,svg_function,svg_params)
 {
-	svg_target.children[0].outerHTML="";
+	svg_target.getElementsByTagName('svg')[0].outerHTML="";
 	return svg_put(svg_target,svg_function,svg_params);
 }
 

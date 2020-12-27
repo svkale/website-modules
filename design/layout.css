@@ -11,7 +11,7 @@
 {
 	width: var(--cont-width);
 }
-[class^="u"],[class^="sm"],[class^="md"],[class^="xl"]
+[class^="u"],[class^="xs"],[class^="sm"],[class^="md"],[class^="lg"],[class^="xl"]
 {
 	float: left;
 	margin-top: 1%;

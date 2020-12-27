@@ -122,7 +122,10 @@ function request_get_styles_and_scripts(response_obj)
 	}
 	for(let i=0;i<response_html_scripts.length;i++)
 	{
-		document.getElementsByTagName('html')[0].appendChild(response_html_scripts[i]);
+		const script_ele=document.createElement("script");
+		script_ele.setAttribute("type","text/javascript");
+		script_ele.innerHTML=response_html_scripts[i].innerHTML;
+		document.getElementsByTagName('html')[0].appendChild(script_ele);
 	}
 	return Promise.resolve("Styles and scripts added from "+response_obj.responseURL);
 }
@@ -132,6 +135,6 @@ function request_response_HTML(response_obj)
 	setTimeout(function(response_obj)
 		{
 			request_get_styles_and_scripts(response_obj);
-		},200,response_obj);
+		},500,response_obj);
 	return response_html.innerHTML;
 }

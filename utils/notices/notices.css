@@ -1,0 +1,52 @@
+.notice_board,.notice_full,.notice,.notices_author,.notices_date,.notices_for,.notice_contents,.notices_reg_no
+{
+	float: left;
+}
+.notice_board,.notice_full
+{
+	border: 1px solid var(--main-color-2);
+}
+.notice_full
+{
+	padding: 1%;
+}
+.notice_board>h4
+{
+	width: 100%;
+	background-color: var(--main-color-2);
+	color: var(--main-color);
+}
+.notice_board .notice .notices_author,.notice_board .notice .notices_date,.notice_board .notice .notices_for
+{
+	font-size: 0.8em;
+}
+.notice_board .notice .notices_author,.notice_full .notices_author,.notice_board .notice .notices_date,.notice_full .notices_date
+{
+	clear: left;
+	display: inline-block;
+	width: 50%;
+	padding-right: 10%;
+}
+.notice_board .notice .notices_date,.notice_full .notices_date
+{
+	float: right;
+	clear: none;
+	padding-right: 0;
+}
+.notice_board .notice
+{
+	padding: 2%;
+}
+.notice_board .notice .notice_contents
+{
+	padding-bottom: 2.5%;
+}
+.notice .notices_reg_no
+{
+	width: 100%;
+}
+.notice b:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+}

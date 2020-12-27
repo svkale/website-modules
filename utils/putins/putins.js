@@ -22,6 +22,7 @@ function putins_select_load()
 	if(arguments[0])
 	{
 		putins_select=document.querySelectorAll("#"+arguments[0]+" .putins_select");
+		console.log(putins_select);
 	}
 	else
 	{
