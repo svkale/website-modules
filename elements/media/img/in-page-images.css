@@ -38,8 +38,8 @@ header>div.logo
 {
 	header>img.logo,header>div.logo
 	{
-		width: 96px;
-		height: 96px;
+		width: 116px;
+		height: 116px;
 	}
 	header>div.logo_mob_1,header>img.logo_mob_1
 	{
@@ -60,46 +60,46 @@ header>div.logo
 {
 	header>img.logo,header>div.logo
 	{
-		width: 96px;
-		height: 96px;
+		width: 116px;
+		height: 116px;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
 	header>img.logo,header>div.logo
 	{
-		width: 166px;
-		height: 166px;
+		width: 132px;
+		height: 132px;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
 	header>img.logo
 	{
-		width: 23vw;
-		height: 23vw;
-		margin: 1vw;
+		width: 16vw;
+		height: 16vw;
+		margin: 0.5vw;
 		margin-right: 1.5vw;
 	}
 	header>div.logo
 	{
-		width: 25vw;
-		height: 25vw;
+		width: 17vw;
+		height: 17vw;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
 	header>img.logo,header>div.logo
 	{
-		width: 25vw;
-		height: 25vw;
+		width: 16vw;
+		height: 16vw;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
 	header>img.logo,header>div.logo
 	{
-		width: 25vw;
-		height: 25vw;
+		width: 16vw;
+		height: 16vw;
 	}
 }

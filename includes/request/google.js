@@ -53,3 +53,22 @@ function request_gdoc_published_inline_contents(response_obj)
 	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
 	return put_data;
 }
+
+//pages
+function request_gsheet_page(response_obj)
+{
+	let gsheet_to_page="";
+	const page_arr=JSON.parse(response_obj.response);
+	for(let i=0;i<page_arr.length;i++)
+	{
+		if(page_arr[i][0]=="")
+		{
+			gsheet_to_page+="";
+		}
+		else if(page_arr[i][0]=="")
+		{
+			gsheet_to_page+="";
+		}
+	}
+	return gsheet_to_page;
+}
