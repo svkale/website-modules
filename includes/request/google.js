@@ -63,7 +63,7 @@ function request_gsheet_page(response_obj)
 	{
 		if(page_arr[i][0]=="video_drive")
 		{
-			gsheet_to_page+="<iframe class=\"media1 request_google_video_drive\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\"></iframe>";
+			gsheet_to_page+="<iframe class=\"media1 request_google_video_drive\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe>";
 			exec_video_drive_script=1;
 		}
 		else if(page_arr[i][0]=="")
