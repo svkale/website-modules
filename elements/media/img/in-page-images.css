@@ -14,18 +14,22 @@ header>div.logo
 
 @media(max-width: 280px)/*xxs*/
 {
-	header>img.logo,header>div.logo
+	header>img.logo
 	{
 		width: 100%;
 		height: 100%;
+	}
+	header>div.logo
+	{
+		display: none;
 	}
 }
 @media(max-width: 319px) and (min-width: 281px)/*xs*/
 {
 	header>img.logo,header>div.logo
 	{
-		width: 25vw;
-		height: 25vw;
+		width: 38vw;
+		height: 38vw;
 	}
 	header>div.logo_mob_1,header>img.logo_mob_1
 	{

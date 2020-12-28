@@ -1,0 +1,67 @@
+[class^="media"]
+{
+	float: left;
+	margin: 0;
+}
+
+@media(max-width: 280px)/*xxs*/
+{
+	.media1
+	{
+		width: 100%;
+	}
+}
+@media(max-width: 319px) and (min-width: 281px)/*xs*/
+{
+	.media1
+	{
+		width: 100%;
+	}
+}
+@media(min-width: 320px) and (max-width: 400px)/*sm*/
+{
+	.media1
+	{
+		width: 100%;
+	}
+}
+@media(min-width: 401px) and (max-width: 575px)/*sm*/
+{
+	.media1
+	{
+		width: 94%;	
+		margin-left: 3%;
+	}
+}
+@media(min-width: 576px) and (max-width: 767px)/*md*/
+{
+	.media1
+	{
+		width: 90%;	
+		margin-left: 5%;
+	}
+}
+@media(min-width: 768px) and (max-width: 991px)/*lg*/
+{
+	.media1
+	{
+		width: 80%;	
+		margin-left: 10%;
+	}
+}
+@media(min-width: 992px) and (max-width: 1199px)/*xl*/
+{
+	.media1
+	{
+		width: 80%;	
+		margin-left: 10%;
+	}
+}
+@media(min-width: 1200px)/*xxl*/
+{
+	.media1
+	{
+		width: 72%;	
+		margin-left: 14%; 
+	}
+}
