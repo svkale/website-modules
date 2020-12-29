@@ -91,6 +91,7 @@ function request_gsheet_page(response_obj)
 			{
 				gsheet_to_page+="</section>";
 			}
+			console.log(gsheet_to_page);
 			exec_video_drive_script=1;
 			m="media1";
 		}
