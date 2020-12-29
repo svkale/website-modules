@@ -57,18 +57,18 @@ function request_gdoc_published_inline_contents(response_obj)
 //pages
 function request_gsheet_page(response_obj)
 {
-	let gsheet_to_page="<div id=\"sheet_page_contents\" class=\"cont1\">",exec_video_drive_script=0,m="media1",l=0;
+	let gsheet_to_page="<section id=\"sheet_page_contents\" class=\"cont1\">",exec_video_drive_script=0,m="media1",l=0;
 	const page_arr=JSON.parse(response_obj.response)["page_contents"];
 	for(let i=0;i<page_arr.length;i++)
 	{
 		if(page_arr[i][0]=="video_drive")
 		{
-			gsheet_to_page+="<iframe class=\"media1 request_google_video\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe>";
+			gsheet_to_page+="<section class=\"u1\"><iframe class=\"media1 request_google_video\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe></section>";
 			exec_video_drive_script=1;
 		}
 		else if(page_arr[i][0]=="document")
 		{
-			gsheet_to_page+="<div class=\"u1 putins\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></div>";
+			gsheet_to_page+="<article class=\"u1 putins\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></article>";
 		}
 		else if(page_arr[i][0]=="video_youtube")
 		{
@@ -85,7 +85,7 @@ function request_gsheet_page(response_obj)
 					l=1;
 				}
 			}
-			gsheet_to_page+="<iframe class=\""+m+" request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+			gsheet_to_page+="<section class=\"u1\"><iframe class=\""+m+" request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></section>";
 			exec_video_drive_script=1;
 			m="media1";
 		}
@@ -115,6 +115,6 @@ function request_gsheet_page(response_obj)
 			document.getElementsByTagName('html')[0].appendChild(video_drive_script);
 		},500);
 	}
-	gsheet_to_page+="</div>";
+	gsheet_to_page+="</section>";
 	return gsheet_to_page;
 }
