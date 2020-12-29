@@ -1,11 +1,24 @@
-var putins=document.querySelectorAll(".putins");
-for(let i=0;i<putins.length;i++)
-{
-	if(putins[i].getAttribute("data-target-url") && putins[i].getAttribute("data-target-url")!="")
+function putins_load()
+{	
+	var putins;
+	if(arguments[0])
 	{
-		request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+		putins=document.querySelectorAll("#"+arguments[0]+" .putins");
 	}
+	else
+	{
+		putins=document.querySelectorAll(".putins");
+	}
+	for(let i=0;i<putins.length;i++)
+	{
+		if(putins[i].getAttribute("data-target-url") && putins[i].getAttribute("data-target-url")!="")
+		{
+			request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+		}
+	}
+	return;
 }
+putins_load();
 
 function putin_paste(response_obj,params)
 {
@@ -22,7 +35,6 @@ function putins_select_load()
 	if(arguments[0])
 	{
 		putins_select=document.querySelectorAll("#"+arguments[0]+" .putins_select");
-		console.log(putins_select);
 	}
 	else
 	{
