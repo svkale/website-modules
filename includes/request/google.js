@@ -63,12 +63,17 @@ function request_gsheet_page(response_obj)
 	{
 		if(page_arr[i][0]=="video_drive")
 		{
-			gsheet_to_page+="<iframe class=\"media1 request_google_video_drive\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe>";
+			gsheet_to_page+="<iframe class=\"media1 request_google_video\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe>";
 			exec_video_drive_script=1;
 		}
 		else if(page_arr[i][0]=="document")
 		{
 			gsheet_to_page+="<div class=\"u1 putins\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></div>";
+		}
+		else if(page_arr[i][0]=="video_youtube")
+		{
+			gsheet_to_page+="<iframe class=\"media1 request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+			exec_video_drive_script=1;
 		}
 	}
 	if(exec_video_drive_script==1)
@@ -78,17 +83,17 @@ function request_gsheet_page(response_obj)
 			const video_drive_script=document.createElement("script");
 			video_drive_script.setAttribute("type","text/javascript");
 			video_drive_script.innerHTML=`
-			let drive_videos=document.getElementsByClassName('request_google_video_drive');
-			for(let i=0;i<drive_videos.length;i++)
+			let frame_videos=document.getElementsByClassName('request_google_video');
+			for(let i=0;i<frame_videos.length;i++)
 			{
-				drive_videos[i].onload=function()
+				frame_videos[i].onload=function()
 				{
-					drive_videos[i].style.height=(drive_videos[i].offsetWidth*9/16)+"px";
-					drive_videos[i].style.visibility="visible";
+					frame_videos[i].style.height=(frame_videos[i].offsetWidth*9/16)+"px";
+					frame_videos[i].style.visibility="visible";
 				};
 				window.addEventListener("resize",function()
 				{
-					drive_videos[i].style.height=(drive_videos[i].offsetWidth*9/16)+"px";
+					frame_videos[i].style.height=(frame_videos[i].offsetWidth*9/16)+"px";
 				});
 			}
 			putins_load("sheet_page_contents");
