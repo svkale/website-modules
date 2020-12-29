@@ -74,14 +74,14 @@ function request_gsheet_page(response_obj)
 		{
 			if(l==1)
 			{
-				m="media2";
+				m="media1 media_lg2";
 				l=0;
 			}
 			else if(page_arr[i+1])
 			{
 				if(page_arr[i+1][0]=="video_youtube")
 				{
-					m="media2";
+					m="media1 media_lg2";
 					l=1;
 				}
 			}
