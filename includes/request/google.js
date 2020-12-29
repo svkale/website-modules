@@ -85,13 +85,15 @@ function request_gsheet_page(response_obj)
 					l=1;
 				}
 			}
-			gsheet_to_page+="<section class=\"u1\"><iframe class=\""+m+" request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
-			console.log(l);
+			if(m=="media1" || l==1)
+			{
+				gsheet_to_page+="<section class=\"u1\">";
+			}
+			gsheet_to_page+="<iframe class=\""+m+" request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
 			if(m=="media1" || l==0)
 			{
 				gsheet_to_page+="</section>";
 			}
-			console.log(gsheet_to_page);
 			exec_video_drive_script=1;
 			m="media1";
 		}
