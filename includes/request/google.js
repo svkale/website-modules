@@ -57,7 +57,7 @@ function request_gdoc_published_inline_contents(response_obj)
 //pages
 function request_gsheet_page(response_obj)
 {
-	let gsheet_to_page="<div id=\"sheet_page_contents\" class=\"cont1\">",exec_video_drive_script=0;
+	let gsheet_to_page="<div id=\"sheet_page_contents\" class=\"cont1\">",exec_video_drive_script=0,m="media1",l=0;
 	const page_arr=JSON.parse(response_obj.response)["page_contents"];
 	for(let i=0;i<page_arr.length;i++)
 	{
@@ -72,8 +72,22 @@ function request_gsheet_page(response_obj)
 		}
 		else if(page_arr[i][0]=="video_youtube")
 		{
-			gsheet_to_page+="<iframe class=\"media1 request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+			if(l==1)
+			{
+				m="media2";
+				l=0;
+			}
+			else if(page_arr[i+1])
+			{
+				if(page_arr[i+1][0]=="video_youtube")
+				{
+					m="media2";
+					l=1;
+				}
+			}
+			gsheet_to_page+="<iframe class=\""+m+" request_google_video\" src=\""+page_arr[i][1]+"\" style=\"visibility: none;\" allow==\"accelerometer; autoplay; clipborad-white; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
 			exec_video_drive_script=1;
+			m="media1";
 		}
 	}
 	if(exec_video_drive_script==1)

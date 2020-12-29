@@ -3,27 +3,26 @@
 	float: left;
 	margin: 0;
 }
+.media1
+{
+	width: 100%;
+}
+.media2
+{
+	width: 50%;
+}
 
 @media(max-width: 280px)/*xxs*/
 {
-	.media1
-	{
-		width: 100%;
-	}
+
 }
 @media(max-width: 319px) and (min-width: 281px)/*xs*/
 {
-	.media1
-	{
-		width: 100%;
-	}
+	
 }
 @media(min-width: 320px) and (max-width: 400px)/*sm*/
 {
-	.media1
-	{
-		width: 100%;
-	}
+	
 }
 @media(min-width: 401px) and (max-width: 575px)/*sm*/
 {
