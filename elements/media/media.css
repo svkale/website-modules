@@ -9,7 +9,11 @@
 }
 .media2
 {
-	width: 50%;
+	width: 49%;
+}
+.media2:nth-of-type(2)
+{
+	margin-left: 2%;
 }
 
 @media(max-width: 280px)/*xxs*/
