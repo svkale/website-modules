@@ -74,7 +74,7 @@ function request_gsheet_page(response_obj)
 			}
 			else if(page_arr[i+1])
 			{
-				if(page_arr[i+1][0]=="video_youtube")
+				if(page_arr[i+1][0]=="video_youtube" || page_arr[i+1][0]=="video_drive")
 				{
 					m="media1 media_lg2";
 					l=1;
