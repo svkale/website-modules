@@ -61,16 +61,11 @@ function request_gsheet_page(response_obj)
 	const page_arr=JSON.parse(response_obj.response)["page_contents"];
 	for(let i=0;i<page_arr.length;i++)
 	{
-		if(page_arr[i][0]=="video_drive")
-		{
-			gsheet_to_page+="<section class=\"u1\"><iframe class=\"media1 request_google_video\" src=\"https://drive.google.com/file/d/"+page_arr[i][1]+"/preview\" style=\"visibility: none;\" allowfullscreen=\"true\"></iframe></section>";
-			exec_video_drive_script=1;
-		}
-		else if(page_arr[i][0]=="document")
+		if(page_arr[i][0]=="document")
 		{
 			gsheet_to_page+="<article class=\"u1 putins gdoc_published_contents\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></article>";
 		}
-		else if(page_arr[i][0]=="video_youtube")
+		else if(page_arr[i][0]=="video_youtube" || page_arr[i][0]=="video_drive")
 		{
 			if(l==1)
 			{
