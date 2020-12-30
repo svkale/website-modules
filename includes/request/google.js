@@ -68,7 +68,7 @@ function request_gsheet_page(response_obj)
 		}
 		else if(page_arr[i][0]=="document")
 		{
-			gsheet_to_page+="<article class=\"u1 putins\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></article>";
+			gsheet_to_page+="<article class=\"u1 putins gdoc_published_contents\" data-target-url=\""+page_arr[i][1]+"\" data-function-name=\"request_gdoc_published_inline_contents\"></article>";
 		}
 		else if(page_arr[i][0]=="video_youtube")
 		{
@@ -125,4 +125,8 @@ function request_gsheet_page(response_obj)
 	}
 	gsheet_to_page+="</section>";
 	return gsheet_to_page;
+}
+function request_gsheet_site()
+{
+
 }
