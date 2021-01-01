@@ -88,13 +88,14 @@ function putins_make_subpage(element,doc_ele_id)
 			ele.remove();
 		}
 	}
+	console.log(remove_flag);
 	if(remove_flag==0)
 	{
 		doc_ele.innerHTML="<span>Error! End tag not found.</span>";
 		return;
 	}
 	let doc_text=dom.documentElement.innerText,exec_video_style_script=0,exec_frame_style_script=0;
-	while(dom.documentElement.innerText.includes("{video_gdrive}") || dom.documentElement.innerText.includes("{video_youtube}"))
+	while((dom.documentElement.innerText.includes("{video_gdrive}") && dom.documentElement.innerText.includes("{/video_gdrive}")) || (dom.documentElement.innerText.includes("{video_youtube}") && dom.documentElement.innerText.includes("{/video_youtube}"))
 	{
 		let inc,inc_l;
 		doc_text=dom.documentElement.innerText;
