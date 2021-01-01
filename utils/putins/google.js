@@ -120,7 +120,7 @@ function putins_make_subpage(element,doc_ele_id)
 		l.outerHTML=video_ele;
 		exec_video_style_script=1;
 	}
-	while(dom.documentElement.innerText.includes("{frame_link}"))
+	while(dom.documentElement.innerText.includes("{frame_link}") && dom.documentElement.innerText.includes("{/frame_link}"))
 	{
 		doc_text=dom.documentElement.innerText;
 		let frame_ele="<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"></div><iframe class=\"cont1 external_frame_from_doc\" src=\""+doc_text.substring(doc_text.search("{frame_link}")+12,doc_text.search("{/frame_link}"))+"\" style=\"visibility: hidden;\" allow=\"accelerometer;encrypted-media;\" allowfullscreen></iframe></section>";
