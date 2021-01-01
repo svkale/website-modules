@@ -1,6 +1,7 @@
-.doc_page,.frame_page
+.nav_one_active_light .doc_page,.frame_page
 {
-	padding-left: 4%; 
+	padding-left: 4%;
+	border: 0.08vw solid var(--main-color-4);
 }
 .empty_line
 {

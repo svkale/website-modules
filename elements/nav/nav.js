@@ -61,5 +61,9 @@ function load_navs()
 			}
 		}
 	});
+	if(document.querySelectorAll(".nav_one_active_light")[0])
+	{
+		document.querySelectorAll(".nav_one_active_light")[0].parentElement.style.backgroundColor="var(--main-color-3)";
+	}
 }
 window.addEventListener("load",load_navs);

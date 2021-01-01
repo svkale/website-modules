@@ -32,13 +32,17 @@ function putins_make_page_from_gdoc(request_obj,params)
 			{
 				nav_HTML+="<div class=\"u1 empty_line\">.</div>";
 			}
-			else if(j[1]=="PhotoLink")
+			else if(j[1]=="UserPhotoLink")
 			{
 				nav_HTML+="<section class=\"cont\" style=\"--cont-width: 50%; margin-left: 25%;\"><img class='media1' src=\""+j[2]+"\"></section>";
 			}
+			else if(j[1]=="ImageLink")
+			{
+				nav_HTML+="<img class='cont' style='--cont-width: 60%;margin-left: 20%;' src=\""+j[2]+"\"></section>";
+			}
 			else if(j[1]=="Weblink")
 			{
-				nav_HTML+="<a class=\"u1\" target=\"_blank\" href=\""+j[2]+"\">"+j[0]+"</li>";
+				nav_HTML+="<a class=\"u1\" target=\"_blank\" href=\""+j[2]+"\" style=\"padding-left: 4%;\">"+j[0]+"</a>";
 			}
 			else if(j[1]=="Page")
 			{
@@ -48,6 +52,10 @@ function putins_make_page_from_gdoc(request_obj,params)
 					nav_HTML+=" style=\"font-weight: bold;\"";
 				}
 				nav_HTML+=">"+j[0]+"</div></li>";
+			}
+			else if(j[1]=="ScrollText")
+			{
+				document.getElementById("top_scroll_text").innerHTML=j[2];
 			}
 		}
 	}
@@ -88,7 +96,6 @@ function putins_make_subpage(element,doc_ele_id)
 			ele.remove();
 		}
 	}
-	console.log(remove_flag);
 	if(remove_flag==0)
 	{
 		doc_ele.innerHTML="<span>Error! End tag not found.</span>";
@@ -123,7 +130,7 @@ function putins_make_subpage(element,doc_ele_id)
 	while(dom.documentElement.innerText.includes("{frame_link}") && dom.documentElement.innerText.includes("{/frame_link}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let frame_ele="<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"></div><iframe class=\"cont1 external_frame_from_doc\" src=\""+doc_text.substring(doc_text.search("{frame_link}")+12,doc_text.search("{/frame_link}"))+"\" style=\"visibility: hidden;\" allow=\"accelerometer;encrypted-media;\" allowfullscreen></iframe></section>";
+		let frame_ele="<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"></div><iframe class=\"cont1 external_frame_from_doc\" src=\""+doc_text.substring(doc_text.search("{frame_link}")+12,doc_text.search("{/frame_link}"))+"\" style=\"border: 0;visibility: hidden;\" allow=\"encrypted-media;\" allowfullscreen></iframe></section>";
 		let frame_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{frame_link}"),doc_text.search("{/frame_link}"))+"{/frame_link}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
 		let l,ltemp=true;
 		while(ltemp)
