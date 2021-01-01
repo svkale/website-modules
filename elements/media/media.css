@@ -3,6 +3,10 @@
 	float: left;
 	margin: 0;
 }
+[class^="media"]+*
+{
+	clear: left;
+}
 .media1
 {
 	width: 100%;

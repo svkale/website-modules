@@ -1,0 +1,8 @@
+.doc_page,.frame_page
+{
+	padding-left: 4%; 
+}
+.empty_line
+{
+	visibility: hidden;
+}

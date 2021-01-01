@@ -1,0 +1,11 @@
+.loading_half_circle
+{
+	position: absolute;
+	top: 5%;
+	width: 40%;
+	margin: 0 30%;
+	border: 0.9vw solid;
+	border-radius: 50%;
+	border-color:  var(--main-color-2) var(--main-color);
+	animation: rotate_z_full 8s infinite;
+}

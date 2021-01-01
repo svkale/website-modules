@@ -58,6 +58,12 @@ nav.nav_one_active>ul>li.nav_active
 	background-color: var(--main-color);
 	color: var(--main-color-2);
 }
+nav.nav_one_active_light>ul>li.nav_active
+{
+	background-color: var(--main-color);
+	color: var(--main-color-2);
+	border: 0.1vw solid var(--main-color-2);
+}
 nav.nav_svg_active>ul>li.nav_active
 {
 	color: var(--main-color-2);

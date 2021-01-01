@@ -1,8 +1,9 @@
-.gdoc_published_contents,.gdoc_published_contents *
+.gdoc_published_contents,.gdoc_published_contents *[class^="c"]
 {
 	margin: revert;
 	padding: revert;
 	border: revert;
+	color: revert;
 }
 .gdoc_published_contents>*
 {

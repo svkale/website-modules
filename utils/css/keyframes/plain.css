@@ -1,0 +1,65 @@
+@keyframes move_lr
+{
+	0%	{transform: translate(100%,0);}
+	40%	{transform: translate(0,0);}
+	60%	{transform: translate(0,0);}
+	100%{transform: translate(-100%,0);}
+}
+@keyframes move_rl
+{
+	0%	{transform: translate(-100%,0);}
+	40%	{transform: translate(0,0);}
+	60%	{transform: translate(0,0);}
+	100%{transform: translate(100%,0);}
+}
+@keyframes move_tb
+{
+	0%	{transform: translate(0,100%);}
+	40%	{transform: translate(0,0);}
+	60%	{transform: translate(0,0);}
+	100%{transform: translate(0,-100%);}
+}
+@keyframes move_bt
+{
+	0%	{transform: translate(0,-100%);}
+	40%	{transform: translate(0,0);}
+	60%	{transform: translate(0,0);}
+	100%{transform: translate(0,100%);}
+}
+
+@keyframes rotate_y_half
+{
+	0%	{transform: rotateY(0deg);}
+	40% {transform: rotateY(90deg);}
+	60% {transform: rotateY(90deg);}
+	100%{transform: rotateY(0deg);}
+}
+@keyframes rotate_y_full
+{
+	0%	{transform: rotateY(0deg);}
+	100%{transform: rotateY(360deg);}
+}
+@keyframes rotate_x_half
+{
+	0%	{transform: rotateX(0deg);}
+	40% {transform: rotateX(90deg);}
+	60% {transform: rotateX(90deg);}
+	100%{transform: rotateX(0deg);}
+}
+@keyframes rotate_x_full
+{
+	0%	{transform: rotateX(0deg);}
+	100%{transform: rotateX(360deg);}
+}
+@keyframes rotate_z_half
+{
+	0%	{transform: rotateZ(0deg);}
+	40% {transform: rotateZ(90deg);}
+	60% {transform: rotateZ(90deg);}
+	100%{transform: rotateZ(0deg);}
+}
+@keyframes rotate_z_full
+{
+	0%	{transform: rotateZ(0deg);}
+	100%{transform: rotateZ(360deg);}
+}
