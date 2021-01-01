@@ -65,6 +65,7 @@ function putins_make_subpage(element,doc_ele_id)
 	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
 	if(!dom.documentElement.innerText.includes("{"+element+"}"))
 	{
+		doc_ele.innerHTML="";
 		return;
 	}
 	let eles=dom.documentElement.querySelectorAll("body>div *"),remove_flag=0;
