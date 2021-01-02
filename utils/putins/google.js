@@ -122,6 +122,13 @@ function putins_make_subpage(element,doc_ele_id)
 		while(ltemp)
 		{
 			l=ltemp;
+			if(l.innerText)
+			{
+				if(l.innerText==doc_text.substring(doc_text.search("{"+inc+"}"),doc_text.search("{/"+inc+"}"))+"{/"+inc+"}")
+				{
+					break;
+				}
+			}
 			ltemp=video_target.iterateNext();
 		}
 		l.outerHTML=video_ele;
@@ -136,13 +143,98 @@ function putins_make_subpage(element,doc_ele_id)
 		while(ltemp)
 		{
 			l=ltemp;
+			if(l.innerText)
+			{
+				if(l.innerText==doc_text.substring(doc_text.search("{frame_link}"),doc_text.search("{/frame_link}"))+"{/frame_link}")
+				{
+					break;
+				}
+			}
 			ltemp=frame_target.iterateNext();
 		}
 		l.outerHTML=frame_ele;
 		exec_frame_style_script=1;
 	}
-
-	doc_ele.innerHTML=dom.documentElement.querySelector("body>div").outerHTML;
+	var count=0;
+	while(dom.documentElement.innerText.includes("{COLUMN2}") && dom.documentElement.innerText.includes("{/COLUMN2}"))
+	{
+		let col_target=dom.evaluate("//*[contains(.,'{COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null);
+		let l1,ltemp1=true,l2,ltemp2=true;
+		while(ltemp1)
+		{
+			l1=ltemp1;
+			if(l1.innerText)
+			{
+				if(l1.innerText=="{COLUMN2}")
+				{
+					break;
+				}
+			}
+			ltemp1=col_target.iterateNext();
+		}
+		while(ltemp2)
+		{
+			l2=ltemp2;
+			if(l2.innerText)
+			{
+				if(l2.innerText=="{/COLUMN2}")
+				{
+					break;
+				}
+			}
+			ltemp2=col_target_end.iterateNext();
+		}
+		count++;
+		if(count%2==0)
+		{
+			l2.nextElementSibling.style.clear="left";
+		}
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 md2\">").replace(l2.outerHTML,"</section>");
+	}
+	count=0;
+	while(dom.documentElement.innerText.includes("{COLUMN3}") && dom.documentElement.innerText.includes("{/COLUMN3}"))
+	{
+		let col_target=dom.evaluate("//*[contains(.,'{COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null);
+		let l1,ltemp1=true,l2,ltemp2=true;
+		while(ltemp1)
+		{
+			l1=ltemp1;
+			if(l1.innerText)
+			{
+				if(l1.innerText=="{COLUMN3}")
+				{
+					break;
+				}
+			}
+			ltemp1=col_target.iterateNext();
+		}
+		while(ltemp2)
+		{
+			l2=ltemp2;
+			if(l2.innerText)
+			{
+				if(l2.innerText=="{/COLUMN3}")
+				{
+					break;
+				}
+			}
+			ltemp2=col_target_end.iterateNext();
+		}
+		count++;
+		if(count%3==0)
+		{
+			l2.nextElementSibling.style.clear="left";
+		}
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 lg3\">").replace(l2.outerHTML,"</section>");
+	}
+	if(dom.documentElement.querySelector("body>div"))
+	{
+		doc_ele.innerHTML=dom.documentElement.querySelector("body>div").outerHTML;
+	}
+	else
+	{
+		doc_ele.innerHTML=dom.documentElement.querySelector("body>section").outerHTML;
+	}
 	if(style_loaded==0)
 	{
 		while(dom.documentElement.querySelector("style"))
@@ -191,7 +283,7 @@ function putins_make_subpage(element,doc_ele_id)
 			for(i=0;i<frame_elements.length;i++)
 			{
 				frame_elements[i].style.visibility="visible";
-				frame_elements[i].style.height=(frame_elements[i].offsetWidth*3/4)+"px";
+				frame_elements[i].style.height=(frame_elements[i].offsetWidth*4/3)+"px";
 				window.addEventListener("resize",function()
 				{
 					frame_elements[i].style.height=(frame_elements[i].offsetWidth*4/3)+"px";

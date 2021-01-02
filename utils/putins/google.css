@@ -7,3 +7,29 @@
 {
 	visibility: hidden;
 }
+
+
+@media(max-width: 319px)/*xs*/
+{
+	
+}
+@media(min-width: 320px) and (max-width: 575px)/*sm*/
+{
+	
+}
+@media(min-width: 576px) and (max-width: 767px)/*md*/
+{
+	
+}
+@media(min-width: 768px) and (max-width: 991px)/*lg*/
+{
+	
+}
+@media(min-width: 992px) and (max-width: 1199px)/*xl*/
+{
+	
+}
+@media(min-width: 1200px)/*xxl*/
+{
+	
+}
