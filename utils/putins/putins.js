@@ -13,8 +13,16 @@ function putins_load()
 	{
 		if(putins[i].getAttribute("data-target-url") && putins[i].getAttribute("data-target-url")!="")
 		{
-			request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+			if(putins[i].getAttribute("data-parameter-custom"))
+			{
+				request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"),putins[i].getAttribute("data-parameter-custom"));
+			}
+			else
+			{
+				request(putins[i].getAttribute("data-target-url"),"putin_paste",putins[i],putins[i].getAttribute("data-function-name"));
+			}
 		}
+		putins[i].classList.remove("putins");
 	}
 	return;
 }
@@ -22,7 +30,15 @@ putins_load();
 
 function putin_paste(response_obj,params)
 {
-	params[0].innerHTML=window[params[1]](response_obj);
+	console.log(params);
+	if(params[2])
+	{
+		params[0].innerHTML=window[params[1]](response_obj,[params[2]]);
+	}
+	else
+	{
+		params[0].innerHTML=window[params[1]](response_obj);
+	}	
 	if(params[0].getAttribute("data-proceed-script-custom"))
 	{
 		eval(params[0].getAttribute("data-proceed-script-custom"));
@@ -47,7 +63,6 @@ function putins_select_load()
 		{
 			if(putin_select_elements[j].classList.contains("putins_select_active_page"))
 			{
-				request_promise(putin_select_elements[j].getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),putin_select_elements[j],putins_select_function_to_proceed);
 				request_promise(putin_select_elements[j].getAttribute("data-target-url"))
 					.then((html)=>
 					{
@@ -58,7 +73,6 @@ function putins_select_load()
 			}
 			putin_select_elements[j].addEventListener("click",function()
 			{
-				request(this.getAttribute("data-target-url"),"putin_select_paste",document.getElementById(putins_select_target_element_id),this,putins_select_function_to_proceed);
 				request_promise(this.getAttribute("data-target-url"))
 					.then((html)=>
 					{
@@ -75,11 +89,17 @@ function putin_select_paste(response_obj,params)
 {
 	if(params[1].getAttribute("data-function-name-custom"))
 	{
-		params[0].innerHTML=window[params[1].getAttribute("data-function-name-custom")](response_obj);
+		if(params[1].getAttribute("data-parameters-custom"))
+		{
+			params[0].innerHTML=window[params[1].getAttribute("data-function-name-custom")](response_obj,[params[1].getAttribute("data-parameters-custom")]);
+		}
 	}
 	else
 	{
-		params[0].innerHTML=window[params[2]](response_obj);
+		if(params[1].getAttribute("data-parameters-custom"))
+		{
+			params[0].innerHTML=window[params[2]](response_obj,[params[1].getAttribute("data-parameters-custom")]);
+		}
 	}
 	if(params[1].getAttribute("data-proceed-script-custom"))
 	{

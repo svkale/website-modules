@@ -1,7 +1,17 @@
-.nav_one_active_light .doc_page,.frame_page
+.nav_one_active_light .doc_page,.nav_one_active_light .frame_page,.nav_one_active_light .root_home
 {
 	padding-left: 4%;
 	border: 0.08vw solid var(--main-color-4);
+}
+.nav_heading
+{
+	font-weight: bold;
+	color: var(--main-color);
+	padding: 1.2%;
+}
+.nav_one_active_light .root_home
+{
+	font-weight: bold;
 }
 .empty_line
 {
@@ -11,11 +21,17 @@
 
 @media(max-width: 319px)/*xs*/
 {
-	
+	.nav_one_active_light .doc_page,.nav_one_active_light  .frame_page
+	{
+		border-width: 0.2vw;
+	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
-	
+	.nav_one_active_light .doc_page,.nav_one_active_light  .frame_page
+	{
+		border-width: 0.18vw;
+	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
