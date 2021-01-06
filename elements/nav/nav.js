@@ -38,7 +38,6 @@ function load_navs()
 	for(let i=0;i<navs_one_active.length;i++)
 	{
 		var nav_elements_one_active=navs_one_active[i].getElementsByTagName('ul')[0].getElementsByTagName('li');
-		console.log(nav_elements_one_active);
 		for(let j=0;j<nav_elements_one_active.length;j++)
 		{
 			nav_elements_one_active[j].addEventListener("click",function()

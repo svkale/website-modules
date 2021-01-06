@@ -30,7 +30,6 @@ putins_load();
 
 function putin_paste(response_obj,params)
 {
-	console.log(params);
 	if(params[2])
 	{
 		params[0].innerHTML=window[params[1]](response_obj,[params[2]]);

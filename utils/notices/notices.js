@@ -1,15 +1,22 @@
-var notices_obj,notices_target_ele_id,notices_classlist;
+var notices_obj,notices_classlist,target_ele_id;
 function notice_board_process_gs_request(request_obj,params)
 {
 	notices_classlist=undefined;
 	notices_obj=JSON.parse(request_obj.response);
-	console.log(notices_obj);
+	console.log(notices_obj,params);
 	target_ele_id=params[0];
 	if(params[1])
 	{
 		notices_classlist=params[1];
 	}
-	notice_board_show();
+	if(params[2]=="")
+	{
+		notice_board_show_replace();
+	}
+	else
+	{
+		notice_board_show();
+	}
 }
 function notice_board_show()
 {
@@ -18,29 +25,53 @@ function notice_board_show()
 	{
 		if(i.endsWith("_notices"))
 		{
-			let notices_board=document.createElement("section");
-			notices_board.setAttribute("id",i);
-			if(notices_classlist)
-			{
-				notices_board.setAttribute("class",notices_classlist);
-			}
-			notices_board.classList.add("notice_board");
-			notices_board.innerHTML=notice_board_post(i.substring(0,i.length-8));
-
-			document.getElementById(target_ele_id).insertAdjacentElement('afterbegin',notices_board);
+			notice_board_paste(i);
 		}
 	}
 	return;
 }
+function notice_board_show_replace()
+{
+	for(let i in notices_obj)
+	{
+		if(i.endsWith("_notices"))
+		{
+			notice_board_replace(i);
+		}
+	}
+}
+function notice_board_replace(notice_board_heading)
+{
+	let notices_board=document.getElementById(notice_board_heading);
+	if(notices_classlist)
+	{
+		notices_board.setAttribute("class",notices_classlist);
+	}
+	notices_board.classList.add("notice_board");
+	notices_board.innerHTML=notice_board_post(notice_board_heading.substring(0,notice_board_heading.length-8));
+}
+function notice_board_paste(notice_board_heading)
+{
+	let notices_board=document.createElement("section");
+	notices_board.setAttribute("id",notice_board_heading);
+	if(notices_classlist)
+	{
+		notices_board.setAttribute("class",notices_classlist);
+	}
+	notices_board.classList.add("notice_board");
+	notices_board.innerHTML=notice_board_post(notice_board_heading.substring(0,notice_board_heading.length-8));
+
+	document.getElementById(target_ele_id).insertAdjacentElement('afterbegin',notices_board);
+}
 function notice_board_post(p)
 {
 	const notices=notices_obj[p+"_notices"];
-	var notices_str="<h4>Notices from "+p[0].toUpperCase()+p.substring(1).replaceAll("_"," ")+"</h4>";
+	var notices_str="<h4 style=\"color: var(--main-color);\">Notices from "+p.replaceAll("_"," ")+"</h4>";
 	for(let i=notices.length-1;i>=0;i--)
 	{
 		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><span class='notices_author'>by "+notices[i][1]+"</span><span class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</span><br><span class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</span></article>";
 	}
-	return notices_str.substring(0,notices_str.length-4);
+	return notices_str;
 
 }
 function notice_show_with_no(notice_group,notice_number)
@@ -51,7 +82,7 @@ function notice_show_with_no(notice_group,notice_number)
 	notice_container.insertAdjacentHTML("beforeend","<big><b onclick='history.pushState(\"\",\"\",\"/\");notice_board_show();'>Back</b></big>");
 	let notice_sec=document.createElement("section");
 	notice_sec.setAttribute("class","cont1 notice_full");
-	notice_sec.insertAdjacentHTML("beforeend","<span class='notices_date'>Date: "+notices_obj[notice_group][notice_number][2].slice(0,2)+"/"+notices_obj[notice_group][notice_number][2].slice(2,4)+"/"+notices_obj[notice_group][notice_number][2].slice(4)+"</span><span class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</span><span class='notices_reg_no'>Reg. no.: "+notices_obj[notice_group][notice_number][0]+"</span>");
+	notice_sec.insertAdjacentHTML("beforeend","<span class='notices_date'>Date: "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</span><span class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</span><span class='notices_reg_no'>Reg. no.: "+notices_obj[notice_group][notice_number][0]+"</span>");
 	let notice_str="<article class='cont1 notice_contents'>";
 	for(let i=8;i<8+parseInt(notices_obj[notice_group][notice_number][7]);i++)
 	{
@@ -66,6 +97,18 @@ function notice_show_with_no(notice_group,notice_number)
 	return;
 }
 
+function notice_get_students_group(student_group)
+{
+	if(student_group=="all all all")
+	{
+		return "all students";
+	}
+	else if(student_group.includes("all"))
+	{
+		return student_group.replaceAll("all","").replaceAll("  "," ").trim()+" students";
+	}
+	return student_group.trim()+" students";
+}
 function notice_get_students_group(student_group)
 {
 	if(student_group=="all all all")

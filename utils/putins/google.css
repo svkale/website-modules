@@ -1,6 +1,6 @@
 .nav_one_active_light .doc_page,.nav_one_active_light .frame_page,.nav_one_active_light .root_home
 {
-	padding-left: 4%;
+	padding-left: 8%;
 	border: 0.08vw solid var(--main-color-4);
 }
 .nav_heading

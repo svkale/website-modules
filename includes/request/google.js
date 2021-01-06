@@ -29,6 +29,7 @@ function request_gdoc_published_inline_contents(response_obj)
 	response_doc.querySelector('body').style.backgroundColor="var(--main-color)";
 	response_doc.querySelector('body').style.maxWidth="none";
 	response_doc.querySelector('body').style.padding="0";
+	response_doc.querySelector('body').style.margin="0";
 	response_doc.querySelector('body').style.overflowX="auto";
 	for(let i=0;i<response_doc_headtags.length;i++)
 	{
