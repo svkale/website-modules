@@ -218,9 +218,13 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			}
 			ltemp2=col_target_end.iterateNext();
 		}
-		while(l.tagName=="HTML" || l.tagName=="BODY")
+		while(l1.tagName=="HTML" || l1.tagName=="BODY")
 		{
-			l=frame_target.iterateNext();
+			l1=frame_target.iterateNext();
+		}
+		while(l2.tagName=="HTML" || l2.tagName=="BODY")
+		{
+			l2=frame_target.iterateNext();
 		}
 		count++;
 		if(count%2==0)
