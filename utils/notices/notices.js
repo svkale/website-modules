@@ -66,13 +66,13 @@ function notice_board_paste(notice_board_heading)
 }
 function notice_board_post(p)
 {
-	const notices=notices_obj[p+"_notices"];
-	var notices_str="<h4 style=\"color: var(--main-color);\">Notices ("+p.replaceAll("_"," ")+")</h4>";
+	const notices=notices_obj[p+"_notices"],notices_count=notices_obj[p+"_notices_count"];
+	let notices_str="<h4 style=\"color: var(--main-color);\">Notices ("+p.replaceAll("_"," ")+")</h4>";
 	for(let i=notices.length-1;i>=0;i--)
 	{
 		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><span class='notices_author'>by "+notices[i][1]+"</span><span class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</span><br><span class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</span></article>";
 	}
-	return notices_str;
+	return notices_str+"<hr style='float: left;'><div class='notices_count'>Total "+notices_count+" notices found.</div>";
 
 }
 function notice_show_with_no(notice_group,notice_number)

@@ -6,6 +6,7 @@ button,form input[type="button"],form input[type="submit"]
 }
 button:hover,button:hover>span,form input[type="button"]:hover,form input[type="submit"]:hover
 {
+	color: var(--main-color-2);
 	background-color: var(--main-color-3);
 }
 button:active,button:active>span,form input[type="button"]:active,form input[type="submit"]:active
@@ -20,11 +21,11 @@ button>span,form input[type="button"],form input[type="submit"]
 	color: var(--main-color);
 }
 
-button.button_visibility_control[data-button-status='visible']
+.button_visibility_control[data-button-status='visible']
 {
 	background-color: var(--main-color);
 }
-button.button_visibility_control[data-button-status='visible']>span
+.button_visibility_control[data-button-status='visible']>span
 {
 	background-color: var(--main-color);
 	color: var(--main-color-2);
@@ -34,7 +35,7 @@ button.button_visibility_control[data-button-status='visible']>span
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 4px 0;
+		padding: 2px 0;
 		border-width: 1px;
 		border-radius: 5px;
 	}
@@ -42,9 +43,9 @@ button.button_visibility_control[data-button-status='visible']>span
 	{
 		font-size: 1.1em;
 	}
-	button.button_visibility_control
+	.button_visibility_control
 	{
-		margin-bottom: 4px;
+		margin-bottom: 2px;
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
@@ -59,7 +60,7 @@ button.button_visibility_control[data-button-status='visible']>span
 	{
 		font-size: 1.1em;
 	}
-	button.button_visibility_control
+	.button_visibility_control
 	{
 		margin-bottom: 6px;
 	}
@@ -74,7 +75,7 @@ button.button_visibility_control[data-button-status='visible']>span
 	}
 	button>span,form input[type="button"],form input[type="submit"]
 	{
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
@@ -87,7 +88,7 @@ button.button_visibility_control[data-button-status='visible']>span
 	}
 	button>span,form input[type="button"],form input[type="submit"]
 	{
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
@@ -100,19 +101,19 @@ button.button_visibility_control[data-button-status='visible']>span
 	}
 	button>span,form input[type="button"],form input[type="submit"]
 	{
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 0.5vw 0;
+		padding: 0.3vw 0;
 		border-width: 0.3vw;
 		border-radius: 0.8vw;
 	}
 	button>span,form input[type="button"],form input[type="submit"]
 	{
-		font-size: 2vw;
+		font-size: 1.2em;
 	}
 }

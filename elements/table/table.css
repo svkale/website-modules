@@ -5,6 +5,10 @@ table
 	table-layout: auto;
     word-break: break-word;
 }
+table *
+{
+	background-color: var(--main-color-3);
+}
 table>thead>tr:nth-child(1)>th:nth-child(1)
 {
 	width: var(--table-column-width-1);

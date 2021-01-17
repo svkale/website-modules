@@ -42,11 +42,15 @@ function load_navs()
 		{
 			nav_elements_one_active[j].addEventListener("click",function()
 			{
-				if(this.parentElement.getElementsByClassName('nav_active')[0])
+				console.log(this);
+				if(!this.classList.contains("nav_heading"))
 				{
-					this.parentElement.getElementsByClassName('nav_active')[0].classList.remove('nav_active');
+					if(navs_one_active[i].getElementsByClassName('nav_active')[0])
+					{
+						navs_one_active[i].getElementsByClassName('nav_active')[0].classList.remove('nav_active');
+					}
+					this.classList.add('nav_active');
 				}
-				this.classList.add('nav_active');
 			});
 		}
 	}

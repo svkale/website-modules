@@ -33,7 +33,7 @@
 	clear: none;
 	padding-right: 0;
 }
-.notice_board .notice
+.notice_board .notice,.notices_count
 {
 	padding: 2%;
 }
@@ -45,7 +45,7 @@
 {
 	width: 100%;
 }
-article.notice,article.notice *
+article.notice,article.notice *,.notices_count
 {
 	background-color: var(--main-color-4);
 }

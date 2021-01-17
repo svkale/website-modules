@@ -55,7 +55,6 @@ function putins_select_load()
 	{
 		putins_select=document.querySelectorAll(".putins_select");
 	}
-	console.log(putins_select);
 	for(let i=0;i<putins_select.length;i++)
 	{
 		let putins_select_function_to_proceed=putins_select[i].getAttribute("data-function-name"),putins_select_target_element_id=putins_select[i].getAttribute("data-target-ele-id"),putin_select_elements=putins_select[i].querySelectorAll("[data-target-url]");

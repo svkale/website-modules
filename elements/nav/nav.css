@@ -15,7 +15,7 @@ nav.nav_side_bar>ul>li>div *
 	background: transparent;
 	color: var(--main-color);
 }
-nav.nav_side_bar>ul>li.nav_active>div,nav.nav_side_bar>ul>li.nav_active>div>*
+nav.nav_side_bar>ul li.nav_active>div,nav.nav_side_bar>ul li.nav_active>div>*
 {
 	color: var(--main-color-2);
 }
@@ -53,7 +53,7 @@ nav.nav_one_active>ul>li:hover
 {
 	background-color: var(--main-color-3);
 }
-nav.nav_one_active>ul>li.nav_active
+nav.nav_one_active>ul li.nav_active
 {
 	background-color: var(--main-color);
 	color: var(--main-color-2);
@@ -62,13 +62,13 @@ nav.nav_one_active_light>ul>li
 {
 	border: 0.1vw solid var(--main-color-3);
 }
-nav.nav_one_active_light>ul>li.nav_active
+nav.nav_one_active_light>ul li.nav_active
 {
 	background-color: var(--main-color) !important;
 	color: var(--main-color-2);
 	border: 0.1vw solid var(--main-color-2);
 }
-nav.nav_svg_active>ul>li.nav_active
+nav.nav_svg_active>ul li.nav_active
 {
 	color: var(--main-color-2);
 }
