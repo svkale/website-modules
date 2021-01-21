@@ -9,13 +9,17 @@
 	color: var(--main-color);
 	padding: 1.2%;
 }
-.nav_one_active_light .root_home
+.nav_one_active_light .root_home,.hit_counter big
 {
 	font-weight: bold;
 }
 .empty_line
 {
 	visibility: hidden;
+}
+.hit_counter
+{
+	text-align: center;
 }
 
 

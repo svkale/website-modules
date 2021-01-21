@@ -42,8 +42,7 @@ function load_navs()
 		{
 			nav_elements_one_active[j].addEventListener("click",function()
 			{
-				console.log(this);
-				if(!this.classList.contains("nav_heading"))
+				if(!this.classList.contains("nav_heading") && !this.classList.contains("hit_counter"))
 				{
 					if(navs_one_active[i].getElementsByClassName('nav_active')[0])
 					{

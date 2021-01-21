@@ -67,6 +67,12 @@ function putins_make_page_from_gdoc(request_obj,params)
 				}
 				nav_HTML+=">"+j[0]+"</div></li>";
 			}
+			else if(j[1]=="HitCounter")
+			{
+				nav_HTML+="<li class='u1 hit_counter' id='hit_counter'><big class='putins' data-target-url='"+j[2]+"' data-function-name='request_response'></big></li>";
+				var hit_count_yn=true;
+				
+			}
 			else if(j[1]=="ScrollText")
 			{
 				if(document.getElementById("top_scroll_text"))
@@ -77,6 +83,10 @@ function putins_make_page_from_gdoc(request_obj,params)
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
+	if(hit_count_yn)
+	{
+		putins_load('hit_counter');
+	}
 	if(nav_ele_mob)
 	{
 		nav_ele_mob.innerHTML="";
