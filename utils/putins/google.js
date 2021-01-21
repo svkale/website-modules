@@ -77,36 +77,39 @@ function putins_make_page_from_gdoc(request_obj,params)
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
-	nav_ele_mob.innerHTML="";
-	let nav_ele_innersvgs=document.querySelectorAll("#"+nav_ele_id+" svg");
-	let nav_count=0;
-	for(k of nav_ele_innersvgs)
+	if(nav_ele_mob)
 	{
-		if(k.parentElement.classList.contains("nav_heading"))
+		nav_ele_mob.innerHTML="";
+		let nav_ele_innersvgs=document.querySelectorAll("#"+nav_ele_id+" svg");
+		let nav_count=0;
+		for(k of nav_ele_innersvgs)
 		{
-			j=k.cloneNode("true");
-			j.style.height="var(--nav_svgs)";
-			j.style.width="var(--nav_svgs)";
-			j.style.paddingLeft="3%";
-			j.style.paddingRight="3%";
-			j.classList.add("button_visibility_control");
-			j.classList.add("hide_md");
-			j.setAttribute("data-button-target",k.parentElement.innerText.trim());
-			j.setAttribute("data-button-get-from","attribute");
-			if(window.innerWidth>575)
+			if(k.parentElement.classList.contains("nav_heading"))
 			{
-				j.setAttribute("data-button-status","visible");
+				j=k.cloneNode("true");
+				j.style.height="var(--nav_svgs)";
+				j.style.width="var(--nav_svgs)";
+				j.style.paddingLeft="3%";
+				j.style.paddingRight="3%";
+				j.classList.add("button_visibility_control");
+				j.classList.add("hide_md");
+				j.setAttribute("data-button-target",k.parentElement.innerText.trim());
+				j.setAttribute("data-button-get-from","attribute");
+				if(window.innerWidth>575)
+				{
+					j.setAttribute("data-button-status","visible");
+				}
+				else
+				{
+					j.setAttribute("data-button-status","hidden");
+				}
+				nav_ele_mob.appendChild(j);
+				nav_count++;
 			}
-			else
-			{
-				j.setAttribute("data-button-status","hidden");
-			}
-			nav_ele_mob.appendChild(j);
-			nav_count++;
 		}
+		load_buttons();
+		nav_ele_mob.setAttribute("style",nav_ele_mob.getAttribute("style")+";--nav_svgs: "+100/nav_count+"%;");
 	}
-	load_buttons();
-	nav_ele_mob.setAttribute("style",nav_ele_mob.getAttribute("style")+";--nav_svgs: "+100/nav_count+"%;");
 	let nav_load_script=document.createElement("script");
 	nav_load_script.setAttribute("type","text/javascript");
 	nav_load_script.innerHTML="load_navs();";
