@@ -73,6 +73,11 @@ function putins_make_page_from_gdoc(request_obj,params)
 				var hit_count_yn=true;
 				
 			}
+			else if(j[1]=="HeaderImage")
+			{
+				document.getElementsByTagName('header')[0].getElementsByTagName('img')[0].setAttribute("src",j[2]);
+				
+			}
 			else if(j[1]=="ScrollText")
 			{
 				if(document.getElementById("top_scroll_text"))
