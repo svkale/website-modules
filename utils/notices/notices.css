@@ -10,6 +10,11 @@
 {
 	padding: 1%;
 }
+.notice h4,.notice_full h4
+{
+	color: revert;
+	text-align: center;
+}
 .notice_board>h4
 {
 	width: 100%;
@@ -32,6 +37,7 @@
 	float: right;
 	clear: none;
 	padding-right: 0;
+	text-align: right;
 }
 .notice_board .notice,.notices_count
 {

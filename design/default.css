@@ -7,6 +7,7 @@
 	overflow-wrap: break-word;
 	color: var(--main-color-2);
 	background-color: var(--main-color);
+	text-align: left;
 	border-collapse: collapse;
 }
 html,iframe

@@ -240,7 +240,7 @@ function form_wait(form)
 	}
 	form.parentNode.insertBefore(response_div,form.nextSibling);
 	var rotating=document.createElement("div");
-	rotating.style.width="50%";
+	rotating.style.width="10%";
 	var w=rotating.scrollWidth+"px";
 	rotating.style.height=w;
 	rotating.style.height=w;

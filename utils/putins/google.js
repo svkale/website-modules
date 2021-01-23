@@ -2,6 +2,10 @@ var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
 	let nav_ele_id=params[0],doc_ele_id=params[1],element=params[2];
+	if(params[3])
+	{
+		var parentURL=params[3];
+	}
 	let nav_ele=document.getElementById(nav_ele_id);
 	let nav_ele_mob=document.getElementById(nav_ele_id+"_mob");
 	let doc_ele=document.getElementById(doc_ele_id);
@@ -60,7 +64,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="FramePage")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");console.log(document.getElementById(\""+doc_ele_id+"\"));dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");console.log(doc_ele);pnav_HTMLutins_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");console.log(document.getElementById(\""+doc_ele_id+"\"));dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");console.log(doc_ele);pnav_HTMLutinotices_classlistns_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
 				if(j[0]=="Home")
 				{
 					nav_HTML+=" style=\"font-weight: bold;\"";
@@ -75,7 +79,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="HeaderImage")
 			{
-				document.getElementsByTagName('header')[0].getElementsByTagName('img')[0].setAttribute("src",j[2]);
+				document.getElementsByTagName('header')[0].getElementsByTagName('img')[0].setAttribute("src",parentURL+j[2]);
 				
 			}
 			else if(j[1]=="ScrollText")
@@ -379,7 +383,8 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			l=ltemp;
 			ltemp=notice_target.iterateNext();
 		}
-		l.outerHTML="<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"></section>";
+		l.outerHTML="<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"><div class=\"media1\" style=\"position: relative;\"><div class=\"u1 loading_half_circle_10px\"></div></div></section>";
+		
 	}
 	while(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
@@ -402,7 +407,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 	{
 		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>section"));
 	}
-
+	loading_show();
 
 	if(style_loaded==0)
 	{
