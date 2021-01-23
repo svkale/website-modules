@@ -64,7 +64,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="FramePage")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");console.log(document.getElementById(\""+doc_ele_id+"\"));dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");console.log(doc_ele);pnav_HTMLutinotices_classlistns_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");console.log(document.getElementById(\""+doc_ele_id+"\"));dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");console.log(doc_ele);putins_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
 				if(j[0]=="Home")
 				{
 					nav_HTML+=" style=\"font-weight: bold;\"";
