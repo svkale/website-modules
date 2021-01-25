@@ -21,7 +21,7 @@
 	background-color: var(--main-color-2);
 	color: var(--main-color);
 }
-.notices_reg_no,.notices_date,.notice_board .notice .notices_for
+.notices_reg_no,.notices_date,.notice_board .notice .notices_for,.notice_board .notice .notices_author
 {
 	font-size: 0.8em;
 }
@@ -29,11 +29,9 @@
 {
 	padding-top: 4px;
 }
-.notice_board .notice .notices_reg_no,.notice_full .notices_reg_no,.notice_board .notice .notices_date,.notice_full .notices_date
+.notice_board .notice .notices_date
 {
 	clear: left;
-	display: inline-block;
-	width: 50%;
 	padding-right: 10%;
 }
 .notice_board .notice .notices_date,.notice_full .notices_date
@@ -51,9 +49,13 @@
 {
 	padding-bottom: 2.5%;
 }
-.notice .notices_author
+.notice_full .notices_author
 {
 	width: 100%;
+}
+div.notice_cent_div
+{
+	text-align: center;
 }
 article.notice,article.notice *,.notices_count
 {
@@ -63,4 +65,14 @@ article.notice,article.notice *,.notices_count
 {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+@media print
+{
+	.notices_date
+	{
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 }

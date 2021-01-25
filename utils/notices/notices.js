@@ -79,7 +79,7 @@ function notice_board_post(p)
 	let notices_str="<h4 style=\"color: var(--main-color);\">Notices ("+p.replaceAll("_"," ")+")</h4>";
 	for(let i=notices.length-1;i>=0;i--)
 	{
-		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><span class='notices_author'>by "+notices[i][1]+"</span><span class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</span><br><span class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</span></article>";
+		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><div class='notices_author'>by "+notices[i][1]+"</div><div class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</div><br><div class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</div></article>";
 	}
 	return notices_str+"<hr style='float: left;'><div class='notices_count'>Total "+notices_count+" notices found.</div>";
 
@@ -98,7 +98,7 @@ function notice_show_with_no(notice_group,notice_number)
 	// {
 	// 	notice_sec.insertAdjacentHTML("beforeend","<h4 style=\"color: revert;text-align: center;\">"+notices_obj["notice_heading"]+"</h4>");
 	// }
-	notice_sec.insertAdjacentHTML("beforeend","<hr style=\"float: left;\"><br><span class='notices_reg_no'>Ref: "+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</span><span class='notices_date'>Date: "+notices_obj[notice_group][notice_number][2].slice(notices_obj[notice_group][notice_number][2].length-2)+"/"+notices_obj[notice_group][notice_number][2].slice(notices_obj[notice_group][notice_number][2].length-4,notices_obj[notice_group][notice_number][2].length-2)+"/"+notices_obj[notice_group][notice_number][2].slice(0,notices_obj[notice_group][notice_number][2].length-4)+"</span><div style=\"text-align: center;\"><big><b style=\"text-decoration: underline;\">NOTICE</b></big></div><div style=\"text-align: center;\">"+notice_get_students_group(notices_obj[notice_group][notice_number][5]).toUpperCase()+"</div><div style=\"text-align: center;\"><b>"+notices_obj[notice_group][notice_number][4]+"</b></div>");
+	notice_sec.insertAdjacentHTML("beforeend","<hr style=\"float: left;\"><br><div style=\"position: relative;\"><div class='notices_reg_no'>Ref: "+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</div><div class='notices_date'>Date: "+notices_obj[notice_group][notice_number][2].slice(notices_obj[notice_group][notice_number][2].length-2)+"/"+notices_obj[notice_group][notice_number][2].slice(notices_obj[notice_group][notice_number][2].length-4,notices_obj[notice_group][notice_number][2].length-2)+"/"+notices_obj[notice_group][notice_number][2].slice(0,notices_obj[notice_group][notice_number][2].length-4)+"</div></div><div class=\"u1 notice_cent_div\"><b><big>NOTICE</big></b></div><div class=\"u1 notice_cent_div\">"+notice_get_students_group(notices_obj[notice_group][notice_number][5]).toUpperCase()+"</div><div class=\"u1 notice_cent_div\"><b>"+notices_obj[notice_group][notice_number][4]+"</b></div>");
 	let notice_str="<article class='cont1 notice_contents'><br>";
 	for(let i=8;i<8+parseInt(notices_obj[notice_group][notice_number][7]);i++)
 	{
@@ -106,9 +106,9 @@ function notice_show_with_no(notice_group,notice_number)
 	}
 	notice_str+="<br><br></article>";
 	notice_sec.insertAdjacentHTML("beforeend",notice_str);
-	notice_sec.insertAdjacentHTML("beforeend","<span class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</span>");
+	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</div>");
 	notice_container.insertAdjacentElement("beforeend",notice_sec);
-	notice_container.insertAdjacentHTML("beforeend","<button style=\"float: left;\" onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].innerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>');wind.print();\"><span>Print Notice</span></button>");
+	notice_container.insertAdjacentHTML("beforeend","<button style=\"float: left;\" onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);wind.print();\"><span>Print Notice</span></button>");
 	document.getElementById(target_ele_id).insertAdjacentElement("afterend",notice_container);
 	// history.pushState("","","/notices/"+notice_group.substring(0,notice_group.length-8).replaceAll("_","-")+"/"+notices_obj["current_year"]+"/"+notices_obj[notice_group][notice_number][0]);
 	return;
