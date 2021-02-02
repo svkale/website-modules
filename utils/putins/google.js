@@ -408,7 +408,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			l=ltemp;
 			ltemp=functions_output.iterateNext();
 		}
-		l.outerHTML=window[doc_text.substring(doc_text.search("{function}")+10,doc_text.search("{/function}")]();
+		l.outerHTML=window[doc_text.substring(doc_text.search("{function}")+10,doc_text.search("{/function}"))]();
 	}
 	doc_ele.innerHTML="";
 	if(dom.documentElement.querySelector("body>div"))
