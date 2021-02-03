@@ -95,7 +95,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="Button")
 			{
-				nav_HTML+="<button onclick=\""+j[2]+"\"><span>"+j[0]+"</span></button>";
+				nav_HTML+="<button class=\"u1\" onclick=\""+j[2]+"\"><span>"+j[0]+"</span></button>";
 			}
 		}
 	}
