@@ -91,11 +91,11 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="InputText")
 			{
-				nav_HTML+="<input type=\"text\" id=\""+j[2]+"\">";
+				nav_HTML+="<input class=\"u1\" type=\"text\" id=\""+j[2]+"\">";
 			}
 			else if(j[1]=="Button")
 			{
-				nav_HTML+="<button onclick=\"eval("+j[2]+");\">"+j[0]+"</button>";
+				nav_HTML+="<button onclick=\""+j[2]+"\"><span>"+j[0]+"</span></button>";
 			}
 		}
 	}

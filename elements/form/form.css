@@ -2,7 +2,7 @@ form ul
 {
 	list-style-type: none;
 }
-/*form input[type="button"],form input[type="submit"]
+/*input[type="button"],input[type="submit"]
 {
 	border-style: solid;
 	font-weight: bold;
@@ -17,66 +17,66 @@ form div[contenteditable="true"]
 }
 @media(max-width: 319px)/*xs*/
 {
-	form input,form select
+	input,select
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 4px 0;
 	}
 }
 @media(min-width: 320px) and (max-width: 575px)/*sm*/
 {
-	form input,form select
+	input,select
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 4px 0;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
 {
-	form input,form select
+	input,select
 	{
 		border: 1px solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 6px 0;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
 {
-	form input,form select
+	input,select
 	{
 		border: 2px solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 8px 0;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
-	form input,form select
+	input,select
 	{
 		border: 2px solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 8px 0;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
-	form input,form select
+	input,select
 	{
 		border: 0.2vw solid var(--main-color-2);
 	}
-	form input[type="button"],form input[type="submit"]
+	input[type="button"],input[type="submit"]
 	{
 		padding: 0.5vw 0;
 		font-size: 1.2vw;

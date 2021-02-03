@@ -5,7 +5,7 @@ function form_JSON_send(form)
 	{
 		form_params_obj={...form_params_obj,...form_get_creds()};
 	}
-	console.log(form_params_obj);
+	console.log(form_submit_url,form_params_obj);
 	request_post_promise(form_submit_url,JSON.stringify(form_params_obj),2)
 		.then(
 			(res)=>

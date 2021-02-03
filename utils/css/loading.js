@@ -8,6 +8,10 @@ function loading_show()
 		{
 			loading.style.height=loading.offsetWidth+"px";
 		},loading);
+		if(loading.parentElement)
+		{
+			loading.parentElement.style.position="relative";
+		}
 		if(loading.nextElementSibling)
 		{
 			loading.nextElementSibling.addEventListener("load",function()
