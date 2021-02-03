@@ -89,6 +89,14 @@ function putins_make_page_from_gdoc(request_obj,params)
 					document.getElementById("top_scroll_text").innerHTML=j[2];
 				}
 			}
+			else if(j[1]=="InputText")
+			{
+				nav_HTML+="<input type=\"text\" id=\""+j[2]+"\">";
+			}
+			else if(j[1]=="Button")
+			{
+				nav_HTML+="<button onclick=\"eval("+j[2]+");\">"+j[0]+"</button>";
+			}
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
