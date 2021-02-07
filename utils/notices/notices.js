@@ -139,7 +139,7 @@ function notice_get_students_group_streamwise(student_group)
 	return student_group.trim()+" students";
 }
 
-
+const img_src=document.querySelectorAll('img')[0].getAttribute("src");
 function notice_parse(notice)
 {
 	let notice_container=document.createElement("section");
@@ -147,7 +147,6 @@ function notice_parse(notice)
 	let notice_sec=document.createElement("section");
 	notice_sec.setAttribute("class","cont1 notice_full");
 	console.log(document,window);
-	const img_src=document.querySelectorAll('img')[0].getAttribute("src");
 	notice_sec.insertAdjacentHTML("beforeend","<img class=\"cont1\" src=\""+img_src+"\"><hr style=\"float: left;\"><br><div style=\"position: relative;\"><div class='notices_reg_no'>Ref: "+location.pathname.split("/")[2]+"/"+notice[0]+"</div><div class='notices_date'>Date: "+notice[2].slice(notice[2].length-2)+"/"+notice[2].slice(notice[2].length-4,notice[2].length-2)+"/"+notice[2].slice(0,notice[2].length-4)+"</div></div><div class=\"u1 notice_cent_div\"><b><big>NOTICE</big></b></div><div class=\"u1 notice_cent_div\">"+notice_get_students_group(notice[5]).toUpperCase()+"</div><div class=\"u1 notice_cent_div\"><b>"+notice[4]+"</b></div>");
 	let notice_str="<article class='cont1 notice_contents'><br>";
 	for(let i=8;i<8+parseInt(notice[7]);i++)
