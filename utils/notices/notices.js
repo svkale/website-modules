@@ -138,3 +138,26 @@ function notice_get_students_group_streamwise(student_group)
 	}
 	return student_group.trim()+" students";
 }
+
+
+function notice_parse(notice)
+{
+	let notice_container=document.createElement("section");
+	notice_container.setAttribute("class","u1 notice");
+	let notice_sec=document.createElement("section");
+	notice_sec.setAttribute("class","cont1 notice_full");
+	notice_sec.insertAdjacentHTML("beforeend","<img class=\"cont1\" src=\""+document.getElementsByTagName('header')[0].getElementsByTagName('img')[0].src+"\">");
+	notice_sec.insertAdjacentHTML("beforeend","<hr style=\"float: left;\"><br><div style=\"position: relative;\"><div class='notices_reg_no'>Ref: "+location.pathname.split("/")[1]+"/"+notice[0]+"</div><div class='notices_date'>Date: "+notice[2].slice(notice[2].length-2)+"/"+notice[2].slice(notice[2].length-4,notice[2].length-2)+"/"+notice[2].slice(0,notice[2].length-4)+"</div></div><div class=\"u1 notice_cent_div\"><b><big>NOTICE</big></b></div><div class=\"u1 notice_cent_div\">"+notice_get_students_group(notice[5]).toUpperCase()+"</div><div class=\"u1 notice_cent_div\"><b>"+notice[4]+"</b></div>");
+	let notice_str="<article class='cont1 notice_contents'><br>";
+	for(let i=8;i<8+parseInt(notice[7]);i++)
+	{
+		notice_str+=notice[i];
+	}
+	notice_str+="<br><br></article>";
+	notice_sec.insertAdjacentHTML("beforeend",notice_str);
+	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notice[1]+"</div>");
+	notice_container.insertAdjacentElement("beforeend",notice_sec);
+	notice_container.insertAdjacentHTML("beforeend","<button style=\"float: left;\" onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);wind.print();\"><span>Print Notice</span></button>");
+	// history.pushState("","","/notices/"+notice_group.substring(0,notice_group.length-8).replaceAll("_","-")+"/"+notices_obj["current_year"]+"/"+notice[0]);
+	return notice_container;
+}
