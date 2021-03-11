@@ -7,7 +7,7 @@ table
 }
 table *
 {
-	background-color: var(--main-color-3);
+	/*background-color: var(--main-color-3);*/
 }
 table>thead>tr:nth-child(1)>th:nth-child(1)
 {
