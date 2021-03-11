@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+	<path fill="black" stroke-width="0" d="M"></path>
+	<circle fill="white" stroke-width="0" r="1" cx="5" cy="5"></circle>
+	<script type="text/javascript">
+		//<![CDATA[
+			const len=8*Math.tan(15*Math.PI/180);
+
+			document.getElementsByTagName("svg")[0].getElementsByTagName("path")[0].setAttribute("d","");
+
+			var url_parameters=new URL(window.location.toString()).searchParams;
+			if(url_parameters.get('background-fill'))
+			{
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[0].setAttribute("fill",url_parameters.get('background-fill').replace("hash","#"));
+			}
+			if(url_parameters.get('envelope-fill'))
+			{
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[1].setAttribute("fill",url_parameters.get('envelope-fill').replace("hash","#"));
+				document.getElementsByTagName("svg")[0].getElementsByTagName("path")[2].setAttribute("fill",url_parameters.get('envelope-fill').replace("hash","#"));
+			}
+		//]]>
+	</script>
+</svg>

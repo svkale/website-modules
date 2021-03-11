@@ -126,18 +126,6 @@ function notice_get_students_group(student_group)
 	}
 	return student_group.trim()+" students";
 }
-function notice_get_students_group_streamwise(student_group)
-{
-	if(student_group=="all all")
-	{
-		return "all students";
-	}
-	else if(student_group.includes("all"))
-	{
-		return student_group.replaceAll("all","").replaceAll("  "," ").trim()+" students";
-	}
-	return student_group.trim()+" students";
-}
 
 const img_src=document.querySelectorAll('img')[0].getAttribute("src");
 function notice_parse(notice)
