@@ -173,7 +173,7 @@
       }
       if(url_parameters.get('width'))
       {
-        document.getElementsByTagName("svg")[0].setAttribute("width",url_parameters.get('background-color'));
+        document.getElementsByTagName("svg")[0].setAttribute("width",url_parameters.get('width'));
       }
     //]]>
   </script>
