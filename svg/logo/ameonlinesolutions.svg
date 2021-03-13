@@ -171,6 +171,10 @@
       {
         document.getElementsByTagName("svg")[0].style.backgroundColor=url_parameters.get('background-color');
       }
+      if(url_parameters.get('width'))
+      {
+        document.getElementsByTagName("svg")[0].setAttribute("width",url_parameters.get('background-color'));
+      }
     //]]>
   </script>
 
