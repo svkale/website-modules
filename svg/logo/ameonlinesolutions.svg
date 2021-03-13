@@ -169,7 +169,7 @@
       }
       if(url_parameters.get('background-color'))
       {
-        document.getElementsByTagName("svg")[0].style.backgroundColor=url_parameters.get('background-color');
+        document.getElementsByTagName("svg")[0].style.backgroundColor=url_parameters.get('background-color').replace("hash","#");
       }
       if(url_parameters.get('width'))
       {
