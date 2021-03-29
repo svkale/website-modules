@@ -1,7 +1,11 @@
 function putins_load()
 {	
 	var putins;
-	if(arguments[0])
+	if(arguments[1])
+	{
+		putins=document.querySelectorAll("."+arguments[0]+" .putins");
+	}
+	else if(arguments[0])
 	{
 		putins=document.querySelectorAll("#"+arguments[0]+" .putins");
 	}

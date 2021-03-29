@@ -34,7 +34,15 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="Text")
 			{
-				nav_HTML+="<span class=\"u1\" style=\"text-align: center;font-weight: bold;\">"+j[0]+"</span>";
+				if(!j[2])
+				{	
+					nav_HTML+="<span class=\"u1\" style=\"text-align: center;font-weight: bold;\">"+j[0]+"</span>";
+				}
+				else
+				{
+					nav_HTML+="<li class='u1 dyn_data'><div class='putins' data-target-url='"+j[2]+"' data-function-name='request_response'></div></li>";
+					var dyn_data_yn=true;
+				}
 			}
 			else if(j[1]=="EmptyLine")
 			{
@@ -64,7 +72,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="FramePage")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");console.log(document.getElementById(\""+doc_ele_id+"\"));dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");console.log(doc_ele);putins_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");putins_make_subpage_from_HTML(dom,doc_ele);' style=\"cursor: pointer;\"><div";
 				if(j[0]=="Home")
 				{
 					nav_HTML+=" style=\"font-weight: bold;\"";
@@ -103,6 +111,10 @@ function putins_make_page_from_gdoc(request_obj,params)
 	if(hit_count_yn)
 	{
 		putins_load('hit_counter');
+	}
+	if(dyn_data_yn)
+	{
+		putins_load('dyn_data',true);
 	}
 	if(nav_ele_mob)
 	{
