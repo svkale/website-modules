@@ -29,12 +29,45 @@ button>span,form input[type="button"],form input[type="submit"]
 	background-color: var(--main-color);
 	color: var(--main-color-2);
 }
+.hover_dropdown
+{
+	position: relative;
+}
+.hover_dropdown_button:hover+.hover_dropdown_list,.hover_dropdown_list:hover
+{
+	display: block;
+	filter: brightness(97%);
+}
+.hover_dropdown_list
+{
+	position: absolute;
+	display: none;
+	list-style: none;
+	top: 99%;
+	width: 100%;
+	padding: 0;
+}
+.hover_dropdown_list>li
+{
+	padding: 4px;
+	border: 1px solid;
+}
+.hover_dropdown_list>li>a
+{
+	display: inline-block;
+	width: 100%;
+	padding: 4px;
+}
+.hover_dropdown_list>li:hover
+{
+	filter: brightness(95%);
+}
 
 @media(max-width: 319px)/*xs*/
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 2px 0;
+		padding: 2px 1px;
 		border-width: 1px;
 		border-radius: 5px;
 	}
@@ -51,7 +84,7 @@ button>span,form input[type="button"],form input[type="submit"]
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 4px 0;
+		padding: 2px 1px;
 		border-width: 1px;
 		border-radius: 5px;
 	}
@@ -68,7 +101,7 @@ button>span,form input[type="button"],form input[type="submit"]
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 6px 0;
+		padding: 3px 1.5px;
 		border-width: 1.5px;
 		border-radius: 6px;
 	}
@@ -81,7 +114,7 @@ button>span,form input[type="button"],form input[type="submit"]
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 8px 0;
+		padding: 4px 2px;
 		border-width: 2px;
 		border-radius: 8px;
 	}
@@ -94,7 +127,7 @@ button>span,form input[type="button"],form input[type="submit"]
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 8px 0;
+		padding: 4px 2px;
 		border-width: 2px;
 		border-radius: 8px;
 	}
@@ -107,7 +140,7 @@ button>span,form input[type="button"],form input[type="submit"]
 {
 	button,form input[type="button"],form input[type="submit"]
 	{
-		padding: 0.3vw 0;
+		padding: 0.2vw 0.08vw;
 		border-width: 0.3vw;
 		border-radius: 0.8vw;
 	}

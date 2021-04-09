@@ -17,7 +17,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 	let domParser=new DOMParser(),dom;
 	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
 
-	let nav_contents=dom.documentElement.querySelector("body").innerText.substring(dom.documentElement.querySelector("body").innerText.search("{NAVIGATION}")+12,dom.documentElement.querySelector("body").innerText.search("{/NAVIGATION}")).split("|"),nav_HTML="",head_no=0;
+	let nav_contents=dom.documentElement.querySelector("body").innerText.substring(dom.documentElement.querySelector("body").innerText.search("{NAVIGATION}")+12,dom.documentElement.querySelector("body").innerText.search("{/NAVIGATION}")).split("|"),nav_HTML="",head_no=0,exec_dropdown_script=0;
 	for(let i of nav_contents)
 	{
 		let j=i.split("<>");
@@ -103,11 +103,48 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="Button")
 			{
-				nav_HTML+="<button class=\"u1\" onclick=\""+j[2]+"\" style=\"text-align: center;background-color: grey;\"><span style=\"background-color: grey;\">"+j[0]+"</span></button>";
+				nav_HTML+="<button class=\"u1\" onclick=\""+j[2]+"\" style=\"text-align: center;background-color: aliceblue;\"><span style=\"background-color: grey;\">"+j[0]+"</span></button>";
+			}
+			else if(j[1]=="DropDown")
+			{
+				nav_HTML+="<section class=\"u1 hover_dropdown\"><button class=\"u1 hover_dropdown_button\" style=\"background-color: aliceblue;\">"+j[0]+"</button><ul class=\"hover_dropdown_list\">";
+				exec_dropdown_script=1;
+			}
+			else if(j[1]=="DropDownItem")
+			{
+				if(j[2]!="")
+				{
+					nav_HTML+="<li style=\"padding: 0;\"><a target=\"_blank\" href=\""+j[2]+"\">"+j[0]+"</a></li>";
+				}
+				else
+				{
+					nav_HTML+="<li>"+j[0]+"</li>";
+				}
+			}
+			else if(j[1]=="DropDownEnd")
+			{
+				nav_HTML+="</ul></section>";
 			}
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
+	if(exec_dropdown_script)
+	{
+		let dropdown_script=document.createElement("script");
+		dropdown_script.setAttribute("type","text/javascript");
+		dropdown_script.innerHTML=`
+		let dropdowns=document.querySelectorAll(".hover_dropdown");
+		function setDropDown(obj)
+		{
+			obj[0].target.getElementsByClassName("hover_dropdown")[0].style.visibility= obj[0].contentRect.height==0 ? "hidden" : "visible";
+		}
+		for(i of dropdowns)
+		{
+			new ResizeObserver(setDropDown).observe(i.parentElement);
+		}
+		`;
+		document.getElementsByTagName('html')[0].appendChild(dropdown_script);
+	}
 	if(hit_count_yn)
 	{
 		putins_load('hit_counter');
@@ -449,20 +486,20 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 		}
 		style_loaded=1;
 	}
-	if(exec_noticeboard_script==1)
+	if(exec_noticeboard_script)
 	{
-		var frame_script=document.createElement("script");
+		let frame_script=document.createElement("script");
 		frame_script.setAttribute("type","text/javascript");
 		frame_script.innerHTML=`
 		request(\"`+notice_script_link+`\",\"notice_board_process_gs_request\",\"notices\",\"cont1\",\"\");
 		`;
 		document.getElementsByTagName('html')[0].appendChild(frame_script);
 	}
-	if(exec_video_style_script==1)
+	if(exec_video_style_script)
 	{
 		setTimeout(function(){
 			loading_show();
-			var video_drive_script=document.createElement("script");
+			let video_drive_script=document.createElement("script");
 			video_drive_script.setAttribute("type","text/javascript");
 			video_drive_script.innerHTML=`
 			var i;
