@@ -1,4 +1,5 @@
 var notices_obj,notices_classlist,target_ele_id;
+const img_src=document.querySelector("header img:nth-child(1)").getAttribute("src");
 function notice_board_process_gs_request(request_obj,params)
 {
 	notices_classlist=undefined;
@@ -93,7 +94,7 @@ function notice_show_with_no(notice_group,notice_number)
 	notice_container.insertAdjacentHTML("beforeend","<big><b onclick='document.getElementById(\""+target_ele_id+"\").style.display=\"revert\";document.getElementsByClassName(\"notice\")[document.getElementsByClassName(\"notice\").length-1].outerHTML=\"\";'>Back</b></big>");
 	let notice_sec=document.createElement("section");
 	notice_sec.setAttribute("class","cont1 notice_full");
-	notice_sec.insertAdjacentHTML("beforeend","<img class=\"cont1\" src=\""+document.getElementsByTagName('header')[0].getElementsByTagName('img')[0].src+"\">");
+	notice_sec.insertAdjacentHTML("beforeend","<img class=\"cont1\" src=\""+img_src+"\">");
 	// if(notices_obj["notice_heading"])
 	// {
 	// 	notice_sec.insertAdjacentHTML("beforeend","<h4 style=\"color: revert;text-align: center;\">"+notices_obj["notice_heading"]+"</h4>");
@@ -127,7 +128,6 @@ function notice_get_students_group(student_group)
 	return student_group.trim()+" students";
 }
 
-const img_src=document.querySelectorAll('img')[0].getAttribute("src");
 function notice_parse(notice)
 {
 	let notice_container=document.createElement("section");
