@@ -1,5 +1,15 @@
 var notices_obj,notices_classlist,target_ele_id;
-const img_src=document.querySelector("header img:nth-child(1)").getAttribute("src");
+const notice_header_img=document.querySelector("header img:nth-child(1)"),img_src=notice_header_img.src;
+
+var img_src_observer=new MutationObserver(function(mutations){
+	for(let mutation of mutations)
+	{
+		img_src=notice_header_img.src;
+	};
+});
+
+img_src_observer.observe(notice_header_img,{attributes: true});
+
 function notice_board_process_gs_request(request_obj,params)
 {
 	notices_classlist=undefined;

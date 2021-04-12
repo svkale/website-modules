@@ -5,7 +5,6 @@ function request_custom_header(i)
 	{
 		if(this.readyState==4)
 		{
-			console.log(this);
 			let c= arguments[1] ? arguments[1] : "";
 			if(this.status==404)
 			{
