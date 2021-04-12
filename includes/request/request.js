@@ -158,18 +158,3 @@ function request_response_HTML(response_obj)
 		},500,response_obj);
 	return response_html.innerHTML;
 }
-function request_custom_header()
-{
-	request_exist('./images/'+location.pathname.split("/")[1]+'.jpg')
-		.then((res,rej)=>
-		{
-			if(res==1)
-			{
-				document.querySelector("header img:nth-child(1)").src='./images/'+location.pathname.split("/")[1]+'.jpg';
-			}
-			else
-			{
-				document.querySelector("header img:nth-child(1)").src='./images/logo.jpg';
-			}
-		});
-}
