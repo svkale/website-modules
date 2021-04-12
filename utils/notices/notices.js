@@ -1,5 +1,5 @@
 var notices_obj,notices_classlist,target_ele_id;
-const notice_header_img=document.querySelector("header img:nth-child(1)"),img_src=notice_header_img.src;
+var notice_header_img=document.querySelector("header img:nth-child(1)"),img_src=notice_header_img.src;
 
 var img_src_observer=new MutationObserver(function(mutations){
 	for(let mutation of mutations)
