@@ -1,12 +1,14 @@
-request_exist('./images/'+location.pathname.split("/")[1]+'.jpg')
-	.then((res,rej)=>
+let xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange=function()
+{
+	if(this.status==404)
 	{
-		if(res==1)
-		{
-			document.querySelector("header img:nth-child(1)").src='./images/'+location.pathname.split("/")[1]+'.jpg';
-		}
-		else
-		{
-			document.querySelector("header img:nth-child(1)").src='./images/logo.jpg';
-		}
-	});
+		document.querySelector("header img:nth-child(1)").src='./images/logo.jpg';
+	}
+	else
+	{
+		document.querySelector("header img:nth-child(1)").src='./images/'+location.pathname.split("/")[1]+'.jpg';
+	}
+};
+xmlhttp.open('HEAD','./images/'+location.pathname.split("/")[1]+'.jpg',true); 
+xmlhttp.send();
