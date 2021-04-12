@@ -20,7 +20,7 @@ function request_custom_header(i)
 	xmlhttp.open('HEAD','/images/'+location.pathname.split("/")[1]+'.jpg',true); 
 	xmlhttp.send();
 }
-if(location.pathname.split("/")[1]!=notice)
+if(location.pathname.split("/")[1]!="notice")
 {
 	request_custom_header(1);
 }
