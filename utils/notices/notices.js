@@ -10,12 +10,12 @@ var img_src_observer=new MutationObserver(function(mutations){
 
 img_src_observer.observe(notice_header_img,{attributes: true});
 
-function load_notice_as_page(announcement_id,id)
+function load_notice_as_page(id)
 {
 	document.getElementById('contents_page').innerHTML="Notice is loading....";
 	document.getElementById('contents_page').parentElement.parentElement.innerHTML=document.getElementById('contents_page').outerHTML;
 	document.getElementById('contents_page').setAttribute("class","u1");
-	request_promise("https://script.google.com/macros/s/AKfycbxAZi2lXjzb1esOQAINMn_4XHDItOI5QqDsCiQVQQY0Jz_Ig-amBTouJ4W45PEldsRquw/exec?fn=getAnnouncement&announcement_id="+announcement_id+"&id="+id)
+	request_promise("https://script.google.com/macros/s/AKfycbxAZi2lXjzb1esOQAINMn_4XHDItOI5QqDsCiQVQQY0Jz_Ig-amBTouJ4W45PEldsRquw/exec?fn=getAnnouncement&announcement_id="+location.pathname.substring(8)+"&id="+id)
 		.then((res)=>
 		{
 			document.getElementById('contents_page').innerHTML="";
