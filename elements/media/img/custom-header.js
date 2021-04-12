@@ -1,12 +1,12 @@
 function request_custom_header(i)
 {
 	let xmlhttp=new XMLHttpRequest();
-	xmlhttp.onreadystatechange=(function(i)
+	xmlhttp.onreadystatechange=function()
 	{
 		if(this.readyState==4)
 		{
 			console.log(this);
-			c= arguments[1] ? arguments[1] : "";
+			let c= arguments[1] ? arguments[1] : "";
 			if(this.status==404)
 			{
 				document.querySelector("header img:nth-child(1)").src='/images/logo.jpg';
@@ -16,7 +16,7 @@ function request_custom_header(i)
 				document.querySelector("header img:nth-child(1)").src='/images/'+c+location.pathname.split("/")[i]+'.jpg';
 			}
 		}
-	})(i);
+	};
 	xmlhttp.open('HEAD','/images/'+location.pathname.split("/")[1]+'.jpg',true); 
 	xmlhttp.send();
 }
@@ -28,3 +28,6 @@ else
 {
 	request_custom_header(2,"notice/");
 }
+
+
+// (i,arguments[1])
