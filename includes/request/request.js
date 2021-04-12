@@ -17,6 +17,26 @@ function request(path,func)
 	xmlhttp.send();
 	return;
 }
+function request_exist(path)
+{
+	return new Promise((resolve,reject)=>
+	{
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if(this.status==404)
+			{
+				return resolve(0);
+			}
+			else
+			{
+				return resolve(1);
+			}
+		};
+		xmlhttp.open('HEAD',path,true); 
+		xmlhttp.send();
+	});
+}
 function request_post(path,func,pars,content_type)
 {
 	var params=[];
@@ -137,4 +157,15 @@ function request_response_HTML(response_obj)
 			request_get_styles_and_scripts(response_obj);
 		},500,response_obj);
 	return response_html.innerHTML;
+}
+function request_custom_header()
+{
+	request_exist('./images/'+location.pathname.split("/")[1]+'.jpg')
+		.then((res,rej)=>
+		{
+			if(res==1)
+			{
+				document.querySelector("header img:nth-child(1)").src='./images/'+location.pathname.split("/")[1]+'.jpg';
+			}
+		});
 }
