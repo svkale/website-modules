@@ -19,7 +19,7 @@ function load_notice_as_page(id)
 		.then((res)=>
 		{
 			document.getElementById('contents_page').innerHTML="";
-			document.getElementsByTagName('header')[0].style,display='none';
+			document.getElementsByTagName('header')[0].style.display='none';
 			if(JSON.parse(res.response)["notice_error"])
 			{
 				document.getElementById('contents_page').innerHTML="<big>404 Notice not found.</big>";
