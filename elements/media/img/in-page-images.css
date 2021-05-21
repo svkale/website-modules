@@ -50,7 +50,6 @@ header>div.logo
 	header>img.logo,header>div.logo
 	{
 		width: 116px;
-		height: 116px;
 	}
 	header>div.logo_mob_1,header>img.logo_mob_1
 	{
@@ -71,7 +70,6 @@ header>div.logo
 	header>img.logo,header>div.logo
 	{
 		width: 116px;
-		height: 116px;
 	}
 }
 @media(min-width: 576px) and (max-width: 767px)/*md*/
@@ -79,7 +77,6 @@ header>div.logo
 	header>img.logo,header>div.logo
 	{
 		width: 132px;
-		height: 132px;
 	}
 }
 @media(min-width: 768px) and (max-width: 991px)/*lg*/
@@ -87,14 +84,12 @@ header>div.logo
 	header>img.logo
 	{
 		width: 16vw;
-		height: 16vw;
 		margin: 0.5vw;
 		margin-right: 1.5vw;
 	}
 	header>div.logo
 	{
 		width: 17vw;
-		height: 17vw;
 	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
@@ -102,7 +97,6 @@ header>div.logo
 	header>img.logo,header>div.logo
 	{
 		width: 16vw;
-		height: 16vw;
 	}
 }
 @media(min-width: 1200px)/*xxl*/
@@ -110,6 +104,5 @@ header>div.logo
 	header>img.logo,header>div.logo
 	{
 		width: 16vw;
-		height: 16vw;
 	}
 }

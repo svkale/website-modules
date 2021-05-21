@@ -15,7 +15,7 @@ html,iframe
 	overflow-x: hidden;
 }
 
-header *,footer *
+header,footer,header *,footer *
 {
 	background-color: var(--main-color-2);
 	color: var(--main-color);
