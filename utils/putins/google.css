@@ -21,6 +21,10 @@
 {
 	text-align: center;
 }
+.doc_page div
+{
+	padding: 2px;
+}
 
 
 @media(max-width: 319px)/*xs*/
