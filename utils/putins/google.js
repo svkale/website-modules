@@ -278,8 +278,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 		{
 			l=frame_target.iterateNext();
 		}
-		console.log(frame_ele,window.location.hostname,frame_ele.includes(window.location.hostname));
-		if(frame_ele.includes(window.location.hostname))
+		if(frame_ele.includes(window.location.hostname) || window.location.hostname=="localhost")
 		{
 			l.outerHTML=frame_ele.replace("external_frame_from_doc","internal_page").replace("visibility: hidden;","");
 			exec_internal_page_script=1;
