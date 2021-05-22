@@ -556,6 +556,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			var i;
 			for(i=0;i<internal_page_elements.length;i++)
 			{
+				console.log(internal_page_elements);
 				let frame_conts=internal_page_elements[i].contentDocument;
 				frame_conts.querySelector("body").innerHTML=frame_conts.querySelector("#contents_page").innerHTML;
 				internal_page_elements[i].style.height=(frame_conts.querySelector("html").offsetHeight)+"px";
