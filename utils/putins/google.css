@@ -21,6 +21,10 @@
 {
 	text-align: center;
 }
+.doc_page
+{
+	cursor: pointer;
+}
 .doc_page div
 {
 	padding: 2px;
@@ -29,7 +33,7 @@
 
 @media(max-width: 319px)/*xs*/
 {
-	.nav_one_active_light .doc_page,.nav_one_active_light  .frame_page
+	.nav_one_active_light .doc_page,.nav_one_active_light .frame_page
 	{
 		border-width: 0.2vw;
 	}
