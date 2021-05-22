@@ -278,7 +278,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 		{
 			l=frame_target.iterateNext();
 		}
-		if(frame_ele.includes(window.location.hostname) && )
+		if(frame_ele.includes(window.location.hostname))
 		{
 			l.outerHTML=frame_ele.replace("external_frame_from_doc","internal_page").replace("visibility: hidden;","");
 			exec_internal_page_script=1;
@@ -546,7 +546,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			document.getElementsByTagName('html')[0].appendChild(frame_script);
 		},500);
 	}
-	if(exec_internal_page_script==1)
+	if(exec_internal_page_script)
 	{
 		setTimeout(function(){
 			var frame_script=document.createElement("script");
@@ -573,7 +573,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			document.getElementsByTagName('html')[0].appendChild(frame_script);
 		},500);
 	}
-	if(exec_presentation_style_script==1)
+	if(exec_presentation_style_script)
 	{
 		setTimeout(function(){
 			var frame_script=document.createElement("script");
