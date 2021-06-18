@@ -466,7 +466,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 	while(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let functions_output=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{eval}"),doc_text.search("{/eval}"))+"{/eval}"+"')]",dom,null,XPathResult.ANY_TYPE,null);
+		let functions_output=dom.evaluate("//*[contains(.,`"+doc_text.substring(doc_text.search("{eval}"),doc_text.search("{/eval}"))+"{/eval}"+"`)]",dom,null,XPathResult.ANY_TYPE,null);
 		let l,ltemp=true;
 		while(ltemp)
 		{
