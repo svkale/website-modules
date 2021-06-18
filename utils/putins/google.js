@@ -473,6 +473,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 			l=ltemp;
 			ltemp=functions_output.iterateNext();
 		}
+		ltemp.innerHTML="";
 		eval(doc_text.substring(doc_text.search("{eval}")+6,doc_text.search("{/eval}")));
 	}
 	doc_ele.innerHTML="";
