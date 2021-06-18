@@ -249,3 +249,24 @@ hr
 		font-size: 1.72vw;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.index-page {
+    text-decoration: none;
+}
+.index-page>a {
+    padding: 2%;
+}
+.index-page>a:hover {
+    text-decoration: underline;
+}
