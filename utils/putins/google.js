@@ -125,6 +125,13 @@ function putins_make_page_from_gdoc(request_obj,params)
 			{
 				nav_HTML+="</ul></section>";
 			}
+			else if(j[1]=="SCRIPT")
+			{
+				var scr=document.createElement("script");
+				scr.setAttribute("type","text/javascript");
+				scr.innerHTML=j[2];
+				document.getElementsByTagName('html')[0].appendChild(scr);
+			}
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
