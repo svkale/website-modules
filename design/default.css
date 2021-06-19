@@ -264,8 +264,12 @@ hr
 .index-page {
     text-decoration: none;
 }
+.index-page * {
+    background-color: revert;
+}
 .index-page>a {
 	display: inline-block;
+    text-decoration: none;
     padding: 2%;
 }
 .index-page>a:hover {
