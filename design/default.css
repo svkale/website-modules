@@ -265,6 +265,7 @@ hr
     text-decoration: none;
 }
 .index-page>a {
+	display: inline-block;
     padding: 2%;
 }
 .index-page>a:hover {
