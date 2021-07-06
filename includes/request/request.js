@@ -24,13 +24,16 @@ function request_exist(path)
 		var xmlhttp=new XMLHttpRequest();
 		xmlhttp.onreadystatechange=function()
 		{
-			if(this.status==404)
+			if(this.readyState==4)
 			{
-				return resolve(0);
-			}
-			else
-			{
-				return resolve(1);
+				if(this.status==404)
+				{
+					return resolve(0);
+				}
+				else
+				{
+					return resolve(1);
+				}
 			}
 		};
 		xmlhttp.open('HEAD',path,true); 
