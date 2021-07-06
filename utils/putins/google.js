@@ -2,7 +2,6 @@ var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
 	let nav_ele_id=params[0],doc_ele_id=params[1],element=params[2];
-	location.hash=element;
 	if(params[3])
 	{
 		var parentURL=params[3];
@@ -226,10 +225,11 @@ function putins_make_subpage(element,doc_ele_id)
 		doc_ele.innerHTML="<span>Error! End tag not found.</span>";
 		return;
 	}
-	putins_make_subpage_from_HTML(dom,doc_ele);
+	putins_make_subpage_from_HTML(dom,doc_ele,element);
 }
-function putins_make_subpage_from_HTML(dom,doc_ele)
+function putins_make_subpage_from_HTML(dom,doc_ele,element)
 {
+	location.hash=element;
 	let doc_text=dom.documentElement.innerText,exec_video_style_script=0,exec_frame_style_script=0,exec_internal_page_script=0,exec_nested_doc_style_script=0,exec_presentation_style_script=0,exec_noticeboard_script=0;
 	while((dom.documentElement.innerText.includes("{video_gdrive}") && dom.documentElement.innerText.includes("{/video_gdrive}")) || (dom.documentElement.innerText.includes("{video_youtube}") && dom.documentElement.innerText.includes("{/video_youtube}")))
 	{
