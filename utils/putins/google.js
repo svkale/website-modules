@@ -1,7 +1,7 @@
 var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
-	let nav_ele_id=params[0],doc_ele_id=params[1],element=params[2];
+	let nav_ele_id=params[0],doc_ele_id=params[1],element=decodeURI(params[2]);
 	if(params[3])
 	{
 		var parentURL=params[3];
