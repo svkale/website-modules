@@ -634,7 +634,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele)
 				nested_doc_style_HTML+="#doc_frame_"+i+" *[class^='c'],";
 			}
 			nested_doc_style_HTML=nested_doc_style_HTML.substring(0,nested_doc_style_HTML.length-1);
-			nested_doc_style_HTML+="{margin: 0;padding: revert;text-indent: revert;border: revert;color: revert;font-size: revert;font-weight: revert;font-family: revert;color: black;background-color: revert;text-decoration: revert;max-width: revert;}";
+			nested_doc_style_HTML+="{margin: 0;padding: revert;text-indent: revert;border: revert;color: revert;font-size: revert;font-weight: revert;font-family: revert;color: black;background-color: revert;text-decoration: revert;max-width: revert;line-height: revert;}";
 			nested_doc_style.innerHTML=nested_doc_style_HTML;
 			if(!document.getElementsByTagName('head')[0].innerText.includes(nested_doc_style_HTML))
 			{
