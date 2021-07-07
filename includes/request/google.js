@@ -58,6 +58,6 @@ function request_gdoc_published_inline_contents(response_obj)
 	{
 		put_data=put_data.replaceAll(".gdoc_published_contents","#"+arguments[1][0]);
 	}
-	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
+	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace("body","div").replace("</body>","</div>");
 	return put_data;
 }
