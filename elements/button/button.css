@@ -6,6 +6,7 @@ button,form input[type="button"],form input[type="submit"]
 }
 button:hover,button:hover>span,form input[type="button"]:hover,form input[type="submit"]:hover
 {
+	color: var(--main-color-2);
 	background-color: var(--main-color-3);
 }
 button:active,button:active>span,form input[type="button"]:active,form input[type="submit"]:active
