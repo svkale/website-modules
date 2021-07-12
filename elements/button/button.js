@@ -14,7 +14,7 @@ function load_buttons()
 		}
 		if(button_target)
 		{
-			// button_target.style.overflow="hidden";
+			button_target.style.overflow="hidden";
 			button_target.style.transition="height 2s";
 			if(button_controls[i].getAttribute("data-button-status")=="hidden")
 			{
