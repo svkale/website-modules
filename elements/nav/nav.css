@@ -72,6 +72,10 @@ nav.nav_svg_active>ul li.nav_active
 {
 	color: var(--main-color-2);
 }
+nav.nav_svg_mob+nav>ul>*
+{
+	overflow: hidden;
+}
 
 nav>ul
 {

@@ -143,7 +143,11 @@ function putins_make_page_from_gdoc(request_obj,params)
 		let dropdowns=document.querySelectorAll(".hover_dropdown");
 		function setDropDown(obj)
 		{
-			obj[0].target.getElementsByClassName("hover_dropdown")[0].style.visibility= obj[0].contentRect.height==0 ? "hidden" : "visible";
+			for(let i of obj[0].target.getElementsByClassName("hover_dropdown"))
+			{
+				i.style.visibility= obj[0].contentRect.height==0 ? "hidden" : "visible";
+				i.parentElement.style.overflow="visible";
+			}
 		}
 		for(i of dropdowns)
 		{
