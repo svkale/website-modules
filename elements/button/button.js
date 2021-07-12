@@ -36,7 +36,7 @@ function load_buttons()
 				}
 				else if(this.getAttribute("data-button-status")=="hidden")
 				{
-					// this.setAttribute("data-button-status","visible");
+					this.setAttribute("data-button-status","visible");
 					// if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
 					// {
 					// 	document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].style.height=document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].scrollHeight+"px";
