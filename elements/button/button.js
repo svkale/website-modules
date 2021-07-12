@@ -48,31 +48,39 @@ function load_buttons()
 
 				}
 			});
+			if(button_controls[i].getAttribute("data-hide-on-click"))
+			{
+				let inner_buttons=document.getElementById(button_controls[i].getAttribute("data-button-target")).querySelectorAll(button_controls[i].getAttribute("data-hide-on-click"));
+				for(let ele of inner_buttons)
+				{
+					ele.onclick=function(){button_controls[i].click();}
+				}
+			}
 		}
 	}
-	// window.addEventListener("resize",function()
-	// {
-	// 	var button_controls=document.querySelectorAll(".button_visibility_control");
-	// 	for(let i=0;i<button_controls.length;i++)
-	// 	{
-	// 		let button_target;
-	// 		if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
-	// 		{
-	// 			button_target=document.querySelectorAll("[data-button-target-selector=\""+button_controls[i].getAttribute("data-button-target")+"\"]")[0];
-	// 		}
-	// 		else
-	// 		{
-	// 			button_target=document.getElementById(button_controls[i].getAttribute("data-button-target"));
-	// 		}
-	// 		if(window.getComputedStyle(button_controls[i]).display=="none")
-	// 		{
-	// 			button_target.style.height="revert";
-	// 		}
-	// 		else
-	// 		{
-	// 			button_target.style.height="0";
-	// 		}
-	// 	}
-	// });
+	window.addEventListener("resize",function()
+	{
+		var button_controls=document.querySelectorAll(".button_visibility_control");
+		for(let i=0;i<button_controls.length;i++)
+		{
+			let button_target;
+			if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
+			{
+				button_target=document.querySelectorAll("[data-button-target-selector=\""+button_controls[i].getAttribute("data-button-target")+"\"]")[0];
+			}
+			else
+			{
+				button_target=document.getElementById(button_controls[i].getAttribute("data-button-target"));
+			}
+			if(window.getComputedStyle(button_controls[i]).display=="none" || button_controls[i].getAttribute("data-button-status")=="visible")
+			{
+				button_target.style.height="revert";
+			}
+			else
+			{
+				button_target.style.height="0";
+			}
+		}
+	});
 }
 load_buttons();
