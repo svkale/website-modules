@@ -51,6 +51,7 @@ function load_buttons()
 			if(button_controls[i].getAttribute("data-hide-on-click"))
 			{
 				let inner_buttons=document.getElementById(button_controls[i].getAttribute("data-button-target")).querySelectorAll(button_controls[i].getAttribute("data-hide-on-click"));
+				console.log(inner_buttons)
 				for(let ele of inner_buttons)
 				{
 					ele.onclick=function(){button_controls[i].click();}
