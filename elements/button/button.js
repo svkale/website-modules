@@ -25,26 +25,26 @@ function load_buttons()
 				if(this.getAttribute("data-button-status")=="visible")
 				{
 					this.setAttribute("data-button-status","hidden");
-					if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
-					{
-						document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].style.height="0px";
-					}
-					else
-					{
+					// if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
+					// {
+					// 	document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].style.height="0px";
+					// }
+					// else
+					// {
 						document.getElementById(this.getAttribute("data-button-target")).style.height="0px";
-					}					
+					// }					
 				}
 				else if(this.getAttribute("data-button-status")=="hidden")
 				{
-					this.setAttribute("data-button-status","visible");
-					if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
-					{
-						document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].style.height=document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].scrollHeight+"px";
-					}
-					else
-					{
+					// this.setAttribute("data-button-status","visible");
+					// if(button_controls[i].getAttribute("data-button-get-from")=="attribute")
+					// {
+					// 	document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].style.height=document.querySelectorAll("[data-button-target-selector=\""+this.getAttribute("data-button-target")+"\"]")[0].scrollHeight+"px";
+					// }
+					// else
+					// {
 						document.getElementById(this.getAttribute("data-button-target")).style.height=document.getElementById(this.getAttribute("data-button-target")).scrollHeight+"px";
-					}					
+					// }			
 
 				}
 			});
