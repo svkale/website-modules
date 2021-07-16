@@ -29,7 +29,7 @@
 {
 	padding: 2px;
 }
-#contents_page
+#contents_page *,#contents_page
 {
 	margin: revert;
 	padding: revert;
