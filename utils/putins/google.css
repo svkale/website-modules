@@ -29,6 +29,23 @@
 {
 	padding: 2px;
 }
+#contents_page
+{
+	margin: revert;
+	padding: revert;
+	text-indent: revert;
+	border: revert;
+	color: revert;
+	font-size: revert;
+	font-weight: revert;
+	font-family: revert;
+	color: black;
+	background-color: revert;
+	text-decoration: revert;
+	max-width: revert;
+	line-height: revert;
+	height: revert;
+}
 
 
 @media(max-width: 319px)/*xs*/
