@@ -63,7 +63,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="Page")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='putins_make_subpage(this.innerText.trim(),\""+doc_ele_id+"\");document.getElementById(\"contents_page\").scrollTo(0,0);'><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='putins_make_subpage(this.innerText.trim(),\""+doc_ele_id+"\");document.getElementById(\"contents_page\").scrollIntoView(true);'><div";
 				if(j[0].endsWith("Home"))
 				{
 					nav_HTML+=" style=\"font-weight: bold;\"";
@@ -72,7 +72,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="FramePage")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");putins_make_subpage_from_HTML(dom,doc_ele);document.getElementById(\"contents_page\").scrollTo(0,0);'><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");putins_make_subpage_from_HTML(dom,doc_ele);document.getElementById(\"contents_page\").scrollIntoView(true);'><div";
 				if(j[0]=="Home") nav_HTML+=" style=\"font-weight: bold;\"";
 				nav_HTML+=">"+j[0]+"</div></li>";
 			}
