@@ -38,13 +38,16 @@
 	color: revert;
 	font-size: revert;
 	font-weight: revert;
-	font-family: revert;
 	color: black;
 	background-color: revert;
 	text-decoration: revert;
 	max-width: revert;
 	line-height: revert;
 	height: revert;
+}
+#contents_page
+{
+	padding: 2%;
 }
 
 

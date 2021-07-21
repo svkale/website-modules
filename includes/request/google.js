@@ -36,6 +36,12 @@ function request_gdoc_published_inline_contents(response_obj)
 		if(response_doc_headtags[i].tagName=="STYLE")
 		{
 			var style_output=response_doc_headtags[i].innerHTML;
+			let tmp=style_output;
+			console.log(tmp);
+			// while(tmp.indexOf("@import")!=-1)
+			// {
+			// 	tmp=tmp.substr(tmp.indexOf("@import"));
+			// }
 			var style_part_arr=style_output.split(",");
 			style_output="";
 			for(let i=0;i<style_part_arr.length-1;i++)
