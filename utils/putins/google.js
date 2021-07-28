@@ -9,7 +9,6 @@ function putins_make_page_from_gdoc(request_obj,params)
 	let nav_ele=document.getElementById(nav_ele_id);
 	let nav_ele_mob=document.getElementById(nav_ele_id+"_mob");
 	let doc_ele=document.getElementById(doc_ele_id);
-
 	if(!doc_ele_HTML)
 	{
 		doc_ele_HTML=request_gdoc_published_inline_contents(request_obj,[doc_ele_id]);
@@ -432,7 +431,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 			}
 			ltemp2=notice_target_end.iterateNext();
 		}
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section id=\"notices\" class=\"cont1\">").replace(l2.outerHTML,"</section>");
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section id=\"notices\" class=\"cont1 ignore-revert\">").replace(l2.outerHTML,"</section>");
 		exec_noticeboard_script=1;
 	}
 	while(dom.documentElement.innerText.includes("{notice}") && dom.documentElement.innerText.includes("{/notice}"))
