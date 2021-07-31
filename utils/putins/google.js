@@ -492,26 +492,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{eval}"),doc_html.search("{/eval}")+7),"");
 		
 	}
-	while(dom.documentElement.innerText.includes("{StarRating}") && dom.documentElement.innerText.includes("{/StarRating}"))
-	{
-		doc_text=dom.documentElement.innerText;
-		let doc_html=dom.documentElement.innerHTML;
-		let SR_text='<span>★ Rating: </span><span id=SRV_mytc></span><span>&nbsp;&nbsp;&nbsp;&nbsp;<select name="StarRating" id="StarRating" required onchange=alert("Thank_you_for_your_response.");this.disabled=true;gsrfn("fn=StarRating&value="+this.value+"&page="+(document.URL).replace("#","///")); ><option disabled selected value> -- Rate This Page -- </option><option value="1">&#9733;</option><option value="2">&#9733;&#9733;</option> <option value="3">&#9733;&#9733;&#9733;</option><option value="4">&#9733;&#9733;&#9733;&#9733;</option> <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option></select></span>';
-		let notice_target=dom.evaluate("//*[contains(.,'"+SR_text+"')]",dom,null, XPathResult.ANY_TYPE,null);
-// 		let l,ltemp=true;
-// 		while(ltemp)
-// 		{
-// 			l=ltemp;
-// 			ltemp=notice_target.iterateNext();
-// 		}
-// 		l.outerHTML="<span class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</span>";
-		
-		let eval_text='gsrfn("fn=StarRating&page="+(document.URL).replace("#","///"),"SRV_mytc");'
-		let fs=document.createElement("script");
-		fs.setAttribute("type","text/javascript");
-		fs.innerText=eval_text;
-		document.getElementsByTagName('html')[0].appendChild(fs);
-	}
 
 	doc_ele.innerHTML="";
 	if(dom.documentElement.querySelector("body>div"))
