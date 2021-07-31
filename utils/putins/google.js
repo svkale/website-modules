@@ -481,6 +481,10 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	if(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
 	{
 		doc_text=dom.documentElement.innerText;
+		let fs=document.createElement("script");
+		fs.setAttribute("type","text/javascript");
+		fs.innerText=doc_text.substring(doc_text.search("{eval}")+6,doc_text.search("{/eval}")).replace(/%%quot%%/g,'"').replace(/%%apos%%/g,"'");
+		document.getElementsByTagName('html')[0].appendChild(fs);
 		let functions_output=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{eval}"),doc_text.search("{/function}"))+"{/eval}"+"')]",dom,null,XPathResult.ANY_TYPE,null);
 		let l,ltemp=true;
 		while(ltemp)
@@ -489,10 +493,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 			ltemp=functions_output.iterateNext();
 		}
 		l.outerHTML="";
-		let fs=document.createElement("script");
-		fs.setAttribute("type","text/javascript");
-		fs.innerText=doc_text.substring(doc_text.search("{eval}")+6,doc_text.search("{/eval}")).replace(/%%quot%%/g,'"').replace(/%%apos%%/g,"'");
-		document.getElementsByTagName('html')[0].appendChild(fs);
 	}
 	doc_ele.innerHTML="";
 	if(dom.documentElement.querySelector("body>div"))
