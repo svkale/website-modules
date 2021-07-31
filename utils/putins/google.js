@@ -1,3 +1,10 @@
+// google script run function and paste response text on target_id
+function gsrfn(query,target_id)
+{
+	var p="https://script.google.com/macros/s/AKfycbwotnrn5vDVzCWhSsWIPE1apYuPyxEIjd39lBtxeT0XqGM0_pPqJuKBICHcB1_aiQ_cbg/exec?"+query;
+	request_promise(p).then((res)=>if(document.getElementById(target_id)) {document.getElementById(target_id).innerHTML=res.responseText;});
+}
+
 var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
