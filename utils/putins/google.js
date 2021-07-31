@@ -486,8 +486,8 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		fs.setAttribute("type","text/javascript");
 		fs.innerText=doc_text.substring(doc_text.search("{eval}")+6,doc_text.search("{/eval}")).replace(/%%quot%%/g,'"').replace(/%%apos%%/g,"'");
 		document.getElementsByTagName('html')[0].appendChild(fs);
-		console.log(doc_html.search("{eval}"));
-		console.log(doc_html.search("{/eval}"));
+		//console.log(doc_html.search("{eval}"));
+		//console.log(doc_html.search("{/eval}"));
 		//console.log(doc_html.substring(doc_html.search("{eval}"),doc_html.search("{/eval}")+"{/eval}"));
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{eval}"),doc_html.search("{/eval}")+7),"");
 		
@@ -587,7 +587,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 			{
 				let frame_conts=internal_page_elements[i].contentDocument;
 				let html_txt=frame_conts.querySelector("#contents_page").innerHTML;
-				console.log(html_txt);
+				//console.log(html_txt);
 				frame_conts.querySelector("body").innerHTML=html_txt;
 				internal_page_elements[i].style.height=(frame_conts.querySelector("html").offsetHeight)+"px";
 				window.addEventListener("resize",function()
