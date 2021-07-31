@@ -464,7 +464,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 			l=ltemp;
 			ltemp=notice_target.iterateNext();
 		}
-		l.outerHTML="<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>";
+		l.outerHTML="<span class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</span>";
 	}
 	while(dom.documentElement.innerText.includes("{function}") && dom.documentElement.innerText.includes("{/function}"))
 	{
