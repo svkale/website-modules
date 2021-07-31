@@ -481,11 +481,13 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	if(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
 	{
 		doc_text=dom.documentElement.innerText;
+		let doc_html=dom.documentElement.innerHTML;
 		let fs=document.createElement("script");
 		fs.setAttribute("type","text/javascript");
 		fs.innerText=doc_text.substring(doc_text.search("{eval}")+6,doc_text.search("{/eval}")).replace(/%%quot%%/g,'"').replace(/%%apos%%/g,"'");
 		document.getElementsByTagName('html')[0].appendChild(fs);
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_text.substring(doc_text.search("{eval}"),doc_text.search("{/eval}")+"{/eval}"),"");
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{eval}"),doc_html.search("{/eval}")+"{/eval}"),"");
+		console.log(dom);
 	}
 	doc_ele.innerHTML="";
 	if(dom.documentElement.querySelector("body>div"))
