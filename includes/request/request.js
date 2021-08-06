@@ -128,7 +128,7 @@ function request_post_promise(path,pars,content_type)
 
 function request_log(response_obj)
 {
-	console.log(response_obj);
+	//console.log(response_obj);
 }
 function request_response(response_obj)
 {
