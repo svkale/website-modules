@@ -1,7 +1,7 @@
 // google script run function and paste response text on target_id
 function gsrfn(query,target_id)
 {
-	var p="https://script.google.com/macros/s/AKfycbx6ajzHPu3xBTA6w_CSd83uoB5ZhNM7MPsdwM4pZRHEDnV9PPuZHKgRUeQox8QfLqOBJw/exec?"+query;
+	var p="https://script.google.com/macros/s/AKfycbzy53ifIUTm2YNc_T_uv1Y0RV0PaLlE8i00V2DTvzBFCuG1Q8ocrvguw4mKUfkiykJSHA/exec?"+query;
 	request_promise(p).then((res)=>{if(document.getElementById(target_id)) {document.getElementById(target_id).innerHTML=res.responseText;}});
 }
 
