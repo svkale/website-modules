@@ -84,7 +84,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="HitCounter")
 			{
-				nav_HTML+="<li class='u1 hit_counter' id='hit_counter'><big class='putins' data-target-url='"+j[2]+"' data-function-name='request_response'></big></li>";
+				nav_HTML+="<li class='u1 hit_counter' id='hit_counter'><big class='putins' data-target-url='https://script.google.com/macros/s/AKfycbzy53ifIUTm2YNc_T_uv1Y0RV0PaLlE8i00V2DTvzBFCuG1Q8ocrvguw4mKUfkiykJSHA/exec?fn=hitCounter&site="+j[2]+"' data-function-name='request_response'></big></li>";
 				var hit_count_yn=true;
 				
 			}
