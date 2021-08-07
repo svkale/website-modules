@@ -31,7 +31,7 @@
 }
 #contents_page *:not(.ignore-revert, .ignore-revert *),#contents_page
 {
-	margin: revert;
+	/*margin: revert;*/
 	padding: revert;
 	text-indent: revert;
 	border: revert;
