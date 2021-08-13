@@ -110,7 +110,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="DropDown")
 			{
-				nav_HTML+="<section class=\"u1 hover_dropdown\"><button class=\"u1 hover_dropdown_button\" style=\"background-color: aliceblue;\">"+j[0]+"</button><ul class=\"hover_dropdown_list\">";
+				nav_HTML+="<section class=\"u1 hover_dropdown\"><button class=\"u1 hover_dropdown_button\" style=\"background-color: aliceblue;\">"+j[0]+" &#9662;</button><ul class=\"hover_dropdown_list\">";
 				exec_dropdown_script=1;
 			}
 			else if(j[1]=="DropDownItem")
