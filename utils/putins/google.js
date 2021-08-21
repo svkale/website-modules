@@ -1,4 +1,9 @@
 // google script run function and paste response text on target_id
+function gsrfnts(query,target_id)
+{
+	var p="https://script.google.com/macros/s/AKfycbxS0ArgmHoB0pYL9N053ItYk4dxeO2xgftvdiXl_EeJJgugAdLCDrqmxgdppvC2Scb2zQ/exec?"+query;
+	request_promise(p).then((res)=>{if(document.getElementById(target_id)) {document.getElementById(target_id).innerHTML=res.responseText;}});
+}
 function gsrfn(query,target_id)
 {
 	var p="https://script.google.com/macros/s/AKfycbzy53ifIUTm2YNc_T_uv1Y0RV0PaLlE8i00V2DTvzBFCuG1Q8ocrvguw4mKUfkiykJSHA/exec?"+query;
