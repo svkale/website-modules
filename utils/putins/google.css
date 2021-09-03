@@ -7,7 +7,7 @@
   
   .mytable th, td {
 	text-align: left;
-	padding: 16px !important;
+	padding: 10px !important;
   }
   
   .mytable tr:nth-child(even) {
