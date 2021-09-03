@@ -1,3 +1,19 @@
+.mytable {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+  }
+  
+  .mytable th, td {
+	text-align: left;
+	padding: 16px;
+  }
+  
+  .mytable tr:nth-child(even) {
+	background-color: #f2f2f2;
+  }
+  
 .nav_one_active_light .doc_page,.nav_one_active_light .frame_page,.nav_one_active_light .web_link,.nav_one_active_light .root_home
 {
 	padding-left: 8%;
