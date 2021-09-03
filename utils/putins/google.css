@@ -7,11 +7,11 @@
   
   .mytable th, td {
 	text-align: left;
-	padding: 16px;
+	padding: 16px; !important
   }
   
   .mytable tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: #f2f2f2; !important
   }
   
 .nav_one_active_light .doc_page,.nav_one_active_light .frame_page,.nav_one_active_light .web_link,.nav_one_active_light .root_home
