@@ -36,6 +36,7 @@ function gsrfnjq(query,target_id)
 function gid(id){return document.getElementById(id);}
 function unhide(id){document.getElementById(id).hidden = false ;}
 function hide(id){document.getElementById(id).hidden = true ;}
+function gidh(id){if(gid(id)==null){console.log(id);};return document.getElementById(id).innerHTML;}
 function SelectMCQ(evt, cityName,QNo) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("MCQtabcontent");
