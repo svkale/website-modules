@@ -27,6 +27,7 @@ function gsrfnjq(query,target_id)
 			  html=html.join("");html=decodeURI(html);
 			}
 			document.getElementById(target_id).innerHTML=rrt;
+			console.log(html)
 			if(html!=null && html!=""){var F=new Function (html);  return(F());}
 		}
 	});
