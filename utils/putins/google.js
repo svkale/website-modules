@@ -33,6 +33,7 @@ function gsrfnjq(query,target_id)
 		}
 	});
 }
+function gid(id){return document.getElementById(id);}
 var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
