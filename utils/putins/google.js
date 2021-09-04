@@ -34,6 +34,27 @@ function gsrfnjq(query,target_id)
 	});
 }
 function gid(id){return document.getElementById(id);}
+function unhide(id){document.getElementById(id).hidden = false ;}
+function hide(id){document.getElementById(id).hidden = true ;}
+function SelectMCQ(evt, cityName,QNo) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("MCQtabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("MCQtablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  if(QNo!=null){
+    tablinks[Number(QNo)+1].className += " active";
+  }else{
+    evt.currentTarget.className += " active";
+  }
+  return false;
+}
+
 var doc_ele_HTML,style_loaded=0;
 function putins_make_page_from_gdoc(request_obj,params)
 {
