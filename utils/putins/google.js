@@ -15,7 +15,8 @@ function gsrfnjq(query,target_id)
 	request_promise(p).then((res)=>{
 		if(document.getElementById(target_id)) {
 			let rrt=res.responseText;
-			var msjq=rrt.toString().split(".jgsrfnjqqscript.");
+			var msjq=rrt.toString().split(".jqscript.");
+			console.log("msjq.length = "+msjq.length);
 			if(msjq.length>1){
 			  html=[];
 			  for(var i=2;i<msjq.length;i=i+2){
