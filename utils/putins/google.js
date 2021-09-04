@@ -38,6 +38,7 @@ function sidh(id,val){if(gid(id)==null){console.log(id);};return document.getEle
 function unhide(id){document.getElementById(id).hidden = false ;}
 function hide(id){document.getElementById(id).hidden = true ;}
 function gidh(id){if(gid(id)==null){console.log(id);return "";};return document.getElementById(id).innerHTML;}
+function gidbg(id){return document.getElementById(id).style.backgroundColor;}
 function SelectMCQ(evt, cityName,QNo) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("MCQtabcontent");
