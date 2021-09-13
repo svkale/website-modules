@@ -734,6 +734,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		{
 			i.setAttribute("target","_blank");
 		}
+		putins_select_load();
 		`;
 		document.getElementsByTagName('html')[0].appendChild(frame_script);
 	},500);
