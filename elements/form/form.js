@@ -10,7 +10,7 @@ function form_JSON_send(form)
 		.then(
 			(res)=>
 			{
-				console.log(res);
+				//console.log(res);
 				if(form.getAttribute("data-custom-JSON-to-send-file"))
 				{
 					form_JSON_file_data(form)
@@ -27,7 +27,7 @@ function form_JSON_send(form)
 										},
 										(error)=>
 										{
-											alert(error);
+											alert(JSON.stringify(error));
 											console.error(error);
 										}
 									);
@@ -47,7 +47,7 @@ function form_JSON_send(form)
 			},
 			(error)=>
 			{
-				alert(error);
+				alert(JSON.stringify(error));
 				console.error(error);
 			}
 		);

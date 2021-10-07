@@ -34,6 +34,8 @@ function load_notice_as_page(id)
 			console.error(error);
 			document.getElementById('contents_page').innerHTML="<big>404 Error parsing notice.</big>"
 		});
+	request_promise("https://script.google.com/macros/s/AKfycbzy53ifIUTm2YNc_T_uv1Y0RV0PaLlE8i00V2DTvzBFCuG1Q8ocrvguw4mKUfkiykJSHA/exec?fn=hitCounter&site=a4u.co.in").then((res)=>
+		{});
 }
 
 function notice_board_process_gs_request(request_obj,params)

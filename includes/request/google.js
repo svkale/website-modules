@@ -37,7 +37,7 @@ function request_gdoc_published_inline_contents(response_obj)
 		{
 			var style_output=response_doc_headtags[i].innerHTML;
 			let tmp=style_output;
-			console.log(tmp);
+			//console.log(tmp);
 			// while(tmp.indexOf("@import")!=-1)
 			// {
 			// 	tmp=tmp.substr(tmp.indexOf("@import"));

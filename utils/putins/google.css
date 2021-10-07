@@ -1,3 +1,19 @@
+.mytable {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+  }
+  
+  .mytable th, td {
+	text-align: left;
+	padding: 10px !important;
+  }
+  
+  .mytable tr:nth-child(even) {
+	background-color: #f2f2f2 !important;
+  }
+  
 .nav_one_active_light .doc_page,.nav_one_active_light .frame_page,.nav_one_active_light .web_link,.nav_one_active_light .root_home
 {
 	padding-left: 8%;
@@ -29,16 +45,15 @@
 {
 	padding: 2px;
 }
-#contents_page *:not(.ignore-revert):not(.ignore-revert *),#contents_page
+#contents_page *:not(.ignore-revert, .ignore-revert *),#contents_page
 {
-	margin: revert;
+	/*margin: revert;*/
 	padding: revert;
 	text-indent: revert;
 	border: revert;
 	color: revert;
 	font-size: revert;
 	font-weight: revert;
-	color: black;
 	background-color: revert;
 	text-decoration: revert;
 	max-width: revert;
