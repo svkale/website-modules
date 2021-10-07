@@ -575,6 +575,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		while(dom.documentElement.querySelector("style"))
 		{
 			document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
+			dom.documentElement.querySelector("style").remove();
 		}
 		style_loaded=1;
 	}
