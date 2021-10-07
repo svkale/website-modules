@@ -264,28 +264,32 @@ function putins_make_page_from_gdoc(request_obj,params)
 function putins_make_subpage(element,doc_ele_id)
 {
 	let domParser=new DOMParser(),dom,doc_ele=document.getElementById(doc_ele_id);
-	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
-	if(!dom.documentElement.innerText.includes("{"+element+"}"))
-	{
-		doc_ele.innerHTML="";
-		return;
-	}
-	let eles=dom.documentElement.querySelectorAll("body>div *"),remove_flag=0;
-	for(let ele of eles)
-	{
-		ele.remove();
-		if(ele.innerText=="{"+element+"}") break;
-	}
-	for(let ele of eles)
-	{
-		if(ele.innerText.trim()=="{/"+element+"}") remove_flag=1;
-		if(remove_flag==1) ele.remove();
-	}
-	if(remove_flag==0)
-	{
-		doc_ele.innerHTML="<span>Error! End tag not found.</span>";
-		return;
-	}
+	// dom=domParser.parseFromString(doc_ele_HTML,"text/html");
+	// if(!dom.documentElement.innerText.includes("{"+element+"}"))
+	// {
+	// 	doc_ele.innerHTML="";
+	// 	return;
+	// }
+	// let eles=dom.documentElement.querySelectorAll("body>div *"),remove_flag=0;
+	// for(let ele of eles)
+	// {
+	// 	ele.remove();
+	// 	if(ele.innerText=="{"+element+"}") break;
+	// }
+	// for(let ele of eles)
+	// {
+	// 	if(ele.innerText.trim()=="{/"+element+"}") remove_flag=1;
+	// 	if(remove_flag==1) ele.remove();
+	// }
+	// if(remove_flag==0)
+	// {
+	// 	doc_ele.innerHTML="<span>Error! End tag not found.</span>";
+	// 	return;
+	// }
+	if(doc_ele_HTML.indexOf("{Home}")!=-1 && doc_ele_HTML.indexOf("{/Home}")!=-1)
+		dom=domParser.parseFromString(doc_ele_HTML.substring(doc_ele_HTML.indexOf("{Home}")+6,doc_ele_HTML.indexOf("{/Home}")),"text/html");
+	else
+		return doc_ele.innerHTML="<span>Error! Tag not found.</span>";
 	putins_make_subpage_from_HTML(dom,doc_ele,element);
 }
 function putins_make_subpage_from_HTML(dom,doc_ele,element)
@@ -575,7 +579,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		while(dom.documentElement.querySelector("style"))
 		{
 			document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
-			dom.documentElement.querySelector("style").remove();
 		}
 		style_loaded=1;
 	}
