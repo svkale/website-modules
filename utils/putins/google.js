@@ -15,7 +15,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 	}
 	let domParser=new DOMParser(),dom;
 	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
-
+	console.log(dom);
 	let nav_contents=dom.documentElement.querySelector("body").innerText.substring(dom.documentElement.querySelector("body").innerText.search("{NAVIGATION}")+12,dom.documentElement.querySelector("body").innerText.search("{/NAVIGATION}")).split("|"),nav_HTML="",head_no=0,exec_dropdown_script=0;
 	for(let i of nav_contents)
 	{
