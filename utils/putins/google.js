@@ -287,7 +287,7 @@ function putins_make_subpage(element,doc_ele_id)
 	// 	return;
 	// }
 	if(doc_ele_HTML.indexOf("{Home}")!=-1 && doc_ele_HTML.indexOf("{/Home}")!=-1)
-		dom=domParser.parseFromString(doc_ele_HTML.substring(doc_ele_HTML.indexOf("{Home}")+6,doc_ele_HTML.indexOf("{/Home}")),"text/html");
+		dom=domParser.parseFromString(doc_ele_HTML.substring(doc_ele_HTML.indexOf("{"+element+"}")+6,doc_ele_HTML.indexOf("{/"+element+"}")),"text/html");
 	else
 		return doc_ele.innerHTML="<span>Error! Tag not found.</span>";
 	putins_make_subpage_from_HTML(dom,doc_ele,element);
