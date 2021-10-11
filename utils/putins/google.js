@@ -574,12 +574,9 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	}
 	loading_show();
 
-	if(style_loaded==0)
+	while(dom.documentElement.querySelector("style"))
 	{
-		while(dom.documentElement.querySelector("style"))
-		{
-			document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
-		}
+		document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
 	}
 	if(exec_noticeboard_script)
 	{
