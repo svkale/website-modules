@@ -580,7 +580,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		{
 			document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
 		}
-		style_loaded=1;
 	}
 	if(exec_noticeboard_script)
 	{
