@@ -76,7 +76,11 @@ function putins_make_page_from_gdoc(request_obj,params)
 	}
 	let domParser=new DOMParser(),dom;
 	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
-	console.log(dom);
+	console.log(dom.documentElement);
+	while(dom.documentElement.querySelector("style"))
+	{
+		document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
+	}
 	let nav_contents=dom.documentElement.querySelector("body").innerText.substring(dom.documentElement.querySelector("body").innerText.search("{NAVIGATION}")+12,dom.documentElement.querySelector("body").innerText.search("{/NAVIGATION}")).split("|"),nav_HTML="",head_no=0,exec_dropdown_script=0;
 	for(let i of nav_contents)
 	{
@@ -564,11 +568,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	}
 
 	doc_ele.innerHTML="";
-	console.log(dom.documentElement);
-	while(dom.documentElement.querySelector("style"))
-	{
-		document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
-	}
 	if(dom.documentElement.querySelector("body>div"))
 	{
 		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
