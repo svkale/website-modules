@@ -464,81 +464,28 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	while(dom.documentElement.innerText.includes("{noticeboard}") && dom.documentElement.innerText.includes("{/noticeboard}") && dom.documentElement.innerText.includes("{noticeboard_layout}") && dom.documentElement.innerText.includes("{/noticeboard_layout}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let noticeboard_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{noticeboard}"),doc_text.search("{/noticeboard}"))+"{/noticeboard}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
-		let l,ltemp=true;
-		while(ltemp)
-		{
-			l=ltemp;
-			ltemp=noticeboard_target.iterateNext();
-		}
-		var notice_script_link=doc_text.substring(doc_text.search("{noticeboard}")+13,doc_text.search("{/noticeboard}"));
-		l.outerHTML="";
-
-		let notice_target=dom.evaluate("//*[contains(.,'{noticeboard_layout}')]",dom,null,XPathResult.ANY_TYPE,null),notice_target_end=dom.evaluate("//*[contains(.,'{/noticeboard_layout}')]",dom,null,XPathResult.ANY_TYPE,null);
-		let l1,ltemp1=true,l2,ltemp2=true;
-		while(ltemp1)
-		{
-			l1=ltemp1;
-			if(l1.innerText)
-			{
-				if(l1.innerText=="{noticeboard_layout}")
-				{
-					break;
-				}
-			}
-			ltemp1=notice_target.iterateNext();
-		}
-		while(ltemp2)
-		{
-			l2=ltemp2;
-			if(l2.innerText)
-			{
-				if(l2.innerText=="{/noticeboard_layout}")
-				{
-					break;
-				}
-			}
-			ltemp2=notice_target_end.iterateNext();
-		}
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section id=\"notices\" class=\"cont1 ignore-revert\">").replace(l2.outerHTML,"</section>");
+		let doc_html=dom.documentElement.innerHTML;
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{noticeboard_layout}","<section id=\"notices\" class=\"cont1 ignore-revert\">").replace("{/noticeboard_layout}","</section>");
 		exec_noticeboard_script=1;
 	}
 	while(dom.documentElement.innerText.includes("{notice}") && dom.documentElement.innerText.includes("{/notice}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let notice_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{notice}"),doc_text.search("{/notice}"))+"{/notice}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
-		let l,ltemp=true;
-		while(ltemp)
-		{
-			l=ltemp;
-			ltemp=notice_target.iterateNext();
-		}
-		l.outerHTML="<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"><div class=\"media1\" style=\"position: relative;\"><div class=\"u1 loading_half_circle_10px\"></div></div></section>";
+		let doc_html=dom.documentElement.innerHTML;
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{notice}"),doc_html.search("{/notice}")+9),"<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"><div class=\"media1\" style=\"position: relative;\"><div class=\"u1 loading_half_circle_10px\"></div></div></section>");
 		
 	}
 	while(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let notice_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}"))+"{/html}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
-		let l,ltemp=true;
-		while(ltemp)
-		{
-			l=ltemp;
-			ltemp=notice_target.iterateNext();
-		}
-		l.outerHTML="<span class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</span>";
+		let doc_html=dom.documentElement.innerHTML;
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{html}"),doc_html.search("{/html}")+7),"<span class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</span>");
 	}
 	while(dom.documentElement.innerText.includes("{function}") && dom.documentElement.innerText.includes("{/function}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		let functions_output=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{function}"),doc_text.search("{/function}"))+"{/function}"+"')]",dom,null,XPathResult.ANY_TYPE,null);
-		let l,ltemp=true;
-		while(ltemp)
-		{
-			l=ltemp;
-			ltemp=functions_output.iterateNext();
-		}
-		l.outerHTML=window[doc_text.substring(doc_text.search("{function}")+10,doc_text.search("{/function}"))]();
+		let doc_html=dom.documentElement.innerHTML;
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{function}"),doc_html.search("{/function}")+11),window[doc_text.substring(doc_text.search("{function}")+10,doc_text.search("{/function}"))]());
 	}
 	if(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
 	{
