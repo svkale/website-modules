@@ -481,17 +481,15 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{notice}"),doc_html.search("{/notice}")+9),"<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"><div class=\"media1\" style=\"position: relative;\"><div class=\"u1 loading_half_circle_10px\"></div></div></section>");
 		
 	}
-	if(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
+	while(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
 		doc_text=dom.documentElement.innerText;
 		console.log([...dom.documentElement.querySelectorAll("p")]
-			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))
-			.forEach(p => console.log(p)));
+			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))[0]);
 		let doc_html=dom.documentElement.innerHTML;
 
 		[...dom.documentElement.querySelectorAll("p")]
-			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))
-			.forEach(p => p.outerHTML = "<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>");
+			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))[0].outerHTML = "<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>";
 
 		// dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{html}"),doc_html.search("{/html}")+7),"<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>");
 	}
