@@ -507,7 +507,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{eval}"),doc_html.search("{/eval}")+7),"");
 		
 	}
-	if(dom.documentElement.innerText.includes("{StarRating}{/StarRating}"))
+	while(dom.documentElement.innerText.includes("{StarRating}{/StarRating}"))
 	{
 		let doc_html=dom.documentElement.innerHTML;
 		let html_text='<span>★ Rating: </span><span id=SRV_mytc></span><span>&nbsp;&nbsp;&nbsp;&nbsp;<select name="StarRating" id="StarRating" required onchange=alert("Thank_you_for_your_response.");this.disabled=true;gsrfn("fn=StarRating&value="+this.value+"&page="+(document.URL).replace("#","///")); ><option disabled selected value> -- Rate This Page -- </option><option value="1">&#9733;</option><option value="2">&#9733;&#9733;</option> <option value="3">&#9733;&#9733;&#9733;</option><option value="4">&#9733;&#9733;&#9733;&#9733;</option> <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option></select></span>';
@@ -517,7 +517,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		srscript.innerHTML='gsrfn("fn=StarRating&page="+(document.URL).replace("#","///"),"SRV_mytc");';
 		document.getElementsByTagName('html')[0].appendChild(srscript);
 		
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{StarRating}"),doc_html.search("{/StarRating}")+13),html_text);
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{StarRating}{/StarRating}",html_text);
 	}
 
 	doc_ele.innerHTML="";
