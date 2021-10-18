@@ -525,8 +525,10 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	if(dom.documentElement.querySelector("body>div"))
 	{
 		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
-	} else {
+	} else if(dom.documentElement.querySelector("body>section")) {
 		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>section"));
+	} else {
+		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
 	}
 	loading_show();
 	if(exec_noticeboard_script)
