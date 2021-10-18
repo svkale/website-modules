@@ -483,6 +483,10 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	}
 	while(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
+		[...dom.documentElement.querySelectorAll(*)]
+			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))
+			.forEach(p => console.log(p));
+
 		doc_text=dom.documentElement.innerText;
 		let doc_html=dom.documentElement.innerHTML;
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{html}"),doc_html.search("{/html}")+7),"<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>");
