@@ -302,34 +302,35 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	let doc_text=dom.documentElement.innerText,exec_video_style_script=0,exec_frame_style_script=0,exec_internal_page_script=0,exec_nested_doc_style_script=0,exec_presentation_style_script=0,exec_noticeboard_script=0;
 	while((dom.documentElement.innerText.includes("{video_gdrive}") && dom.documentElement.innerText.includes("{/video_gdrive}")) || (dom.documentElement.innerText.includes("{video_youtube}") && dom.documentElement.innerText.includes("{/video_youtube}")))
 	{
-		let inc,inc_l;
-		doc_text=dom.documentElement.innerText;
-		if(doc_text.includes("{video_gdrive}"))
-		{
-			inc="video_gdrive";
-			inc_l=14;
-		}
-		else
-		{
-			inc="video_youtube";
-			inc_l=15;
-		}
-		let video_ele="<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"><div class=\"loading_half_circle\"></div><iframe class=\"media1 request_google_video\" src=\""+doc_text.substring(doc_text.search("{"+inc+"}")+inc_l,doc_text.search("{/"+inc+"}"))+"\" style=\"visibility: hidden;\" allow=\"accelerometer;autoplay;clipboard-white;encrypted-media;gyroscope;picture-in-picture\" allowfullscreen></iframe></section>";
-		let video_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{"+inc+"}"),doc_text.search("{/"+inc+"}"))+"{/"+inc+"}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
-		let l,ltemp=true;
-		while(ltemp)
-		{
-			l=ltemp;
-			if(l.innerText)
-			{
-				if(l.innerText==doc_text.substring(doc_text.search("{"+inc+"}"),doc_text.search("{/"+inc+"}"))+"{/"+inc+"}")
-				{
-					break;
-				}
-			}
-			ltemp=video_target.iterateNext();
-		}
-		l.outerHTML=video_ele;
+		// let inc,inc_l;
+		// doc_text=dom.documentElement.innerText;
+		// if(doc_text.includes("{video_gdrive}"))
+		// {
+		// 	inc="video_gdrive";
+		// 	inc_l=14;
+		// } else {
+		// 	inc="video_youtube";
+		// 	inc_l=15;
+		// }
+		// let video_ele="<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"><div class=\"loading_half_circle\"></div><iframe class=\"media1 request_google_video\" src=\""+doc_text.substring(doc_text.search("{"+inc+"}")+inc_l,doc_text.search("{/"+inc+"}"))+"\" style=\"visibility: hidden;\" allow=\"accelerometer;autoplay;clipboard-white;encrypted-media;gyroscope;picture-in-picture\" allowfullscreen></iframe></section>";
+		// let video_target=dom.evaluate("//*[contains(.,'"+doc_text.substring(doc_text.search("{"+inc+"}"),doc_text.search("{/"+inc+"}"))+"{/"+inc+"}"+"')]",dom,null, XPathResult.ANY_TYPE,null);
+		// let l,ltemp=true;
+		// while(ltemp)
+		// {
+		// 	l=ltemp;
+		// 	if(l.innerText)
+		// 	{
+		// 		if(l.innerText==doc_text.substring(doc_text.search("{"+inc+"}"),doc_text.search("{/"+inc+"}"))+"{/"+inc+"}")
+		// 		{
+		// 			break;
+		// 		}
+		// 	}
+		// 	ltemp=video_target.iterateNext();
+		// }
+		// l.outerHTML=video_ele;
+
+		video_type = dom.documentElement.innerText.includes("{video_gdrive}") ? "video_gdrive" : "video_youtube";
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{"+video_type+"}","<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"><div class=\"loading_half_circle\"></div><iframe class=\"media1 request_google_video\" src=\"").replace("{/"+video_type+"}","\" style=\"visibility: hidden;\" allow=\"accelerometer;autoplay;clipboard-white;encrypted-media;gyroscope;picture-in-picture\" allowfullscreen></iframe></section>");
 		exec_video_style_script=1;
 	}
 	let doc_frame_no=0;
@@ -381,85 +382,89 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	var count=0;
 	while(dom.documentElement.innerText.includes("{COLUMN2}") && dom.documentElement.innerText.includes("{/COLUMN2}"))
 	{
-		let col_target=dom.evaluate("//*[contains(.,'{COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null);
-		let l1,ltemp1=true,l2,ltemp2=true;
-		while(ltemp1)
-		{
-			l1=ltemp1;
-			if(l1.innerText)
-			{
-				if(l1.innerText=="{COLUMN2}")
-				{
-					break;
-				}
-			}
-			ltemp1=col_target.iterateNext();
-		}
-		while(ltemp2)
-		{
-			l2=ltemp2;
-			if(l2.innerText)
-			{
-				if(l2.innerText=="{/COLUMN2}")
-				{
-					break;
-				}
-			}
-			ltemp2=col_target_end.iterateNext();
-		}
-		while(l1.tagName=="HTML" || l1.tagName=="BODY")
-		{
-			l1=frame_target.iterateNext();
-		}
-		while(l2.tagName=="HTML" || l2.tagName=="BODY")
-		{
-			l2=frame_target.iterateNext();
-		}
-		count++;
-		if(count%2==0)
-		{
-			l2.nextElementSibling.style.clear="left";
-		}
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 md2\">").replace(l2.outerHTML,"</section>");
+		// let col_target=dom.evaluate("//*[contains(.,'{COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN2}')]",dom,null,XPathResult.ANY_TYPE,null);
+		// let l1,ltemp1=true,l2,ltemp2=true;
+		// while(ltemp1)
+		// {
+		// 	l1=ltemp1;
+		// 	if(l1.innerText)
+		// 	{
+		// 		if(l1.innerText=="{COLUMN2}")
+		// 		{
+		// 			break;
+		// 		}
+		// 	}
+		// 	ltemp1=col_target.iterateNext();
+		// }
+		// while(ltemp2)
+		// {
+		// 	l2=ltemp2;
+		// 	if(l2.innerText)
+		// 	{
+		// 		if(l2.innerText=="{/COLUMN2}")
+		// 		{
+		// 			break;
+		// 		}
+		// 	}
+		// 	ltemp2=col_target_end.iterateNext();
+		// }
+		// while(l1.tagName=="HTML" || l1.tagName=="BODY")
+		// {
+		// 	l1=frame_target.iterateNext();
+		// }
+		// while(l2.tagName=="HTML" || l2.tagName=="BODY")
+		// {
+		// 	l2=frame_target.iterateNext();
+		// }
+		// count++;
+		// if(count%2==0)
+		// {
+		// 	l2.nextElementSibling.style.clear="left";
+		// }
+		// dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 md2\">").replace(l2.outerHTML,"</section>");
+
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{COLUMN2}","<section class=\"u1 md2\">").replace("{/COLUMN2}","</section>");
 	}
 	count=0;
 	while(dom.documentElement.innerText.includes("{COLUMN3}") && dom.documentElement.innerText.includes("{/COLUMN3}"))
 	{
-		let col_target=dom.evaluate("//*[contains(.,'{COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null);
-		let l1,ltemp1=true,l2,ltemp2=true;
-		while(ltemp1)
-		{
-			l1=ltemp1;
-			if(l1.innerText)
-			{
-				if(l1.innerText=="{COLUMN3}")
-				{
-					break;
-				}
-			}
-			ltemp1=col_target.iterateNext();
-		}
-		while(ltemp2)
-		{
-			l2=ltemp2;
-			if(l2.innerText)
-			{
-				if(l2.innerText=="{/COLUMN3}")
-				{
-					break;
-				}
-			}
-			ltemp2=col_target_end.iterateNext();
-		}
-		count++;
-		if(count%3==0)
-		{
-			if(l2.nextElementSibling)
-			{
-				l2.nextElementSibling.style.clear="left";
-			}
-		}
-		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 lg3\">").replace(l2.outerHTML,"</section>");
+		// let col_target=dom.evaluate("//*[contains(.,'{COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null),col_target_end=dom.evaluate("//*[contains(.,'{/COLUMN3}')]",dom,null,XPathResult.ANY_TYPE,null);
+		// let l1,ltemp1=true,l2,ltemp2=true;
+		// while(ltemp1)
+		// {
+		// 	l1=ltemp1;
+		// 	if(l1.innerText)
+		// 	{
+		// 		if(l1.innerText=="{COLUMN3}")
+		// 		{
+		// 			break;
+		// 		}
+		// 	}
+		// 	ltemp1=col_target.iterateNext();
+		// }
+		// while(ltemp2)
+		// {
+		// 	l2=ltemp2;
+		// 	if(l2.innerText)
+		// 	{
+		// 		if(l2.innerText=="{/COLUMN3}")
+		// 		{
+		// 			break;
+		// 		}
+		// 	}
+		// 	ltemp2=col_target_end.iterateNext();
+		// }
+		// count++;
+		// if(count%3==0)
+		// {
+		// 	if(l2.nextElementSibling)
+		// 	{
+		// 		l2.nextElementSibling.style.clear="left";
+		// 	}
+		// }
+		// dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(l1.outerHTML,"<section class=\"u1 lg3\">").replace(l2.outerHTML,"</section>");
+
+		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{COLUMN3}","<section class=\"u1 lg3\">").replace("{/COLUMN3}","</section>");
 	}
 	while(dom.documentElement.innerText.includes("{noticeboard}") && dom.documentElement.innerText.includes("{/noticeboard}") && dom.documentElement.innerText.includes("{noticeboard_layout}") && dom.documentElement.innerText.includes("{/noticeboard_layout}"))
 	{
