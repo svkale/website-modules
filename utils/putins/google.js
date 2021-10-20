@@ -469,6 +469,10 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	while(dom.documentElement.innerText.includes("{noticeboard}") && dom.documentElement.innerText.includes("{/noticeboard}") && dom.documentElement.innerText.includes("{noticeboard_layout}") && dom.documentElement.innerText.includes("{/noticeboard_layout}"))
 	{
 		var notice_script_link=doc_text.substring(doc_text.search("{noticeboard}")+13,doc_text.search("{/noticeboard}"));
+
+		[...dom.documentElement.querySelectorAll("p")]
+			.filter(p => p.innerText.startsWith("{noticeboard}") && p.innerText.endsWith("{/noticeboard}"))
+			.forEach(p => p.innerHTML = "");
 		doc_text=dom.documentElement.innerText;
 		let doc_html=dom.documentElement.innerHTML;
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{noticeboard_layout}","<section id=\"notices\" class=\"cont1 ignore-revert\">").replace("{/noticeboard_layout}","</section>");
