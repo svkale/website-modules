@@ -493,7 +493,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		let doc_html=dom.documentElement.innerHTML;
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{function}"),doc_html.search("{/function}")+11),window[doc_text.substring(doc_text.search("{function}")+10,doc_text.search("{/function}"))]());
 	}
-	if(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
+	while(dom.documentElement.innerText.includes("{eval}") && dom.documentElement.innerText.includes("{/eval}"))
 	{
 		doc_text=dom.documentElement.innerText;
 		let doc_html=dom.documentElement.innerHTML;
@@ -522,14 +522,14 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 
 	doc_ele.innerHTML="";
 	console.log(dom);
-	if(dom.documentElement.querySelector("body>div"))
-	{
-		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
-	} else if(dom.documentElement.querySelector("body>section")) {
-		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>section"));
-	} else {
-		doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
-	}
+	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
+	// if(dom.documentElement.querySelector("body>div"))	{
+	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
+	// } else if(dom.documentElement.querySelector("body>section")) {
+	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>section"));
+	// } else {
+	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
+	// }
 	loading_show();
 	if(exec_noticeboard_script)
 	{
