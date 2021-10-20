@@ -484,7 +484,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	doc_text=dom.documentElement.innerText;
 	[...dom.documentElement.querySelectorAll("p")]
 		.filter(p => p.innerText.startsWith("{html}") && p.innerText.endsWith("{/html}"))
-		.forEach(p => console.log(p , p.innerText , p.innerHTML = p.innerText));
+		.forEach(p => console.log(p , p.innerText , p.innerHTML = p.innerText.substr(0,p.innerText.length-7).substr(6)));
 
 
 	while(dom.documentElement.innerText.includes("{function}") && dom.documentElement.innerText.includes("{/function}"))
