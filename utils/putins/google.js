@@ -484,9 +484,14 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	if(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
 		doc_text=dom.documentElement.innerText;
-		console.log([...dom.documentElement.querySelectorAll("span")]
-			.filter(p => p.innerText.startsWith("{html}"),doc_text.endsWith("{/html}")));
-		let doc_html=dom.documentElement.innerHTML;
+		[...dom.documentElement.querySelectorAll("span")]
+			.filter(p => p.innerText.startsWith("{html}"),doc_text.endsWith("{/html}"))
+			.forEach(p => p.innerHTML = p.innerText);
+
+		// [...dom.documentElement.querySelectorAll("span")]
+		// 	.filter(p => {
+		// 		return p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7);
+		// 	})[0].innerHTML = "<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>";
 
 		// dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{html}"),doc_html.search("{/html}")+7),"<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>");
 	}
