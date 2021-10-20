@@ -290,7 +290,7 @@ function putins_make_subpage(element,doc_ele_id)
 	// 	doc_ele.innerHTML="<span>Error! End tag not found.</span>";
 	// 	return;
 	// }
-	if(doc_ele_HTML.indexOf("{"+element+"}")!=-1 && doc_ele_HTML.indexOf("{/"+element+"}")!=-1)
+	if(doc_ele_HTML.includes("{"+element+"}") && doc_ele_HTML.includes("{/"+element+"}"))
 		dom=domParser.parseFromString(doc_ele_HTML.substring(doc_ele_HTML.indexOf("{"+element+"}")+2+element.length,doc_ele_HTML.indexOf("{/"+element+"}")),"text/html");
 	else
 		return doc_ele.innerHTML="<span>Error! Tag not found.</span>";
@@ -490,7 +490,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 
 		[...dom.documentElement.querySelectorAll("span")]
 			.filter(p => {
-				console.log(p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7));
 				return p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7);
 			})[0].innerHTML = "<div class=\"cont1\">"+doc_text.substring(doc_text.search("{html}")+6,doc_text.search("{/html}"))+"</div>";
 
