@@ -481,11 +481,11 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace(doc_html.substring(doc_html.search("{notice}"),doc_html.search("{/notice}")+9),"<section id=\""+doc_text.substring(doc_text.search("{notice}")+8,doc_text.search("{/notice}"))+"_notices\" class=\"cont1\"><div class=\"media1\" style=\"position: relative;\"><div class=\"u1 loading_half_circle_10px\"></div></div></section>");
 		
 	}
-	while(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
+	if(dom.documentElement.innerText.includes("{html}") && dom.documentElement.innerText.includes("{/html}"))
 	{
 		doc_text=dom.documentElement.innerText;
 		console.log([...dom.documentElement.querySelectorAll("span")]
-			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7)));
+			.filter(p => p.innerText.startsWith("{html}"),doc_text.endsWith("{/html}")));
 		let doc_html=dom.documentElement.innerHTML;
 
 		[...dom.documentElement.querySelectorAll("span")]
