@@ -485,7 +485,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	{
 		doc_text=dom.documentElement.innerText;
 		console.log([...dom.documentElement.querySelectorAll("span")]
-			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7))[0]);
+			.filter(p => p.innerText == doc_text.substring(doc_text.search("{html}"),doc_text.search("{/html}")+7)));
 		let doc_html=dom.documentElement.innerHTML;
 
 		[...dom.documentElement.querySelectorAll("span")]
