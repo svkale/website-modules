@@ -47,18 +47,18 @@
 }
 #contents_page *:not(.ignore-revert, .ignore-revert *),#contents_page
 {
-	/*margin: revert;*/
-	padding: revert;
-	text-indent: revert;
-	border: revert;
-	color: revert;
-	font-size: revert;
-	font-weight: revert;
-	background-color: revert;
-	text-decoration: revert;
-	max-width: revert;
-	line-height: revert;
-	height: revert;
+	/*margin: initial;*/
+	padding: initial;
+	text-indent: initial;
+	border: initial;
+	color: initial;
+	font-size: initial;
+	font-weight: initial;
+	background-color: initial;
+	text-decoration: initial;
+	max-width: initial;
+	line-height: initial;
+	height: initial;
 }
 #contents_page
 {
