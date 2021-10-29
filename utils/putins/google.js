@@ -667,7 +667,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 				nested_doc_style_HTML+="#doc_frame_"+i+" *,";
 			}
 			nested_doc_style_HTML=nested_doc_style_HTML.substring(0,nested_doc_style_HTML.length-1);
-			nested_doc_style_HTML+="{padding: revert;border: revert;color: revert;}";
+			nested_doc_style_HTML+="{padding: initial;border: initial;color: initial;}";
 			for(let i=0;i<doc_frame_no;i++)
 			{
 				nested_doc_style_HTML+="#doc_frame_"+i+" *[class^='c'],";
