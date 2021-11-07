@@ -115,12 +115,12 @@ function notice_board_paste(notice_board_heading)
 function notice_board_post(p)
 {
 	const notices=notices_obj[p+"_notices"],notices_count=notices_obj[p+"_notices_count"];
-	let notices_str="<button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;\"><h4 style=\"color: var(--main-color); background-color: var(--main-color-2);\">Notices ("+p.replaceAll("_"," ")+")</h4></button>";
+	let notices_str="<button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;cursor: pointer;\"><h4 style=\"color: var(--main-color); background-color: var(--main-color-2);\">Notices ("+p.replaceAll("_"," ")+")</h4></button>";
 	for(let i=notices.length-1;i>=0;i--)
 	{
 		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><div class='notices_author'>by "+notices[i][1]+"</div><div class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</div><br><div class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</div></article>";
 	}
-	return notices_str+"<hr style='float: left;'><button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;\"><div class='notices_count'>Total "+notices_count+" notices found.</div></button>";
+	return notices_str+"<hr style='float: left;'><button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;cursor: pointer;\"><div class='notices_count'>Total "+notices_count+" notices found.</div></button>";
 
 }
 function notice_show_with_no(notice_group,notice_number)
