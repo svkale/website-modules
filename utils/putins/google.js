@@ -280,10 +280,6 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	let doc_text=dom.documentElement.innerText,exec_video_style_script=0,exec_frame_style_script=0,exec_internal_page_script=0,exec_nested_doc_style_script=0,exec_presentation_style_script=0,exec_noticeboard_script=0;
 	while((dom.documentElement.innerText.includes("{video_gdrive}") && dom.documentElement.innerText.includes("{/video_gdrive}")) || (dom.documentElement.innerText.includes("{video_youtube}") && dom.documentElement.innerText.includes("{/video_youtube}")))
 	{
-		// let inc,inc_l;
-		// doc_text=dom.documentElement.innerText;
-		// if(doc_text.includes("{video_gdrive}"))
-		/
 		video_type = dom.documentElement.innerText.includes("{video_gdrive}") ? "video_gdrive" : "video_youtube";
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{"+video_type+"}","<section class=\"u1\" style=\"margin-right: 1%;position: relative;\"><div class=\"loading_half_circle\"></div><iframe class=\"media1 request_google_video\" src=\"").replace("{/"+video_type+"}","\" style=\"visibility: hidden;\" allow=\"accelerometer;autoplay;clipboard-white;encrypted-media;gyroscope;picture-in-picture\" allowfullscreen></iframe></section>");
 		exec_video_style_script=1;
