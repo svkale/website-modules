@@ -120,7 +120,7 @@ function notice_board_post(p)
 	{
 		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><div class='notices_author'>by "+notices[i][1]+"</div><div class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</div><br><div class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</div></article>";
 	}
-	return notices_str+"<hr style='float: left;'><a href='#' onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\"><div class='notices_count'>Total "+notices_count+" notices found.</div></a>";
+	return notices_str+"<hr style='float: left;'><button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%;\"><div class='notices_count'>Total "+notices_count+" notices found.</div></button>";
 
 }
 function notice_show_with_no(notice_group,notice_number)
