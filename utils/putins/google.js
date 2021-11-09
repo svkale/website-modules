@@ -399,7 +399,7 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 	}
 
 	doc_ele.innerHTML="";
-	console.log(dom);
+	//console.log(dom);
 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
 	// if(dom.documentElement.querySelector("body>div"))	{
 	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
