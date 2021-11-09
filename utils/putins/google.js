@@ -76,7 +76,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 	}
 	let domParser=new DOMParser(),dom;
 	dom=domParser.parseFromString(doc_ele_HTML,"text/html");
-	console.log(dom.documentElement);
+	//console.log(dom.documentElement);
 	while(dom.documentElement.querySelector("style"))
 	{
 		document.getElementsByTagName("head")[0].insertAdjacentElement("beforeend",dom.documentElement.querySelector("style"));
