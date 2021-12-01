@@ -115,12 +115,12 @@ function notice_board_paste(notice_board_heading)
 function notice_board_post(p)
 {
 	const notices=notices_obj[p+"_notices"],notices_count=notices_obj[p+"_notices_count"];
-	let notices_str="<h4 style=\"color: var(--main-color);\">Notices ("+p.replaceAll("_"," ")+")</h4>";
+	let notices_str="<button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;cursor: pointer;\"><h4 style=\"color: var(--main-color); background-color: var(--main-color-2);\">Notices ("+p.replaceAll("_"," ")+")</h4></button>";
 	for(let i=notices.length-1;i>=0;i--)
 	{
 		notices_str+="<article class='cont1 notice'><big><b onclick='notice_show_with_no(event.target.getAttribute(\"data-notice-group\"),event.target.getAttribute(\"data-notice-number\"));' data-notice-group='"+p+"_notices"+"' data-notice-number='"+i+"'>"+notices[i][4]+"</b></big><hr><div class='notices_author'>by "+notices[i][1]+"</div><div class='notices_date'>on "+notices[i][2].slice(notices[i][2].length-2)+"/"+notices[i][2].slice(notices[i][2].length-4,notices[i][2].length-2)+"/"+notices[i][2].slice(0,notices[i][2].length-4)+"</div><br><div class='notices_for'>The notice is for "+notice_get_students_group(notices[i][5])+".</div></article>";
 	}
-	return notices_str+"<hr style='float: left;'><div class='notices_count'>Total "+notices_count+" notices found.</div>";
+	return notices_str+"<hr style='float: left;'><button onclick=\"let nav_opts = document.querySelectorAll('#contents_nav li');for(let i of nav_opts) { if(i.innerText == '"+p+"') { i.click(); } }\" style=\"background: revert; border: 0; width: 100%; text-decoration: underline; padding: 0;cursor: pointer;\"><div class='notices_count'>Total "+notices_count+" notices found.</div></button>";
 
 }
 function notice_show_with_no(notice_group,notice_number)
@@ -147,7 +147,7 @@ function notice_show_with_no(notice_group,notice_number)
 	notice_sec.insertAdjacentHTML("beforeend",notice_str);
 	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</div>");
 	notice_container.insertAdjacentElement("beforeend",notice_sec);
-	notice_container.insertAdjacentHTML("beforeend","<div style=\"text-align: center;\">.<br>The link for the notice is <a target=\"_blank\" href=\"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"\">"+location.hostname+"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</a>.<br>.<br><button onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);wind.addEventListener('load',function{wind.print();});\"><span>Print Notice</span></button></div>");
+	notice_container.insertAdjacentHTML("beforeend","<div style=\"text-align: center;\">.<br>The link for the notice is <a target=\"_blank\" href=\"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"\">"+location.hostname+"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</a>.<br>.<br><button onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);\"><span>Print Notice</span></button></div>");
 	document.getElementById(target_ele_id).insertAdjacentElement("afterend",notice_container);
 	// history.pushState("","","/notices/"+notice_group.substring(0,notice_group.length-8).replaceAll("_","-")+"/"+notices_obj["current_year"]+"/"+notices_obj[notice_group][notice_number][0]);
 	return;

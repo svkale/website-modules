@@ -45,7 +45,7 @@
 {
 	padding: 2px;
 }
-#contents_page *:not(.ignore-revert, .ignore-revert *),#contents_page
+#contents_page *:not(.ignore-revert, .ignore-revert *,  .notice_board, .notice_board *, .notice, .notice *, .notice_full, .notice_full *),#contents_page
 {
 	/*margin: initial;*/
 	padding: initial;
