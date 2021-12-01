@@ -524,9 +524,8 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{StarRating}{/StarRating}",html_text);
 	}
 
-	doc_ele.innerHTML="";
+	doc_ele.innerHTML=dom.documentElement.querySelector("body").outerHTML.replace("<body","<div").replace("</body>","</div>");
 	console.log(dom);
-	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
 	// if(dom.documentElement.querySelector("body>div"))	{
 	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
 	// } else if(dom.documentElement.querySelector("body>section")) {
