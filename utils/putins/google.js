@@ -398,14 +398,8 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 		dom.documentElement.innerHTML=dom.documentElement.innerHTML.replace("{StarRating}{/StarRating}",html_text);
 	}
 
-<<<<<<< HEAD
 	doc_ele.innerHTML=dom.documentElement.querySelector("body").outerHTML.replace("<body","<div").replace("</body>","</div>");
 	console.log(dom);
-=======
-	doc_ele.innerHTML="";
-	//console.log(dom);
-	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body"));
->>>>>>> ce4d099ce7ed7530b7014af88c95e42ed007622a
 	// if(dom.documentElement.querySelector("body>div"))	{
 	// 	doc_ele.insertAdjacentElement("beforeend",dom.documentElement.querySelector("body>div"));
 	// } else if(dom.documentElement.querySelector("body>section")) {
