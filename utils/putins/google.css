@@ -45,9 +45,9 @@
 {
 	padding: 2px;
 }
-#contents_page *:not(.ignore-revert):not(.ignore-revert *),#contents_page
+/*#contents_page *:not(.ignore-revert):not(.ignore-revert *),#contents_page
 {
-	/*margin: initial;*/
+	margin: initial;
 	padding: initial;
 	text-indent: initial;
 	border: initial;
@@ -60,6 +60,7 @@
 	line-height: initial;
 	height: initial;
 }
+*/
 #contents_page
 {
 	padding: 2%;
