@@ -5,7 +5,6 @@
 	border: 0;
 	box-sizing: border-box;
 	overflow-wrap: break-word;
-	color: var(--main-color-2);
 	background-color: var(--main-color);
 	text-align: left;
 	border-collapse: collapse;

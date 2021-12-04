@@ -45,6 +45,9 @@
 {
 	padding: 2px;
 }
+nav *, #notices * {
+    color: var(--main-color-2);
+}
 /*#contents_page *:not(.ignore-revert):not(.ignore-revert *),#contents_page
 {
 	margin: initial;
