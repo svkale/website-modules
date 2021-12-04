@@ -48,6 +48,9 @@
 nav *, #notices * {
     color: var(--main-color-2);
 }
+#contents_page .notice_full * {
+    padding: revert;
+}
 /*#contents_page *:not(.ignore-revert):not(.ignore-revert *),#contents_page
 {
 	margin: initial;

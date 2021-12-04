@@ -120,10 +120,6 @@ button>span,form input[type="button"],form input[type="submit"]
 		border-width: 2px;
 		border-radius: 8px;
 	}
-	button>span,form input[type="button"],form input[type="submit"]
-	{
-		font-size: 1.1em;
-	}
 }
 @media(min-width: 992px) and (max-width: 1199px)/*xl*/
 {
@@ -133,10 +129,6 @@ button>span,form input[type="button"],form input[type="submit"]
 		border-width: 2px;
 		border-radius: 8px;
 	}
-	button>span,form input[type="button"],form input[type="submit"]
-	{
-		font-size: 1.1em;
-	}
 }
 @media(min-width: 1200px)/*xxl*/
 {
@@ -145,9 +137,5 @@ button>span,form input[type="button"],form input[type="submit"]
 		padding: 0.2vw 0.08vw;
 		border-width: 0.3vw;
 		border-radius: 0.8vw;
-	}
-	button>span,form input[type="button"],form input[type="submit"]
-	{
-		font-size: 1.2em;
 	}
 }
