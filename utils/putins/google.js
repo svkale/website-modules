@@ -127,7 +127,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="Page")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='putins_make_subpage(this.innerText.trim(),\""+doc_ele_id+"\");document.getElementById(\"contents_page\").scrollIntoView(true);'><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='putins_make_subpage(this.innerText.trim(),\""+doc_ele_id+"\");'><div";
 				if(j[0].endsWith("Home"))
 				{
 					nav_HTML+=" style=\"font-weight: bold;\"";
@@ -136,7 +136,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="FramePage")
 			{
-				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");putins_make_subpage_from_HTML(dom,doc_ele);document.getElementById(\"contents_page\").scrollIntoView(true);'><div";
+				nav_HTML+="<li class='u1 doc_page' onclick='let domParser=new DOMParser(),dom,doc_ele=document.getElementById(\""+doc_ele_id+"\");dom=domParser.parseFromString(\"<p>{frame_link}"+j[2]+"{/frame_link}</p>\",\"text/html\");putins_make_subpage_from_HTML(dom,doc_ele,this.innerText.trim());'><div";
 				if(j[0]=="Home") nav_HTML+=" style=\"font-weight: bold;\"";
 				nav_HTML+=">"+j[0]+"</div></li>";
 			}
@@ -268,15 +268,16 @@ function putins_make_page_from_gdoc(request_obj,params)
 function putins_make_subpage(element,doc_ele_id)
 {
 	let domParser=new DOMParser(),dom,doc_ele=document.getElementById(doc_ele_id);
-	if(doc_ele_HTML.includes("{"+element+"}") && doc_ele_HTML.includes("{/"+element+"}"))
+	if(doc_ele_HTML.includes("{"+element+"}") && doc_ele_HTML.includes("{/"+element+"}")) {
 		dom=domParser.parseFromString(doc_ele_HTML.substring(doc_ele_HTML.indexOf("{"+element+"}")+2+element.length,doc_ele_HTML.indexOf("{/"+element+"}")),"text/html");
-	else
+	} else
 		return doc_ele.innerHTML="<span>Error! Tag not found.</span>";
 	putins_make_subpage_from_HTML(dom,doc_ele,element);
 }
 function putins_make_subpage_from_HTML(dom,doc_ele,element)
 {
 	location.hash=element;
+	document.getElementById("contents_page").scrollIntoView(true);
 	let doc_text=dom.documentElement.innerText,exec_video_style_script=0,exec_frame_style_script=0,exec_internal_page_script=0,exec_nested_doc_style_script=0,exec_presentation_style_script=0,exec_noticeboard_script=0;
 	while((dom.documentElement.innerText.includes("{video_gdrive}") && dom.documentElement.innerText.includes("{/video_gdrive}")) || (dom.documentElement.innerText.includes("{video_youtube}") && dom.documentElement.innerText.includes("{/video_youtube}")))
 	{

@@ -101,10 +101,6 @@ function notice_board_paste(notice_board_heading)
 	}
 	notices_board.classList.add("notice_board");
 	let p=notice_board_heading.substring(0,notice_board_heading.length-8);
-	if(notices_obj[p+"_page_number"])
-	{
-		notices_board.insertAdjacentHTML("beforeend","<button><span>Previous Page</span></button><button><span>Next Page</span></button>");
-	}
 	notices_board.insertAdjacentHTML("beforeend",notice_board_post(p));
 	if(notices_obj[p+"_page_number"])
 	{
