@@ -160,7 +160,7 @@ function putins_make_page_from_gdoc(request_obj,params)
 			}
 			else if(j[1]=="InputText")
 			{
-				nav_HTML+="<input class=\"u1\" type=\"text\" id=\""+j[2]+"\">";
+				nav_HTML+="<input class=\"u1\" type=\"text\" id=\""+j[2]+" placeholder=\""+j[0]+"\" />";
 			}
 			else if(j[1]=="Button")
 			{
