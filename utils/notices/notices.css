@@ -49,6 +49,10 @@
 {
 	padding-bottom: 2.5%;
 }
+.notice .notice_contents
+{
+	overflow-x: auto;
+}
 .notice_full .notices_author
 {
 	width: 100%;
