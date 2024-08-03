@@ -177,7 +177,7 @@ function notice_parse(notice)
 	}
 	notice_str+="<br><br></article>";
 	notice_sec.insertAdjacentHTML("beforeend",notice_str);
-	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notice[1]+"</div>");
+	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notice[1]+"</div><br><a target=\"_blank\" href=\"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"\">"+location.hostname+"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</a>");
 	notice_container.insertAdjacentElement("beforeend",notice_sec);
 	notice_container.insertAdjacentHTML("beforeend","<div style=\"text-align: center;\">.<br><button onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);wind.print();\"><span>Print Notice</span></button></div>");
 	// history.pushState("","","/notices/"+notice_group.substring(0,notice_group.length-8).replaceAll("_","-")+"/"+notices_obj["current_year"]+"/"+notice[0]);
