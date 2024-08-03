@@ -141,7 +141,7 @@ function notice_show_with_no(notice_group,notice_number)
 	}
 	notice_str+="<br><br></article>";
 	notice_sec.insertAdjacentHTML("beforeend",notice_str);
-	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</div>");
+	notice_sec.insertAdjacentHTML("beforeend","<div class='notices_author'>From "+notices_obj[notice_group][notice_number][1]+"</div><br><a target=\"_blank\" href=\"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"\">"+location.hostname+"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</a>");
 	notice_container.insertAdjacentElement("beforeend",notice_sec);
 	notice_container.insertAdjacentHTML("beforeend","<div style=\"text-align: center;\">.<br>The link for the notice is <a target=\"_blank\" href=\"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"\">"+location.hostname+"/notice/"+notice_group.split("_")[0]+"/"+notices_obj[notice_group][notice_number][0]+"</a>.<br>.<br><button onclick=\"var wind=window.open();wind.document.write(document.getElementsByClassName('notice_full')[0].outerHTML+'<style>*{font-size: 1.1em !important;float: none !important;}</style>'+document.getElementById('notices_css').outerHTML+document.getElementById('layout_css').outerHTML+document.getElementById('default_css').outerHTML);\"><span>Print Notice</span></button></div>");
 	document.getElementById(target_ele_id).insertAdjacentElement("afterend",notice_container);
