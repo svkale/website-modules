@@ -193,6 +193,12 @@ function putins_make_page_from_gdoc(request_obj,params)
 				scr.innerHTML=j[2];
 				document.getElementsByTagName('html')[0].appendChild(scr);
 			}
+			else if(j[1]=="gSlideShow")
+			{
+				//getSlides(url,slideShowId)
+				console.log("gSlideShow");console.log(j);
+			}
+			
 		}
 	}
 	nav_ele.innerHTML=nav_HTML;
@@ -555,6 +561,41 @@ function putins_make_subpage_from_HTML(dom,doc_ele,element)
 			}
 		},500);
 	}
+	
+        function getSlides(url,slideShowId) {
+          const xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              processSlideShow(this.responseText,slideShowId);
+            }
+          };
+          xhttp.open("GET", url);
+          xhttp.send();
+        }
+
+        function processSlideShow(text,slideShowId){
+          let Data=JSON.parse(text);
+          Data.sort();
+          let itext="";
+          itext += '<div class="w3-content w3-section" style="max-width:500px">';
+          for(let i1=0;i1<Data.length;i1++){
+            let d="none";
+            console.log(i1,Data[i1][1]);
+            itext += '  <img class="mySlides" src="https://drive.google.com/thumbnail?id='+Data[i1][1]+'" style="width:100%;display:'+d+';">';
+          }
+          itext += '</div>';
+          document.getElementById(slideShowId).innerHTML = itext;
+          var myIndex = 0;
+          let startSlideShow=function() {
+            var x = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < x.length; i++) {x[i].style.display = "none";}
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(startSlideShow, 3000); // Change image every 2 seconds
+          }
+          startSlideShow();
+        }
 
 	setTimeout(function(){
 		var frame_script=document.createElement("script");
